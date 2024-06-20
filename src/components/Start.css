@@ -1,0 +1,50 @@
+#start-menu {
+    bottom: 3.75rem;
+    position: absolute;
+    background: #c0c0c0;
+    left: 0.25rem;
+    width: 24rem;
+    min-height: 3rem;
+    display: none;
+}
+
+#start-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#start-menu ul li label {
+    height: 4rem;
+    float: left;
+    cursor: pointer;
+    padding: 0 0.5rem 0 0.5rem;
+    margin: 0 2.5rem;
+    display: flex;
+    align-content-items: center;
+    position: relative;
+    /* cursor: pointer; don't know why it was in here twice, will remove after test.*/
+    box-sizing: border-box;
+    width: calc(100% - 3rem);
+}
+
+#windows-start-menu-blue {
+    color:white;
+    font-weight: 900;
+    position: absolute;
+    transform: rotateZ(-90deg);
+    width: 24rem;
+    font-size: 1.25rem;
+    font-family: "Arial Black", sans-serif;
+    background: #011590;
+    left:0;
+    transform-origin: 0 0;
+    top: 24rem;
+    box-sizing: border-box;
+    padding: 0.125rem 0.75rem;
+}
+
+#windos-start-menu-blue span {
+    font-weight: 100;
+    font-family: "Arial", sans-serif;
+}

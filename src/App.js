@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Window from './components/Window';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [windows, setWindows] = useState([]);
+
+    const openWindow = () => {
+        const newWindow = {
+            id: windows.length ? windows[windows.length - 1].id + 1 : 1,
+        };
+        setWindows([...windows, newWindow]);
+    };
+
+    const closeWindow = (id) => {
+        setWindows(windows.filter(window => window.id !== id));
+        console.log(windows);
+    };
+
+    return (
+        <div className="app">
+            <button onClick={openWindow}>Create Window</button>
+            <div className="windows-container">
+                {windows.map(window => (
+                    <Window key={window.id} id={window.id} onClose={closeWindow} />
+                )) }
+            </div>
+        </div>
+    );
+};
 
 export default App;
