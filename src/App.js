@@ -57,8 +57,8 @@ const App = () => {
                     <Program key={program.id} id={program.id} name={program.name} onClose={closeProgram} />
                 )) }
             </div>
-            <Taskbar onStartButtonClick={handleStartButtonClick} items={taskbarItems} />
             <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
+            <Taskbar onStartButtonClick={handleStartButtonClick} items={taskbarItems} />
         </div>
     );
 };

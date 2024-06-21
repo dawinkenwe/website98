@@ -53,6 +53,32 @@
     box-shadow: 0 2px #808280, 0 4px white;
 }
 
-#start-menu li > ul > label > image {
+#start-menu ul > li > label > img {
     width: 1.5rem;
+    height: auto;
+    margin: 0 1rem 0 0;
+}
+
+#start-menu ul > li > label:first-of-type:before {
+    width: 14px;
+    background: black;
+    content: '';
+    height: 1px;
+    position: absolute;
+    bottom: 20px;
+    left: 3rem;
+}
+
+#start-menu ul > li > label > span {
+    font-size: 14px;
+}
+
+#start-menu ul li label:hover {
+    background: #0c1b98;
+    color: white;
+    box-shadow: -8px 0 #0c1b98, 8px 0 #0c1b98;
+}
+
+#start-menu > ul > li label:hover:before {
+    background: white;
 }
