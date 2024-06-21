@@ -29,7 +29,7 @@
 }
 
 #windows-start-menu-blue {
-    color:white;
+    color: white;
     font-weight: 900;
     position: absolute;
     transform: rotateZ(-90deg);
@@ -37,7 +37,7 @@
     font-size: 1.25rem;
     font-family: "Arial Black", sans-serif;
     background: #011590;
-    left:0;
+    left: 0;
     transform-origin: 0 0;
     top: 24rem;
     box-sizing: border-box;
@@ -47,4 +47,12 @@
 #windos-start-menu-blue span {
     font-weight: 100;
     font-family: "Arial", sans-serif;
+}
+
+.line {
+    box-shadow: 0 2px #808280, 0 4px white;
+}
+
+#start-menu li > ul > label > image {
+    width: 1.5rem;
 }

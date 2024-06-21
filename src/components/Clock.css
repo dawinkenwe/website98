@@ -1,0 +1,7 @@
+#clock {
+    box-shadow: 0 2px white, 0 -2px #7d7d7d, -2px -2px #7d7d7d, 2px 2px white, -2px 2px #7d7d7d, 2px -2px white;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,30 +1,64 @@
-import React, { useState } from 'react';
-import Window from './components/Window';
+import React, { useEffect, useRef, useState } from 'react';
+import Taskbar from './components/Taskbar.js';
+import Program from './components/Program.js';
+import StartMenu from './components/StartMenu'
 import './App.css';
+import { getProgramIcon } from './helpers/programMap.js';
 
 const App = () => {
-    const [windows, setWindows] = useState([]);
+    const [programs, setPrograms] = useState([]);
+    const [taskbarItems, setTaskbarItems] = useState([]);
+    const [isStartMenuVisible, setStartMenuVisible] = useState(false);
+    const startMenuRef = useRef(null);
 
-    const openWindow = () => {
-        const newWindow = {
-            id: windows.length ? windows[windows.length - 1].id + 1 : 1,
+    const handleStartButtonClick = () => {
+        setStartMenuVisible(!isStartMenuVisible);
+    };
+
+    const openProgram = (programName) => {
+        const programContents = <p>Program Contents</p>
+        const newProgram = { id: Date.now(), name: programName, contents: programContents };
+        const newTaskbarItem = { id: newProgram.id, name: programName, icon: getProgramIcon(programName) };
+        setPrograms([...programs, newProgram]);
+        setTaskbarItems([...taskbarItems, newTaskbarItem]);
+        setStartMenuVisible(false);
+    };
+
+    const closeProgram = (programId) => {
+        setPrograms(programs.filter(program => program.id !== programId));
+        setTaskbarItems(taskbarItems.filter(taskbarItem => taskbarItem.id !== programId));
+    };
+
+    useEffect(() => {
+        const handleClickOutsideStartMenu = (event) => {
+            if (
+                startMenuRef.current &&
+                !startMenuRef.current.contains(event.target)
+            ) {
+                setStartMenuVisible(false);
+            }
         };
-        setWindows([...windows, newWindow]);
-    };
+        if (isStartMenuVisible) {
+            document.addEventListener('click', handleClickOutsideStartMenu);
+        } else {
+            document.removeEventListener('click', handleClickOutsideStartMenu)
+        }
 
-    const closeWindow = (id) => {
-        setWindows(windows.filter(window => window.id !== id));
-        console.log(windows);
-    };
+        return () => {
+            document.removeEventListener('click', handleClickOutsideStartMenu);
+        };
+    }, [isStartMenuVisible]);
+
 
     return (
         <div className="app">
-            <button onClick={openWindow}>Create Window</button>
-            <div className="windows-container">
-                {windows.map(window => (
-                    <Window key={window.id} id={window.id} onClose={closeWindow} />
+            <div className="programs-view">
+                {programs.map(program => (
+                    <Program key={program.id} name={program.name} onClose={closeProgram} />
                 )) }
             </div>
+            <Taskbar onStartButtonClick={handleStartButtonClick} items={taskbarItems} />
+            <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
         </div>
     );
 };

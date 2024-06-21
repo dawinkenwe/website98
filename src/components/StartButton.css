@@ -1,0 +1,11 @@
+#start-button {
+    display: block;
+    min-width: 104px;
+    width: 6.5rem;
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    background-position-x: 0.25rem;
+    background-position-y: center;
+    cursor: pointer;
+    height: 2.25rem;
+}

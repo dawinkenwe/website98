@@ -10,3 +10,57 @@
     justify-content: space-between;
     box-shadow: 0 -2px #fffdfc, 0 -4px #cce9eb
 }
+
+#open-tasks:before {
+    content: '';
+    width: 2px;
+    position: absolute;
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 0 #818181;
+    left: 0.5rem;
+}
+
+#open-tasks {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 1rem;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 4px, 0, 0, 2rem;
+    position: relative;
+    top: -3px;
+    height: calc(100% + -1px);
+}
+
+#taskbar-item {
+    height: calc(100% -4px);
+    display: flex;
+    width: 10.5rem;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 1rem 0 0;
+    font-weight: 600;
+    padding-top: 0px;
+    padding-right: 0.5rem;
+    padding-bottom: 0px;
+    padding-left: 0.5rem;
+    white-space:nowrap;
+}
+
+#taskbar-item > img {
+    display: block;
+    overflow: hidden;
+    min-width: 2rem;
+    text-overflow: ellipsis;
+    width: 1.75rem;
+    padding: 0 0.5rem 0 0;
+}
+
+#taskbar-item > span {
+    display: flex;
+    overflow: hidden;
+    min-width: 2rem;
+    text-overflow: ellipsis;
+}
