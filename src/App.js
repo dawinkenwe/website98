@@ -54,7 +54,7 @@ const App = () => {
         <div className="app">
             <div className="programs-view">
                 {programs.map(program => (
-                    <Program key={program.id} name={program.name} onClose={closeProgram} />
+                    <Program key={program.id} id={program.id} name={program.name} onClose={closeProgram} />
                 )) }
             </div>
             <Taskbar onStartButtonClick={handleStartButtonClick} items={taskbarItems} />

@@ -1,11 +1,11 @@
 import React from 'react';
 import "98.css";
 
-const Window = ({ id, onClose }) => {
+const Program = ({ id, name, onClose }) => {
     return (
         <div style={{ width: 300 }} className="window">
             <div className="title-bar">
-                <div className="title-bar-text">Window {id}</div>
+                <div className="title-bar-text">{name}</div>
                 <div className="title-bar-controls">
                     <button aria-label="Minimize" />
                     <button aria-label="Maximize" />
@@ -20,4 +20,4 @@ const Window = ({ id, onClose }) => {
     );
 };
 
-export default Window;
+export default Program;
