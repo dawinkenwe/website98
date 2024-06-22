@@ -1,6 +1,6 @@
 #task-bar {
     background: #c0c0c0;
-    /* height: 2.5rem; */
+    height: 2.5rem;
     position: absolute;
     bottom: 0;
     width: calc(100% - 1rem);
@@ -11,36 +11,31 @@
     box-shadow: 0 -2px #fffdfc, 0 -4px #cce9eb
 }
 
-#taskbar-items {
-    display: flex;
-    width: calc(100% + -5rem);
-}
-
 #open-tasks:before {
     content: '';
     width: 2px;
+    height: calc((100%) - 4px);
     position: absolute;
     background-color: #f2f2f2;
     box-shadow: 1px 1px 0 #818181;
     left: 0.5rem;
+    top: 1px
 }
 
 #open-tasks {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 1rem;
+    margin: 0 0 0 1rem;
+    padding: 4px 0 0 2rem;
     display: flex;
     overflow-x: hidden;
     overflow-y: hidden;
     padding: 4px, 0, 0, 2rem;
     position: relative;
-    top: -3px;
-    height: calc(100% + -1px);
+    top: -1px;
+    width: calc(100% - 5rem);
 }
 
 #taskbar-item {
-    height: calc(100% - 4px);
+    height: calc(100% - 4px);  
     display: flex;
     width: 10.5rem;
     align-items: center;
@@ -49,7 +44,7 @@
     font-weight: 600;
     padding: 0 0.5rem;
     white-space: nowrap;
-    overflow: hidden
+    overflow: hidden;
 }
 
 #taskbar-item > span > img {
