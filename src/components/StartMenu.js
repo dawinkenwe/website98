@@ -5,7 +5,7 @@ import { getProgramIcon } from '../helpers/programMap';
 const StartMenu = React.forwardRef(({ onMenuItemClick, isVisible }, ref) => {
     /* Import menu items from file? use mapping and {} */
     return (
-        <div id="start-menu" class="windows-box-shadow" style={{ display: isVisible ? 'block': 'none'} }>
+        <div id="start-menu" ref={ref} class="windows-box-shadow" style={{ display: isVisible ? 'block': 'none'} }>
             <div id="windows-start-menu-blue">Windows<span>98</span></div>
             <ul>
                 <li class="line help" onClick={() => onMenuItemClick("help")}><label for="windows-help-input"><img src={getProgramIcon('help')} alt="help" /><span> Help</span></label></li>

@@ -10,6 +10,8 @@ const App = () => {
     const [taskbarItems, setTaskbarItems] = useState([]);
     const [isStartMenuVisible, setStartMenuVisible] = useState(false);
     const startMenuRef = useRef(null);
+    const startButtonRef = useRef(null);
+
 
     const handleStartButtonClick = () => {
         setStartMenuVisible(!isStartMenuVisible);
@@ -33,7 +35,9 @@ const App = () => {
         const handleClickOutsideStartMenu = (event) => {
             if (
                 startMenuRef.current &&
-                !startMenuRef.current.contains(event.target)
+                !startMenuRef.current.contains(event.target) &&
+                startButtonRef.current &&
+                !startButtonRef.current.contains(event.target)
             ) {
                 setStartMenuVisible(false);
             }
@@ -58,7 +62,7 @@ const App = () => {
                 )) }
             </div>
             <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
-            <Taskbar onStartButtonClick={handleStartButtonClick} items={taskbarItems} />
+            <Taskbar onStartButtonClick={handleStartButtonClick} startButtonRef={startButtonRef} items={taskbarItems} />
         </div>
     );
 };

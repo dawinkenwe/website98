@@ -3,9 +3,9 @@ import StartButton from './StartButton';
 import Clock from './Clock'
 import './Taskbar.css'
 
-const Taskbar = ({ items, onStartButtonClick }) => (
+const Taskbar = ({ items, onStartButtonClick, startButtonRef }) => (
     <div id="task-bar">
-        <StartButton onClick={onStartButtonClick} />
+        <StartButton onClick={onStartButtonClick} ref={startButtonRef} />
         <div id="open-tasks">
             {items.map(item => (
                 <div key={item.id} class="windows-box-shadow" id="taskbar-item">
