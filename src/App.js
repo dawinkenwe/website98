@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { AppProvider } from './AppContext';
 import Taskbar from './components/Taskbar.js';
 import Program from './components/Program.js';
 import StartMenu from './components/StartMenu'
@@ -55,15 +56,17 @@ const App = () => {
 
 
     return (
-        <div className="app">
-            <div className="programs-view">
-                {programs.map(program => (
-                    <Program key={program.id} id={program.id} name={program.name} onClose={closeProgram} />
-                )) }
+        <AppProvider>
+            <div className="app">
+                <div className="programs-view">
+                    {programs.map(program => (
+                        <Program key={program.id} id={program.id} name={program.name} onClose={closeProgram} />
+                    )) }
+                </div>
+                <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
+                <Taskbar onStartButtonClick={handleStartButtonClick} startButtonRef={startButtonRef} items={taskbarItems} />
             </div>
-            <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
-            <Taskbar onStartButtonClick={handleStartButtonClick} startButtonRef={startButtonRef} items={taskbarItems} />
-        </div>
+        </AppProvider>
     );
 };
 

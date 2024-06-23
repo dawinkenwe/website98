@@ -1,12 +1,18 @@
 import React from 'react';
 import startbuttonimage from '../img/win98start.png';
 import './StartButton.css'
+import { useAppContext } from '../AppContext';
 
-const StartButton = React.forwardRef(({ onClick }, ref) => (
-    <div id="start-button" class="windows-box-shadow" onClick={onClick} ref={ref}  style={{ backgroundImage: `url(${startbuttonimage})` }}></div>
-));
+const StartButton = () => {
+    const { state, dispatch } = useAppContext();
 
-/*<button id="start-button" class="windows-box-shadow" onClick={onClick} style={{ backgroundImage: startbuttonimage}}></button> */
+    const handleToggleStartMenu = () => {
+        dispatch({ type: 'TOGGLE_START_MENU' });
+    };
 
+    return (
+        <div id="start-button" class="windows-box-shadow" onClick={handleToggleStartMenu} ref={ref} style={{ backgroundImage: `url(${startbuttonimage})` }}></div>
+    );
+};
 
 export default StartButton;

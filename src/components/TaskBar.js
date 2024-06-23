@@ -2,20 +2,24 @@ import React from 'react';
 import StartButton from './StartButton';
 import Clock from './Clock'
 import './Taskbar.css'
+import { useAppContext } from '../AppContext';
 
-const Taskbar = ({ items, onStartButtonClick, startButtonRef }) => (
-    <div id="task-bar">
-        <StartButton onClick={onStartButtonClick} ref={startButtonRef} />
-        <div id="open-tasks">
-            {items.map(item => (
-                <div key={item.id} class="windows-box-shadow" id="taskbar-item">
-                    <span><img src={item.icon} alt={item.name} /></span>
-                    <span>{item.name}</span>
-                </div>
-            ))}
+const Taskbar = () => {
+    const { state, dispatch } = useAppContext();
+
+    return (
+        <div id="task-bar">
+            <StartButton />
+            <div id="open-tasks">
+                {state.runningApps.map(app => (
+                    <div key={app.id} class="windows-box-shadow" id="taskbar-item">
+                        <span><img src={app.icon} alt={app.name} /></span>
+                        <span>{app.name}</span>
+                    </div>
+                ))}
+            </div>
+            <Clock />
         </div>
-        <Clock />
-    </div>
-);
-
+    );
+};
 export default Taskbar;
