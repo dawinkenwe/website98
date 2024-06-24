@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { AppProvider } from './AppContext';
-import Taskbar from './components/Taskbar.js';
-import Program from './components/Program.js';
+import Taskbar from './components/Taskbar';
+import Program from './components/Program';
 import StartMenu from './components/StartMenu'
 import './App.css';
-import { getProgramIcon } from './helpers/programMap.js';
+import { getProgramIcon } from './helpers/programMap';
+import { useAppContext } from './AppContext';
 
 const App = () => {
+    const { state, dispatch } = useAppContext();
     const [programs, setPrograms] = useState([]);
     const [taskbarItems, setTaskbarItems] = useState([]);
     const [isStartMenuVisible, setStartMenuVisible] = useState(false);
@@ -56,17 +57,15 @@ const App = () => {
 
 
     return (
-        <AppProvider>
             <div className="app">
                 <div className="programs-view">
-                    {programs.map(program => (
-                        <Program key={program.id} id={program.id} name={program.name} onClose={closeProgram} />
+                    {state.runningApps.map(program => (
+                        <Program key={program.id} program={program} />
                     )) }
                 </div>
                 <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
                 <Taskbar onStartButtonClick={handleStartButtonClick} startButtonRef={startButtonRef} items={taskbarItems} />
             </div>
-        </AppProvider>
     );
 };
 

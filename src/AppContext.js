@@ -5,6 +5,7 @@ const AppContext = createContext();
 const appReducer = (state, action) => {
     switch (action.type) {
         case 'START_APP':
+            console.log(state.runningApps);
             return {
                 ...state,
                 runningApps: [...state.runningApps, action.payload]
@@ -12,7 +13,7 @@ const appReducer = (state, action) => {
         case 'CLOSE_APP':
             return {
                 ...state,
-                runningApps: state.runningApps.filter(app => app.id !== action.payload)
+                runningApps: state.runningApps.filter(app => app.id !== action.payload.id)
             };
         case 'TOGGLE_START_MENU':
             return { ...state, isStartMenuOpen: !state.isStartMenuOpen };
@@ -22,7 +23,7 @@ const appReducer = (state, action) => {
 };
 
 const AppProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(appReducer, { runningApps: [] });
+    const [state, dispatch] = useReducer(appReducer, { runningApps: [] , isStartMenuOpen: false});
 
     return (
         <AppContext.Provider value={{ state, dispatch }}>

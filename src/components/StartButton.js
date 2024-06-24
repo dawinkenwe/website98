@@ -11,7 +11,7 @@ const StartButton = () => {
     };
 
     return (
-        <div id="start-button" class="windows-box-shadow" onClick={handleToggleStartMenu} ref={ref} style={{ backgroundImage: `url(${startbuttonimage})` }}></div>
+        <div id="start-button" class="windows-box-shadow" onClick={handleToggleStartMenu} style={{ backgroundImage: `url(${startbuttonimage})` }}></div>
     );
 };
 

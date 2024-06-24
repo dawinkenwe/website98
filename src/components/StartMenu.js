@@ -4,7 +4,7 @@ import { getProgramIcon } from '../helpers/programMap';
 import { useAppContext } from '../AppContext';
 
 const StartMenu = () => {
-    const [state, dispatch] = useAppContext();
+    const {state, dispatch} = useAppContext();
 
     const openProgram = (programName) => {
         const programContents = <p>Program Contents</p>

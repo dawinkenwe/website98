@@ -3,7 +3,7 @@ import "98.css";
 import { useAppContext } from '../AppContext';
 
 const Program = ({ program }) => {
-    const [state, dispatch] = useAppContext();
+    const {state, dispatch} = useAppContext();
 
     const onClose = () => {
         dispatch({ type: 'CLOSE_APP', payload: program });
