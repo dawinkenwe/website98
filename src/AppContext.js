@@ -1,13 +1,16 @@
 import React, { createContext, useReducer, useContext } from 'react';
+import { produce } from 'immer';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
     components: {
-        component1: { x: 100, y: 100 },
-        component2: { x: 200, y: 200 },
+        component1: { x: 100, y: 100, z: 10 },
+        component2: { x: 200, y: 200, z: 11 },
     },
-    activeComponent: null,
+    componentIds: ['component1', 'component2'],
+    activeComponent: 'component2',
     isStartMenuOpen: false,
-    runningApps: []
+    nextZ: 10
 }
 
 const AppContext = createContext();
@@ -15,32 +18,42 @@ const AppContext = createContext();
 const appReducer = (state, action) => {
     switch (action.type) {
         case 'START_APP':
-            console.log(state.runningApps);
-            return {
-                ...state,
-                runningApps: [...state.runningApps, action.payload]
-            };
+            const appId = uuidv4();
+            return produce(state, draft => {
+                draft.components[appId] = {
+                    id: appId,
+                    z: draft.nextZ,
+                    name: action.payload.name,
+                    contents: action.payload.contents,
+                    icon: action.payload.icon
+                }
+                draft.componentIds.push(appId)
+                draft.activeComponent = appId;
+                draft.nextZ += 1;
+            });
         case 'CLOSE_APP':
-            return {
-                ...state,
-                runningApps: state.runningApps.filter(app => app.id !== action.payload.id)
-            };
+            return produce(state, draft => {
+                delete draft.components[action.id];
+                draft.componentIds.filter((id) => id !== action.id);
+            });
         case 'TOGGLE_START_MENU':
-            return { ...state, isStartMenuOpen: !state.isStartMenuOpen };
+            return produce(state, draft => {
+                draft.isStartMenuOpen = !draft.isStartMenuOpen;
+            });
         case 'SET_POSITION':
             console.log('setting position with action ' + action)
-            return {
-                ...state,
-                components: {
-                    ...state.components,
-                    [action.component]: { x: action.x, y: action.y },
-                },
-            };
+            return produce(state, draft => {
+                draft.components[action.component].x = action.x;
+                draft.components[action.component].y = action.y;
+
+            });
         case 'SET_ACTIVE_COMPONENT':
-            return {
-                ...state,
-                activeComponent: action.component,
-            }
+            console.log(action);
+            return produce(state, draft => {
+                draft.components[action.component].z = draft.nextZ;
+                draft.nextZ += 1;
+                draft.activeComponent = action.component;
+            });
         default:
             throw new Error(`Unknown action: ${action.type}`);
     }
@@ -48,6 +61,7 @@ const appReducer = (state, action) => {
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(appReducer, initialState);
+    console.log(state);
 
     return (
         <AppContext.Provider value={{ state, dispatch }}>

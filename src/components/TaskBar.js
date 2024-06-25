@@ -11,10 +11,10 @@ const Taskbar = () => {
         <div id="task-bar">
             <StartButton />
             <div id="open-tasks">
-                {state.runningApps.map(app => (
-                    <div key={app.id} class="windows-box-shadow" id="taskbar-item">
-                        <span><img src={app.icon} alt={app.name} /></span>
-                        <span>{app.name}</span>
+                {state.componentIds.map(id => (
+                    <div key={id} class="windows-box-shadow" id="taskbar-item">
+                        <span><img src={state.components[id].icon} alt={state.components[id].name} /></span>
+                        <span>{state.components[id].name}</span>
                     </div>
                 ))}
             </div>

@@ -12,7 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     background: linear-gradient(90deg, #000b7c, #377cc6);
     color: white;
     padding: 0.25rem;
@@ -20,24 +19,29 @@
 
 .window-title {
     flex: 1;
+    /*
     margin-right: 1px;
     font-size: 0.75rem; 
     cursor: move;
     user-select: none;
+        */
 }
 
 .controls {
     display: flex;
-    display: flex;
+    /*
     position: absolute;
     top: 0.3rem;
     z-index:100;
     right: 0.3rem;
+        */
 }
 
+/*
 .controls > div {
     display: inline-block;
 }
+*/
 
 .close {
 

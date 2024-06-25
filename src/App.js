@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import React, { useState } from 'react';
 import Taskbar from './components/Taskbar';
-import Program from './components/Program';
 import Window from './components/Window';
 import StartMenu from './components/StartMenu'
 import './App.css';
@@ -24,15 +22,10 @@ const App = () => {
     const openProgram = (programName) => {
         const programContents = <p>Program Contents</p>
         const newProgram = { id: Date.now(), name: programName, contents: programContents };
-        const newTaskbarItem = { id: newProgram.id, name: programName, icon: getProgramIcon(programName) };
+        const newTaskbarItem = { id: newProgram.id, name: programName, icon: getProgramIcon(programName), x:0, y:0, };
         setPrograms([...programs, newProgram]);
         setTaskbarItems([...taskbarItems, newTaskbarItem]);
         setStartMenuVisible(false);
-    };
-
-    const closeProgram = (programId) => {
-        setPrograms(programs.filter(program => program.id !== programId));
-        setTaskbarItems(taskbarItems.filter(taskbarItem => taskbarItem.id !== programId));
     };
 
     useEffect(() => {
@@ -57,12 +50,12 @@ const App = () => {
         };
     }, [isStartMenuVisible]);
 
-
+    console.log(state.componentIds);
     return (
             <div className="app">
                 <div className="programs-view">
-                    {state.runningApps.map(program => (
-                        <Window key={program.id} program={program} />
+                {state.componentIds.map(id => (
+                        <Window key={id} id={id} />
                     )) }
                 </div>
                 <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />

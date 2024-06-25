@@ -4,15 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AppProvider } from './AppContext';
-import DraggableWindow  from './components/DraggableWindow'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <AppProvider>
-            <DraggableWindow id="component1" />
-            <DraggableWindow id="component2" />
+            <App />
         </AppProvider>
   </React.StrictMode>
 );

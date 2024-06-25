@@ -8,7 +8,7 @@ const StartMenu = () => {
 
     const openProgram = (programName) => {
         const programContents = <p>Program Contents</p>
-        const newProgram = { id: Date.now(), name: programName, contents: programContents, icon: getProgramIcon(programName) };
+        const newProgram = { name: programName, contents: programContents, icon: getProgramIcon(programName) };
         dispatch({ type: 'START_APP', payload: newProgram});
         dispatch({ type: 'TOGGLE_START_MENU' });    
     };

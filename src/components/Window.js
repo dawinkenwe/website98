@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 
@@ -6,12 +6,6 @@ const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
-    const [size, setSize] = useState({ width: 300, height: 200 });
-    const { state, dispatch } = useAppContext();
 
     const handleMouseDown = (e) => {
         if (e.target.className === 'window-title') {
@@ -47,9 +41,11 @@ const Window = ({ id }) => {
         dispatch({ type: 'CLOSE_APP', payload: id });
     }
 
+    console.log(state.components[id]);
+    console.log(id);
     return (
         <div className="window"
-            style={{ left: `${state.components[id].x}px`, top: `${state.components[id].y}px`, width: '20rem', position: 'fixed' }}
+            style={{ left: `${state.components[id]['x']}px`, top: `${state.components[id].y}px`, width: '20rem', position: 'fixed', zIndex: `${state.components[id].z}`}}
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
