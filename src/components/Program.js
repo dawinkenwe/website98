@@ -1,5 +1,4 @@
 import React from 'react';
-import "98.css";
 import { useAppContext } from '../AppContext';
 
 const Program = ({ program }) => {

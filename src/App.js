@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Taskbar from './components/Taskbar';
 import Program from './components/Program';
+import Window from './components/Window';
 import StartMenu from './components/StartMenu'
 import './App.css';
 import { getProgramIcon } from './helpers/programMap';
@@ -60,7 +62,7 @@ const App = () => {
             <div className="app">
                 <div className="programs-view">
                     {state.runningApps.map(program => (
-                        <Program key={program.id} program={program} />
+                        <Window key={program.id} program={program} />
                     )) }
                 </div>
                 <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
