@@ -55,7 +55,7 @@ const App = () => {
             <div className="app">
                 <div className="programs-view">
                 {state.componentIds.map(id => (
-                        <Window key={id} id={id} />
+                        !state.components[id].minimized && <Window key={id} id={id} />
                     )) }
                 </div>
                 <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />

@@ -27,7 +27,8 @@ const appReducer = (state, action) => {
                     height: action.payload.defaultSize.height,
                     name: action.payload.name,
                     contents: action.payload.contents,
-                    icon: action.payload.icon
+                    icon: action.payload.icon,
+                    minimized: false,
                 }
                 draft.componentIds.push(appId)
                 draft.activeComponent = appId;
@@ -54,6 +55,11 @@ const appReducer = (state, action) => {
                 draft.nextZ += 1;
                 draft.activeComponent = action.component;
             });
+        case 'TOGGLE_MINIMIZED':
+            console.log('SETTING MINIMIZED')
+            return produce(state, draft => {
+                draft.components[action.id].minimized = !draft.components[action.id].minimized;
+            })
         default:
             throw new Error(`Unknown action: ${action.type}`);
     }

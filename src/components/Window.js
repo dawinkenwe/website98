@@ -16,8 +16,8 @@ const Window = ({ id }) => {
                 x: e.clientX - state.components[id].x,
                 y: e.clientY - state.components[id].y,
             });
-            dispatch({ type: 'SET_ACTIVE_COMPONENT', component: id });
         }
+        dispatch({ type: 'SET_ACTIVE_COMPONENT', component: id });
     };
 
     const handleMouseMove = useCallback(
@@ -41,6 +41,10 @@ const Window = ({ id }) => {
         dispatch({ type: 'CLOSE_APP', id: id });
     }
 
+    const toggleMinimized = () => {
+        dispatch({ type: 'TOGGLE_MINIMIZED', id: id, minimized: true})
+    }
+
 
     return (
         <div className="window"
@@ -58,10 +62,10 @@ const Window = ({ id }) => {
         >
             <div className="title-bar">
                 <div className='window-title'>
-                    {state.components[id].name}aa
+                    {state.components[id].name}
                 </div>
                 <div className="controls">
-                    <div className="windows-box-shadow">_</div>
+                    <div className="windows-box-shadow" onClick={toggleMinimized}>_</div>
                     <div className="windows-box-shadow"> a</div>
                     <div className="windows-box-shadow" onClick={onClose}>X</div>
                 </div>

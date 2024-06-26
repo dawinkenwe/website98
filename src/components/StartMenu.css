@@ -54,17 +54,17 @@
     box-shadow: 0 2px #808280, 0 4px white;
 }
 
-#start-menu ul > li > img {
+#start-menu ul > li > label > img {
     width: 1.5rem;
     height: 1.5rem;
     margin: 0 1rem 0 0;
 }
 
-#start-menu ul > li > img:first-of-type:before {
+#start-menu ul > li > label:first-of-type:before {
     width: 14px;
 }
 
-#start-menu ul > li > img:before {
+#start-menu ul > li > label:before {
     width: 10px;
     background: black;
     content: '';
@@ -74,7 +74,7 @@
     left: 3rem;
 }
 
-#start-menu ul > li > img > span {
+#start-menu ul > li > label > span {
     font-size: 14px;
 }
 
