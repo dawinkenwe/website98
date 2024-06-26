@@ -11,7 +11,7 @@ const StartButton = () => {
     };
 
     return (
-        <div id="start-button" className="windows-box-shadow" onClick={handleToggleStartMenu} style={{ backgroundImage: `url(${startbuttonimage})` }}></div>
+        <div id="start-button" className={`${!state.isStartMenuOpen ? 'windows-box-shadow': 'inverted-windows-box-shadow'}`} onClick={handleToggleStartMenu} style={{ backgroundImage: `url(${startbuttonimage})` }}></div>
     );
 };
 
