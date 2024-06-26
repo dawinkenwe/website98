@@ -8,16 +8,23 @@ const programIcons = {
 
 const programDefaults = {
     help: {
-        img: require('../img/help.png'),
+        icon: require('../img/help.png'),
         name: 'Help',
         defaultSize: {
-            width: 200,
-            height: 200
-        }
+            width: '40rem',
+            height: '20rem'
+        },
+        openPosition: {
+            x: 50,
+            y: 50
+        },
+        contents: 'Help Program',
     }
 }
 
-const getProgramInfo = (programName) => {
+export const getProgramInfo = (programName) => {
+    console.log('PROGRAM INFO');
+    console.log(programDefaults[programName]);
     return programDefaults[programName] || {}
 };
 

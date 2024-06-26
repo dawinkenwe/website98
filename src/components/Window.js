@@ -22,7 +22,7 @@ const Window = ({ id }) => {
 
     const handleMouseMove = useCallback(
         (e) => {
-            if (dragging && state.activeComponent.id === id) {
+            if (dragging && state.activeComponent === id) {
                 dispatch({
                     type: 'SET_POSITION',
                     component: id,
@@ -38,21 +38,27 @@ const Window = ({ id }) => {
     }, []);
 
     const onClose = () => {
-        dispatch({ type: 'CLOSE_APP', payload: id });
+        dispatch({ type: 'CLOSE_APP', id: id });
     }
 
-    console.log(state.components[id]);
-    console.log(id);
+
     return (
         <div className="window"
-            style={{ left: `${state.components[id]['x']}px`, top: `${state.components[id].y}px`, width: '20rem', position: 'fixed', zIndex: `${state.components[id].z}`}}
+            style={{
+                left: `${state.components[id]['x']}px`,
+                top: `${state.components[id].y}px`,
+                width: `${state.components[id].width}px`,
+                height: `${state.components[id].height}px`,
+                position: 'fixed',
+                zIndex: `${state.components[id].z}`
+            }}
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
         >
             <div className="title-bar">
                 <div className='window-title'>
-                    {state.components[id].name}aaa
+                    {state.components[id].name}aa
                 </div>
                 <div className="controls">
                     <div className="windows-box-shadow">_</div>
