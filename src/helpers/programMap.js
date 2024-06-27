@@ -19,6 +19,19 @@ const programDefaults = {
             y: 50
         },
         contents: 'Help Program',
+    },
+    windowsUpdate: {
+        icon: require('../img/windows_update.png'),
+        name: 'Windows Update',
+        defaultSize: {
+            width: '60rem',
+            height: '25rem',
+        },
+        openPosition: {
+            x: 100,
+            y: 100,
+        },
+        contents: ''
     }
 }
 

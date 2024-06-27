@@ -87,3 +87,13 @@
 #start-menu > ul > li label:hover:before {
     background: white;
 }
+
+.programs label:after {
+    content: '';
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+    position: absolute;
+    top: 1.5rem;
+    right: 0.25rem;
+}
