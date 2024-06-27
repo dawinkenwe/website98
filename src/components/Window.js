@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 
@@ -6,6 +6,7 @@ const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const windowRef = useRef(null);
 
     const handleMouseDown = (e) => {
         if (e.target.className === 'window-title') {
@@ -35,6 +36,12 @@ const Window = ({ id }) => {
 
     const handleMouseUp = useCallback(() => {
         setDragging(false);
+        dispatch({
+            type: 'SET_WIDTH_HEIGHT',
+            id: id,
+            width: windowRef.current.offsetWidth + 'px',
+            height: windowRef.current.offsetHeight + 'px',
+        })
     }, []);
 
     const onClose = () => {
@@ -55,11 +62,14 @@ const Window = ({ id }) => {
                 width: `${state.components[id].width}`,
                 height: `${state.components[id].height}`,
                 position: 'fixed',
-                zIndex: `${state.components[id].z}`
+                zIndex: `${state.components[id].z}`,
+                minWidth: `${state.components[id].minWidth}`,
+                minHeight: `${state.components[id].minHeight}`,
             }}
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
+            ref={windowRef}
         >
             <div className="title-bar">
                 <div className='window-title'>

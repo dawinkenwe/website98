@@ -1,0 +1,33 @@
+.help-line {
+    content: '';
+    width: 2px;
+    height: calc(100% - 1rem);
+    position: absolute;
+    background: #f2f2f2;
+    box-shadow: 1px 1px 0 #818181;
+    left: 0.5rem;
+    top: 0.5rem;
+}
+
+.top-bar {
+    padding: 0.75rem 0.5rem 0.5rem 1.25rem;
+    display: flex;
+    position: relative;
+}
+
+.tab-box {
+    min-width: 30%;
+}
+
+.help-questions > li {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+}
+
+.tab-header {
+    box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, -4px 0 white, 0 -4px white, 2px 0 #818181, 2px -2px #818181, 4px 0 black;
+    float: left;
+    padding: 0.25rem;
+}

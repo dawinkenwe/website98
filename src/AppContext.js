@@ -15,7 +15,6 @@ const AppContext = createContext();
 const appReducer = (state, action) => {
     switch (action.type) {
         case 'START_APP':
-            console.log(state);
             const appId = uuidv4();
             return produce(state, draft => {
                 draft.components[appId] = {
@@ -25,6 +24,8 @@ const appReducer = (state, action) => {
                     z: draft.nextZ,
                     width: action.payload.defaultSize.width,
                     height: action.payload.defaultSize.height,
+                    minWidth: action.payload.minimumSize.width,
+                    minHeight: action.payload.minimumSize.height,
                     name: action.payload.name,
                     contents: action.payload.contents,
                     icon: action.payload.icon,
@@ -55,8 +56,12 @@ const appReducer = (state, action) => {
                 draft.nextZ += 1;
                 draft.activeComponent = action.component;
             });
+        case 'SET_WIDTH_HEIGHT':
+            return produce(state, draft => {
+                draft.components[action.id].width = action.width;
+                draft.components[action.id].height = action.height;
+            });
         case 'TOGGLE_MINIMIZED':
-            console.log('SETTING MINIMIZED')
             return produce(state, draft => {
                 draft.components[action.id].minimized = !draft.components[action.id].minimized;
             })
