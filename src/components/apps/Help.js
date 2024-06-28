@@ -29,7 +29,7 @@ const Help = () => {
                     <div class="tab-header">Winkenwerder98</div>
                     <ul class="help-questions">
                         {Object.keys(helpData).map((question) => (
-                            <li key={question} onClick={() => handleQuestionClick(question)}>
+                            <li key={question} onClick={() => handleQuestionClick(question)} className={`${question === selectedQuestion ? 'selected-question' : ''}` }>
                                 <img src={img} alt="help" />
                                 {question}
                             </li>

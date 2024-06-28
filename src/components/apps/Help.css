@@ -1,6 +1,7 @@
-.help {
+#help {
     background: #b9b9b9;
-    height: 100%;
+    max-height: 100%;
+    flex: 1;
 }
 
 .top-bar:before {
@@ -11,7 +12,7 @@
     background: #f2f2f2;
     box-shadow: 1px 1px 0 #818181;
     left: 0.5rem;
-    top: 0.5rem;
+    top: 0.7rem;
 }
 
 .top-bar {
@@ -59,6 +60,8 @@ top-bar > input {
 .help-contents {
     display: flex;
     margin: 1rem;
+    flex: 1;
+    max-height: 100%;
 }
 
 .help-questions {
@@ -71,7 +74,7 @@ top-bar > input {
     left: -4px;
     list-style: none;
     margin: 0;
-    font-size: 10px;
+    font-size: 1rem;
 }
 
 .help-questions > li {
@@ -90,7 +93,7 @@ li {
     box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, -4px 0 white, 0 -4px white, 2px 0 #818181, 2px -2px #818181, 4px 0 black;
     float: left;
     padding: 0.25rem;
-    font-size: 14px
+    font-size: 1rem;
 }
 
 img {
@@ -106,18 +109,19 @@ img {
     position: relative;
     width: calc(100% - 2rem);
     border: 2px inset;
-    margin: 0 0 0 1rem;
-    min-height: 16rem;
-    overflow: scroll;
-    max-height: 25rem;
-    min-height: 13rem;
-    top: 1.2rem;
+    margin: 0 0 1.5rem 1rem;
+    max-height: calc(100% - 1.5rem);
+    top: 1.5rem;
     font-size: 14px;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 .content {
     padding: 1rem;
     box-sizing: border-box;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 .content > h2 {

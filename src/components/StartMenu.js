@@ -14,7 +14,7 @@ const StartMenu = () => {
     /* TODO: Import menu items from file? use mapping and {} */
     return (
                 <div id="start-menu" class="windows-box-shadow" style={{ display: state.isStartMenuOpen ? 'block' : 'none' }}>
-                    <div id="windows-start-menu-blue">Windows<span>98</span></div>
+                    <div id="windows-start-menu-blue">Winkenwerder<span>98</span></div>
                     <ul>
                         <li className="windows-update" onClick={() => openProgram("windowsUpdate")}><label for="windows-update-input"><img src={getProgramIcon('windowsUpdate')} alt="help" />Windows Update</label></li>
                         <li className="programs" onClick={() => openProgram("help")}><label for="windows-help-input"><img src={getProgramIcon('help')} alt="help" />Help</label></li>

@@ -23,7 +23,6 @@
     display: flex;
     align-items: center;
     position: relative;
-    /* cursor: pointer; don't know why it was in here twice, will remove after test.*/
     box-sizing: border-box;
     width: calc(100% - 3rem);
 }
@@ -34,13 +33,13 @@
     position: absolute;
     transform: rotateZ(-90deg);
     width: 24rem;
+    /* Note - width is 4rem X number of apps */
     font-size: 1.25rem;
     font-family: "Arial Black", sans-serif;
-    /* background: #011590; */
     background: navy;
     left: 0;
     transform-origin: 0 0;
-    top: 12rem;
+    top: 24rem;
     box-sizing: border-box;
     padding: 0.125rem 0.75rem;
 }
