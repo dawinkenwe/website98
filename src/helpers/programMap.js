@@ -22,8 +22,8 @@ const programDefaults = {
         },
         contents: <Help />,
         minimumSize: {
-            width: '20rem',
-            height: '10rem',
+            width: '32rem',
+            height: '20rem',
         }
     },
     windowsUpdate: {

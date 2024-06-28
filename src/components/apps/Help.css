@@ -2,6 +2,7 @@
     background: #b9b9b9;
     max-height: 100%;
     flex: 1;
+
 }
 
 .top-bar:before {
@@ -61,7 +62,7 @@ top-bar > input {
     display: flex;
     margin: 1rem;
     flex: 1;
-    max-height: 100%;
+    max-height: calc(100% - 3rem);
 }
 
 .help-questions {
@@ -109,7 +110,7 @@ img {
     position: relative;
     width: calc(100% - 2rem);
     border: 2px inset;
-    margin: 0 0 1.5rem 1rem;
+    margin: 0 0 2.5rem 1rem;
     max-height: calc(100% - 1.5rem);
     top: 1.5rem;
     font-size: 14px;
