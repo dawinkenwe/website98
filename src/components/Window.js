@@ -83,7 +83,6 @@ const Window = ({ id }) => {
             </div>
             <div className="window-body">
                 {state.components[id].contents}
-                <p style={{ textAlign: "center" }}>Window Contents</p>
             </div>
         </div>
     );

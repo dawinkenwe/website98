@@ -1,4 +1,8 @@
-.help-line {
+.help {
+    background: #b9b9b9;
+}
+
+.top-bar:before {
     content: '';
     width: 2px;
     height: calc(100% - 1rem);
@@ -10,13 +14,63 @@
 }
 
 .top-bar {
-    padding: 0.75rem 0.5rem 0.5rem 1.25rem;
+    padding: 0.75rem 0.5rem 0 1.25rem;
     display: flex;
     position: relative;
 }
 
+#long {
+    width: 100%
+}
+
+.top-bar > div {
+    padding: 0 1rem 0 0;
+    opacity: 0.5;
+}
+
+top-bar > input {
+    width: 100%;
+    padding: 0.25rem;
+    box-sizing: border-box;
+}
+
 .tab-box {
     min-width: 30%;
+    max-width: 30%
+}
+
+.selected-question {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    background: #000a7c;
+    color: white;
+}
+
+.unselected-question {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+}
+
+.help-contents {
+    display: flex;
+    margin: 1rem;
+}
+
+.help-questions {
+    background: white;
+    width: 100%;
+    float: left;
+    border: 2px inset;
+    padding: 0;
+    position: relative;
+    left: -4px;
+    list-style: none;
+    margin: 0;
+    font-size: 10px;
 }
 
 .help-questions > li {
@@ -26,8 +80,36 @@
     float: left;
 }
 
+li {
+    display: list-item;
+    text-align: match-parent;
+}
+
 .tab-header {
     box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, -4px 0 white, 0 -4px white, 2px 0 #818181, 2px -2px #818181, 4px 0 black;
     float: left;
     padding: 0.25rem;
+    font-size: 14px
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    width: 1rem;
+    float: left;
+    padding: 0 0.25rem 1rem 0
+}
+
+.answers {
+    background: white;
+    position: relative;
+    width: calc(100% - 2rem);
+    border: 2px inset;
+    margin: 0 0 0 1rem;
+    min-height: 16rem;
+    overflow: scroll;
+    max-height: 25rem;
+    min-height: 13rem;
+    top: 1.2rem;
+    font-size: 14px;
 }

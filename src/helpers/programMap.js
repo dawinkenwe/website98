@@ -1,3 +1,5 @@
+import Help from '../components/apps/Help';
+
 const programIcons = {
     help: require('../img/help.png'),
     calendar: require('../img/calendar.png'),
@@ -18,7 +20,8 @@ const programDefaults = {
             x: 50,
             y: 50
         },
-        contents: 'Help Program',
+        contents: <Help />,
+        // contents: 'Help Program',
         minimumSize: {
             width: '20rem',
             height: '10rem',
@@ -35,7 +38,7 @@ const programDefaults = {
             x: 100,
             y: 100,
         },
-        contents: ''
+        contents: 'update'
     }
 }
 

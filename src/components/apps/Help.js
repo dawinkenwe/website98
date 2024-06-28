@@ -1,40 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { getProgramIcon } from '../../helpers/programMap';
+import helpData from '../../data/HelpData';
+import './Help.css';    
 
 const Help = () => {
-    const currentTabe = useState('whatIs');
+    const [selectedQuestion, setSelectedQuestion] = useState(Object.keys(helpData)[0]);
     const img = getProgramIcon('help');
 
+    const handleQuestionClick = (question) => {
+        setSelectedQuestion(question);
+    };
+
     return (
-        <>
+        <div id="help">
             <div className="top-bar">
-                <div id="help-line"></div>
                 <div>Location</div>
-                <input type="text" className="inverse-windows-box-shadow" value="General Help"></input>
+                <input type="text" id="long" className="inverse-windows-box-shadow" value="General Help"></input>
             </div>
             <div className="help-contents">
-                <div class="help-tab-box">
-                </div>
                 <div class="tab-box">
                     <div class="tab-header">Winkenwerder98</div>
                     <ul class="help-questions">
-                        <li>
-                            <img src={img} alt="help" />
-                            " What is this website?"
-                        </li>
-                        <li>
-                            <img src={img} alt="help" />
-                            " What is it for?"
-                        </li>
-                        <li>
-                            <img src={img} alt="help" />
-                            " What is this website?"
-                        </li>
+                        {Object.keys(helpData).map((question) => (
+                            <li key={question} onClick={() => handleQuestionClick(question)}>
+                                <img src={img} alt="help" />
+                                {question}
+                            </li>
+                        ))}
                     </ul>
                 </div>
-                <div class="content"></div>
+                <div class="answers">
+                    {selectedQuestion &&
+                        (<div class="content" dangerouslySetInnerHTML={{ __html: helpData[selectedQuestion] }} />
+                    )}
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 
