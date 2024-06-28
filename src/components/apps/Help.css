@@ -1,5 +1,6 @@
 .help {
     background: #b9b9b9;
+    height: 100%;
 }
 
 .top-bar:before {
@@ -112,4 +113,13 @@ img {
     min-height: 13rem;
     top: 1.2rem;
     font-size: 14px;
+}
+
+.content {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.content > h2 {
+        margin-block-start: 0em;
 }

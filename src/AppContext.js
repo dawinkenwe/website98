@@ -2,6 +2,7 @@ import React, { createContext, useReducer, useContext } from 'react';
 import { produce } from 'immer';
 import { v4 as uuidv4 } from 'uuid';
 
+/* TODO: Add help as a default program / landing page. */
 const initialState = {
     components: {},
     componentIds: [],

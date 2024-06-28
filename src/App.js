@@ -8,26 +8,10 @@ import { useAppContext } from './AppContext';
 
 const App = () => {
     const { state, dispatch } = useAppContext();
-    const [programs, setPrograms] = useState([]);
-    const [taskbarItems, setTaskbarItems] = useState([]);
-    const [isStartMenuVisible, setStartMenuVisible] = useState(false);
     const startMenuRef = useRef(null);
     const startButtonRef = useRef(null);
 
-
-    const handleStartButtonClick = () => {
-        setStartMenuVisible(!isStartMenuVisible);
-    };
-
-    const openProgram = (programName) => {
-        const programContents = <p>Program Contents</p>
-        const newProgram = { id: Date.now(), name: programName, contents: programContents };
-        const newTaskbarItem = { id: newProgram.id, name: programName, icon: getProgramIcon(programName), x:0, y:0, };
-        setPrograms([...programs, newProgram]);
-        setTaskbarItems([...taskbarItems, newTaskbarItem]);
-        setStartMenuVisible(false);
-    };
-
+    /*
     useEffect(() => {
         const handleClickOutsideStartMenu = (event) => {
             if (
@@ -49,8 +33,8 @@ const App = () => {
             document.removeEventListener('click', handleClickOutsideStartMenu);
         };
     }, [isStartMenuVisible]);
+    */
 
-    console.log(state.componentIds);
     return (
             <div className="app">
                 <div className="programs-view">
@@ -58,8 +42,8 @@ const App = () => {
                         !state.components[id].minimized && <Window key={id} id={id} />
                     )) }
                 </div>
-                <StartMenu onMenuItemClick={openProgram} ref={startMenuRef} isVisible={isStartMenuVisible} />
-                <Taskbar onStartButtonClick={handleStartButtonClick} startButtonRef={startButtonRef} items={taskbarItems} />
+                <StartMenu />
+                <Taskbar />
             </div>
     );
 };

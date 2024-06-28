@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { getProgramIcon } from '../../helpers/programMap';
 import helpData from '../../data/HelpData';
-import './Help.css';    
+import './Help.css';
+import DOMPurify from 'dompurify';
 
 const Help = () => {
     const [selectedQuestion, setSelectedQuestion] = useState(Object.keys(helpData)[0]);
@@ -10,6 +11,12 @@ const Help = () => {
     const handleQuestionClick = (question) => {
         setSelectedQuestion(question);
     };
+
+    const createMarkup = (text) => {
+        console.log('REPLACED');
+        const textBR = text.replace(/\n/g, '<br>');
+        return { __html: DOMPurify.sanitize(textBR) };
+    }
 
     return (
         <div id="help">
@@ -31,7 +38,7 @@ const Help = () => {
                 </div>
                 <div class="answers">
                     {selectedQuestion &&
-                        (<div class="content" dangerouslySetInnerHTML={{ __html: helpData[selectedQuestion] }} />
+                        (<div class="content" dangerouslySetInnerHTML={createMarkup(helpData[selectedQuestion])} />
                     )}
                 </div>
             </div>
