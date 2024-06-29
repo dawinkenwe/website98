@@ -1,15 +1,10 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import { produce } from 'immer';
 import { v4 as uuidv4 } from 'uuid';
+import getInitialState from './helpers/initialState';
 
 /* TODO: Add help as a default program / landing page. */
-const initialState = {
-    components: {},
-    componentIds: [],
-    activeComponent: '',
-    isStartMenuOpen: false,
-    nextZ: 10
-}
+const initialState = getInitialState();
 
 const AppContext = createContext();
 
@@ -37,6 +32,7 @@ const appReducer = (state, action) => {
                 draft.nextZ += 1;
             });
         case 'CLOSE_APP':
+            console.log(state);
             return produce(state, draft => {
                 delete draft.components[action.id];
                 draft.componentIds = draft.componentIds.filter((id) => id !== action.id);

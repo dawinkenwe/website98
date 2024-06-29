@@ -6,6 +6,7 @@ const patchNotesData = {
             "A start menu with three functional apps: help, windows media player, and windows update",
             "Windows that can be resized and closed",
             "Windows stack on top of each other based off of most recently accessed.",
+            "Windows can be minimized by clicking the minimize button or the taskbar",
         ]
     },
 };

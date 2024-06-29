@@ -23,7 +23,7 @@ const PatchNotes = () => {
                 <ul>
                     {patchNotesData[selectedRelease].featureList.map((element, index) => (
                         <li>{element}</li>
-                    ))};
+                    ))}
                 </ul>
             </div>
         </div>
