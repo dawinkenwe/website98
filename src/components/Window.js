@@ -62,7 +62,7 @@ const Window = ({ id }) => {
                 width: `${state.components[id].width}`,
                 height: `${state.components[id].height}`,
                 position: 'fixed',
-                zIndex: `${state.components[id].z}`,
+                zIndex: `${state.components[id].minimized ? 0: state.components[id].z}`,
                 minWidth: `${state.components[id].minWidth}`,
                 minHeight: `${state.components[id].minHeight}`,
             }}

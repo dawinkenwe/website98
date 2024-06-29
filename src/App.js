@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import Taskbar from './components/Taskbar';
 import Window from './components/Window';
-import StartMenu from './components/StartMenu'
+import StartMenu from './components/StartMenu';
+import Desktop from './components/Desktop';
+
 import './App.css';
 import { getProgramIcon } from './helpers/programMap';
 import { useAppContext } from './AppContext';
@@ -36,15 +39,14 @@ const App = () => {
     */
 
     return (
-            <div className="app">
-                <div className="programs-view">
-                {state.componentIds.map(id => (
-                        !state.components[id].minimized && <Window key={id} id={id} />
-                    )) }
-                </div>
-                <StartMenu />
-                <Taskbar />
+        <div className="app">
+            <Desktop />
+            <div className="programs-view">
+                {state.componentIds.map(id => (<Window key={id} id={id} />)) }
             </div>
+            <StartMenu />
+            <Taskbar />
+        </div>
     );
 };
 
