@@ -1,0 +1,35 @@
+.patch-notes {
+    display: flex;
+    flex-direction: row;
+    background: #b9b9b9;
+    max-height: 100%;
+    flex: 1;
+}
+
+.releases-window {
+    display: block;
+    background: white;
+    width: 15rem;
+    overflow-y: auto;
+    margin: 1rem 1rem 1rem 1rem;
+    border: 2px inset;
+    padding: 0 1rem 1rem 1rem;
+    list-style-type: none;
+}
+
+.releases-list {
+    list-style-type: none;
+    margin-block-start: 0;
+    padding: 0;
+}
+
+.release-info-window {
+    display: flex;
+    background: white;
+    overflow-y: auto;
+    margin: 1rem 1rem 1rem 0rem;
+    flex-direction: column;
+    border: 2px inset;
+    padding: 0 1rem 1rem 1rem;
+    max-width: 70%;
+}

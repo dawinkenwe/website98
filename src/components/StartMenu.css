@@ -96,3 +96,7 @@
     top: 1.5rem;
     right: 0.25rem;
 }
+
+.line {
+    box-shadow: 0 2px #808280, 0 4px white;
+}

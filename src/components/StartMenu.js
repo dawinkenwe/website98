@@ -16,7 +16,7 @@ const StartMenu = () => {
                 <div id="start-menu" class="windows-box-shadow" style={{ display: state.isStartMenuOpen ? 'block' : 'none' }}>
                     <div id="windows-start-menu-blue">Winkenwerder<span>98</span></div>
                     <ul>
-                        <li className="windows-update" onClick={() => openProgram("windowsUpdate")}><label for="windows-update-input"><img src={getProgramIcon('windowsUpdate')} alt="help" />Windows Update</label></li>
+                        <li className="line" onClick={() => openProgram("windowsUpdate")}><label for="windows-update-input"><img src={getProgramIcon('windowsUpdate')} alt="updates" />Windows Update</label></li>
                         <li className="programs" onClick={() => openProgram("help")}><label for="windows-help-input"><img src={getProgramIcon('help')} alt="help" />Help</label></li>
                         <li className="documents" onClick={() => openProgram("documents")}><label for="windows-documents-input"><img src={getProgramIcon('documents')} alt="documents" />Documents</label></li>
                         <li onClick={() => openProgram("mediaPlayer")}><label for="windows-help-input"><img src={getProgramIcon('mediaPlayer')} alt="windowsMediaPlayer" />Windows Media Player</label></li>

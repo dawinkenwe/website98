@@ -1,5 +1,6 @@
 import Help from '../components/apps/Help';
-import MediaPlayer from '../components/apps/MediaPlayer'
+import MediaPlayer from '../components/apps/MediaPlayer';
+import PatchNotes from '../components/apps/PatchNotes';
 
 const programIcons = {
     help: require('../img/help.png'),
@@ -7,7 +8,9 @@ const programIcons = {
     music: require('../img/music.png'),
     notepad : require('../img/notepad.png'),
     default: require('../img/redx.png'),
+    documents: require('../img/documents.png'),
     mediaPlayer: require('../img/media_player.png'),
+    windowsUpdate: require('../img/windows_update.png'),
 };
 
 const programDefaults = {
@@ -41,8 +44,8 @@ const programDefaults = {
             y: 200,
         },
         minimumSize: {
-            width: '5rem',
-            height: '5rem',
+            width: '35rem',
+            height: '21rem',
         },
         contents: <MediaPlayer />,
     },
@@ -51,14 +54,18 @@ const programDefaults = {
         icon: require('../img/windows_update.png'),
         name: 'Windows Update',
         defaultSize: {
-            width: '60rem',
+            width: '40rem',
             height: '25rem',
         },
         openPosition: {
             x: 100,
             y: 100,
         },
-        contents: 'update'
+        minimumSize: {
+            width: '30rem',
+            height: '17rem',
+        },
+        contents: <PatchNotes />,
     }
 }
 
