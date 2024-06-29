@@ -1,11 +1,13 @@
 import Help from '../components/apps/Help';
+import MediaPlayer from '../components/apps/MediaPlayer'
 
 const programIcons = {
     help: require('../img/help.png'),
     calendar: require('../img/calendar.png'),
     music: require('../img/music.png'),
     notepad : require('../img/notepad.png'),
-    default: require('../img/redx.png')
+    default: require('../img/redx.png'),
+    mediaPlayer: require('../img/media_player.png'),
 };
 
 const programDefaults = {
@@ -26,6 +28,25 @@ const programDefaults = {
             height: '20rem',
         }
     },
+
+    mediaPlayer: {
+        icon: require('../img/media_player.png'),
+        name: 'Windows Media Player',
+        defaultSize: {
+            width: '35rem',
+            height: '21rem',
+        },
+        openPosition: {
+            x: 200,
+            y: 200,
+        },
+        minimumSize: {
+            width: '5rem',
+            height: '5rem',
+        },
+        contents: <MediaPlayer />,
+    },
+
     windowsUpdate: {
         icon: require('../img/windows_update.png'),
         name: 'Windows Update',
