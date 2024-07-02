@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const getInitialState = () => {
-    const shortcutId = uuidv4();
+    const shortcutIds = [uuidv4(), uuidv4()];
 
     const initialState = {
         components: {},
@@ -11,11 +11,16 @@ const getInitialState = () => {
         isStartMenuOpen: false,
         nextZ: 10,
         shortcuts: {
-            [shortcutId]: {
+            [shortcutIds[0]]: {
                 img: require('../img/trash_full.png'),
                 name: 'Recycle Bin',
                 text: 'Recycle Bin',
             },
+            [shortcutIds[1]]: {
+                img: require('../img/internet_explorer.png'),
+                name: 'Internet Explorer',
+                text: 'Internet Explorer',
+            }
         }
     }
 
