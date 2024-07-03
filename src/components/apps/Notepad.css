@@ -1,0 +1,8 @@
+.blog-body {
+    background: white;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 2px inset;
+    margin: 1rem 1rem 1rem 1rem;
+    padding: 0 1rem 1rem 1rem;
+}

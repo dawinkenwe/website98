@@ -1,6 +1,7 @@
 import Help from '../components/apps/Help';
 import MediaPlayer from '../components/apps/MediaPlayer';
 import PatchNotes from '../components/apps/PatchNotes';
+import Blog from '../components/apps/Notepad';
 
 const programIcons = {
     help: require('../img/help.png'),
@@ -66,6 +67,24 @@ const programDefaults = {
             height: '17rem',
         },
         contents: <PatchNotes />,
+    },
+
+    notepad: {
+        icon: require('../img/notepad.png'),
+        name: 'Notepad',
+        defaultSize: {
+            width: '30rem',
+            height: '40rem',
+        },
+        openPosition: {
+            x: 100,
+            y: 100,
+        },
+        minimumSize: {
+            width: '20rem',
+            height: '17rem',
+        },
+        contents: <Blog blogKey="07-02-2024 - Perfectionism" />,
     }
 }
 
