@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getProgramIcon, getProgramInfo } from '../../helpers/programMap';
 import Blog from './Notepad';
 import { useAppContext } from '../../AppContext';
+import './Documents.css';
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
@@ -24,7 +25,7 @@ const BlogList = () => {
     return (
         <div className="documents">
             {blogs.map(blog => (
-                <div className="blog">
+                <div className="file">
                     <div className="icon" onDoubleClick={() => openDocument(blog.filename)}>
                         <img src={getProgramIcon('notepadDocument')} alt={blog.filename} />
                     </div>

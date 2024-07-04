@@ -1,0 +1,21 @@
+.documents {
+    background: white;
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-top: 2px;
+}
+
+.file{
+    text-align: center;
+    margin: 0 1rem 0 0;
+    width: 7rem;
+
+}
+
+.icon {
+    display: block;
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
