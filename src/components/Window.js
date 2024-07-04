@@ -11,6 +11,7 @@ const Window = ({ id }) => {
     const handleMouseDown = (e) => {
         if (e.target.className === 'window-title') {
             e.preventDefault();
+            e.stopPropagation();
 
             setDragging(true);
             setOffset({
@@ -24,6 +25,8 @@ const Window = ({ id }) => {
     const handleMouseMove = useCallback(
         (e) => {
             if (dragging && state.activeComponent === id) {
+                e.preventDefault();
+                e.stopPropagation();
                 dispatch({
                     type: 'SET_POSITION',
                     component: id,
@@ -43,6 +46,49 @@ const Window = ({ id }) => {
             height: windowRef.current.offsetHeight + 'px',
         })
     }, []);
+
+    const handleTouchStart = (e) => {
+        if (e.target.className === 'window-title') {
+            const touch = e.targetTouches[0];
+            e.preventDefault();
+            e.stopPropagation();
+
+            setDragging(true);
+            setOffset({
+                x: touch.pageX - state.components[id].x,
+                y: touch.pageY - state.components[id].y,
+            });
+        }
+        dispatch({ type: 'SET_ACTIVE_COMPONENT', component: id });
+    }
+
+    const handleTouchMove = useCallback(
+        (e) => {
+            if (dragging && state.activeComponent === id) {
+                e.preventDefault();
+                e.stopPropagation();
+                const touch = e.targetTouches[0];
+                dispatch({
+                    type: 'SET_POSITION',
+                    component: id,
+                    x: touch.pageX - offset.x,
+                    y: touch.pageY - offset.y,
+                })
+
+            }
+        }, [dragging, state.activeComponent, id, offset, dispatch]
+    )
+
+    const handleTouchEnd = useCallback(() => {
+        setDragging(false);
+        dispatch({
+            type: 'SET_WIDTH_HEIGHT',
+            id: id,
+            width: windowRef.current.offsetWidth + 'px',
+            height: windowRef.current.offsetHeight + 'px',
+        })
+    }, []);
+
 
     const onClose = () => {
         dispatch({ type: 'CLOSE_APP', id: id });
@@ -68,6 +114,9 @@ const Window = ({ id }) => {
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             ref={windowRef}
         >
             <div className="title-bar">
