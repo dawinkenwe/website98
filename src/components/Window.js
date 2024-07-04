@@ -49,7 +49,6 @@ const Window = ({ id }) => {
     }
 
     const toggleMinimized = () => {
-        console.log(`${state.components[id].width}px`)
         dispatch({ type: 'TOGGLE_MINIMIZED', id: id, minimized: true})
     }
 

@@ -6,7 +6,6 @@ import StartMenu from './components/StartMenu';
 import Desktop from './components/Desktop';
 
 import './App.css';
-import { getProgramIcon } from './helpers/programMap';
 import { useAppContext } from './AppContext';
 
 const App = () => {

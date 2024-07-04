@@ -32,7 +32,6 @@ const appReducer = (state, action) => {
                 draft.nextZ += 1;
             });
         case 'CLOSE_APP':
-            console.log(state);
             return produce(state, draft => {
                 delete draft.components[action.id];
                 draft.componentIds = draft.componentIds.filter((id) => id !== action.id);

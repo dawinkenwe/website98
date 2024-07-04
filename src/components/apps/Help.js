@@ -13,7 +13,6 @@ const Help = () => {
     };
 
     const createMarkup = (text) => {
-        console.log('REPLACED');
         const textBR = text.replace(/\n/g, '<br>');
         return { __html: DOMPurify.sanitize(textBR) };
     }

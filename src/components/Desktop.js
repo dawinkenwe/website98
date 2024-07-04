@@ -7,7 +7,7 @@ const Desktop = () => {
     const { state, dispatch } = useAppContext();
     return (
         <div className="desktop">
-            {Object.entries(state.shortcuts).map(( [id, value])  => 
+            {Object.entries(state.shortcuts).map(([id, value]) =>
                 <DesktopShortcut key={id} id={id} />
             )}
         </div>

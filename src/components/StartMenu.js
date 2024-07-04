@@ -7,7 +7,7 @@ const StartMenu = () => {
     const {state, dispatch} = useAppContext();
 
     const openProgram = (programName) => {
-        dispatch({ type: 'START_APP', payload: getProgramInfo(programName )});
+        dispatch({ type: 'START_APP', payload: getProgramInfo(programName)});
         dispatch({ type: 'TOGGLE_START_MENU' });    
     };
 

@@ -20,8 +20,6 @@ const generateManifest = () => {
         .sort((a, b) => b.createdDate - a.createdDate);
 
     fs.writeFileSync(manifestPath, JSON.stringify(blogPosts, null, 2));
-    console.log('Blog manifest generated successfully.');
-    console.log(JSON.stringify(blogPosts, null, 2));
 };
 
 generateManifest();

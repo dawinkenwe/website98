@@ -9,7 +9,6 @@ const Blog = ({ blogKey }) => {
     useEffect(() => {
         const loadBlogContent = async () => {
             const content = await fetchBlogContent(blogKey);
-            console.log('loaded blog content?');
             setBlogContent(content);
         };
 
