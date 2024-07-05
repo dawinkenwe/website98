@@ -1,7 +1,8 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useReducer, useContext, useState, useEffect } from 'react';
 import { produce } from 'immer';
 import { v4 as uuidv4 } from 'uuid';
 import getInitialState from './helpers/initialState';
+import { useMediaQuery } from 'react-responsive';
 
 /* TODO: Add help as a default program / landing page. */
 const initialState = getInitialState();
@@ -60,7 +61,11 @@ const appReducer = (state, action) => {
         case 'TOGGLE_MINIMIZED':
             return produce(state, draft => {
                 draft.components[action.id].minimized = !draft.components[action.id].minimized;
-            })
+            });
+        case 'SET_DEVICE_TYPE':
+            return produce(state, draft => {
+                draft.deviceType = action.payload;
+            });
         default:
             throw new Error(`Unknown action: ${action.type}`);
     }
@@ -68,6 +73,19 @@ const appReducer = (state, action) => {
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(appReducer, initialState);
+
+    const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+    const isTablet = useMediaQuery({ query: '(max-width: 768px)' });
+
+    useEffect(() => {
+        if (isMobile) {
+            dispatch({ type: 'SET_DEVICE_TYPE', payload: 'mobile' });
+        } else if (isTablet) {
+            dispatch({ type: 'SET_DEVICE_TYPE', payload: 'tablet' });
+        } else {
+            dispatch({ type: 'SET_DEVICE_TYPE', payload: 'desktop' });
+        }
+    }, [isMobile, isTablet]);
 
     return (
         <AppContext.Provider value={{ state, dispatch }}>

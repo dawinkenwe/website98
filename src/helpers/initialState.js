@@ -21,7 +21,8 @@ const getInitialState = () => {
                 name: 'Internet Explorer',
                 text: 'Internet Explorer',
             }
-        }
+        },
+        deviceType: 'desktop',
     }
 
     return initialState;
