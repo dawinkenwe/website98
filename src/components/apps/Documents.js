@@ -3,6 +3,7 @@ import { getProgramIcon, getProgramInfo } from '../../helpers/programMap';
 import Blog from './Notepad';
 import { useAppContext } from '../../AppContext';
 import './Documents.css';
+import DoubleTap from '../DoubleTap';
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
@@ -25,12 +26,14 @@ const BlogList = () => {
     return (
         <div className="documents">
             {blogs.map(blog => (
-                <div className="file">
-                    <div className="icon" onDoubleClick={() => openDocument(blog.filename)}>
-                        <img src={getProgramIcon('notepadDocument')} alt={blog.filename} />
-                    </div>
-                    <div className="text">{blog.filename}</div>
-                </div>
+                <DoubleTap onDoubleTap={() => openDocument(blog.filename)}>
+                    <div className="file">
+                        <div className="icon" onDoubleClick={() => openDocument(blog.filename)}>
+                            <img src={getProgramIcon('notepadDocument')} alt={blog.filename} />
+                        </div>
+                        <div className="text">{blog.filename}</div>
+                        </div>
+                </DoubleTap>
             ))}
         </div>
     )

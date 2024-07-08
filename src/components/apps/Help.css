@@ -34,6 +34,7 @@
 top-bar > input {
     width: 100%;
     padding: 0.25rem;
+    padding: 0.25rem 1rem 0.25rem 0.25rem;
     box-sizing: border-box;
 }
 
@@ -83,6 +84,8 @@ top-bar > input {
     box-sizing: border-box;
     width: 100%;
     float: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 li {

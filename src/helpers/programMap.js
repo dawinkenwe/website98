@@ -3,6 +3,9 @@ import MediaPlayer from '../components/apps/MediaPlayer';
 import PatchNotes from '../components/apps/PatchNotes';
 import Blog from '../components/apps/Notepad';
 import BlogList from '../components/apps/Documents';
+import { fetchLatestBlogFilename } from './fetchBlogContent'
+
+
 
 const programIcons = {
     help: require('../img/help.png'),
@@ -21,6 +24,14 @@ const programDefaults = {
         icon: programIcons['help'],
         name: 'Help',
         defaultSize: {
+            desktop: {
+                width: '40vw',
+                height: '30vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
             width: '40rem',
             height: '20rem'
         },
@@ -30,8 +41,8 @@ const programDefaults = {
         },
         contents: <Help />,
         minimumSize: {
-            width: '32rem',
-            height: '20rem',
+            width: '30vw',
+            height: '20vh',
         }
     },
 
@@ -39,6 +50,14 @@ const programDefaults = {
         icon: programIcons['mediaPlayer'],
         name: 'Windows Media Player',
         defaultSize: {
+            desktop: {
+                width: '40vw',
+                height: '30vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
             width: '35rem',
             height: '21rem',
         },
@@ -57,6 +76,14 @@ const programDefaults = {
         icon: programIcons['windowsUpdate'],
         name: 'Windows Update',
         defaultSize: {
+            desktop: {
+                width: '40vw',
+                height: '30vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
             width: '40rem',
             height: '25rem',
         },
@@ -75,6 +102,14 @@ const programDefaults = {
         icon: programIcons['notepad'],
         name: 'Notepad',
         defaultSize: {
+            desktop: {
+                width: '40vw',
+                height: '30vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
             width: '30rem',
             height: '40rem',
         },
@@ -86,13 +121,21 @@ const programDefaults = {
             width: '20rem',
             height: '17rem',
         },
-        contents: <Blog blogKey="07-02-2024 - Perfectionism" />,
+        contents: <Blog blogKey={fetchLatestBlogFilename()} />,
     },
 
     documents: {
         icon: programIcons['documents'],
         name: 'Documents',
         defaultSize: {
+            desktop: {
+                width: '40vw',
+                height: '30vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
             width: '30rem',
             height: '40rem',
         },

@@ -50,7 +50,6 @@ const Window = ({ id }) => {
     const handleTouchStart = (e) => {
         if (e.target.className === 'window-title') {
             const touch = e.targetTouches[0];
-            e.preventDefault();
             e.stopPropagation();
 
             setDragging(true);
@@ -65,7 +64,6 @@ const Window = ({ id }) => {
     const handleTouchMove = useCallback(
         (e) => {
             if (dragging && state.activeComponent === id) {
-                e.preventDefault();
                 e.stopPropagation();
                 const touch = e.targetTouches[0];
                 dispatch({

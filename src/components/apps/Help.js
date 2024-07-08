@@ -21,11 +21,11 @@ const Help = () => {
         <div id="help">
             <div className="top-bar">
                 <div>Location</div>
-                <input type="text" id="long" className="inverse-windows-box-shadow" value="General Help"></input>
+                <input type="text" id="long" className="inverse-windows-box-shadow" value="General Help" readOnly=''></input>
             </div>
             <div className="help-contents">
                 <div class="tab-box">
-                    <div class="tab-header">Winkenwerder98</div>
+                    <div class="tab-header">Help</div>
                     <ul class="help-questions">
                         {Object.keys(helpData).map((question) => (
                             <li key={question} onClick={() => handleQuestionClick(question)} className={`${question === selectedQuestion ? 'selected-question' : ''}` }>

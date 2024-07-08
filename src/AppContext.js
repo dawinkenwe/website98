@@ -13,14 +13,15 @@ const appReducer = (state, action) => {
     switch (action.type) {
         case 'START_APP':
             const appId = uuidv4();
+            console.log(state);
             return produce(state, draft => {
                 draft.components[appId] = {
                     id: appId,
                     x: action.payload.openPosition.x,
                     y: action.payload.openPosition.y,
                     z: draft.nextZ,
-                    width: action.payload.defaultSize.width,
-                    height: action.payload.defaultSize.height,
+                    width: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.width: action.payload.defaultSize.desktop.width,
+                    height: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.height : action.payload.defaultSize.desktop.height,
                     minWidth: action.payload.minimumSize.width,
                     minHeight: action.payload.minimumSize.height,
                     name: action.payload.name,

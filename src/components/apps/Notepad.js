@@ -10,6 +10,7 @@ const Blog = ({ blogKey }) => {
         const loadBlogContent = async () => {
             const content = await fetchBlogContent(blogKey);
             setBlogContent(content);
+            console.log(blogKey);
         };
 
         loadBlogContent();
