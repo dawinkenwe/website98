@@ -3,7 +3,7 @@ import MediaPlayer from '../components/apps/MediaPlayer';
 import PatchNotes from '../components/apps/PatchNotes';
 import Blog from '../components/apps/Notepad';
 import BlogList from '../components/apps/Documents';
-import { fetchLatestBlogFilename } from './fetchBlogContent'
+
 
 
 
@@ -121,7 +121,7 @@ const programDefaults = {
             width: '20rem',
             height: '17rem',
         },
-        contents: <Blog blogKey={fetchLatestBlogFilename()} />,
+        contents: <Blog />,
     },
 
     documents: {

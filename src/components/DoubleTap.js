@@ -10,7 +10,7 @@ const DoubleTap = ({ onDoubleTap, children }) => {
 
         clearTimeout(timeoutRef.current);
 
-        if (tapLength < 300 && tapLength > 0) {
+        if (tapLength < 700 && tapLength > 0) {
             onDoubleTap(e);
         }
 

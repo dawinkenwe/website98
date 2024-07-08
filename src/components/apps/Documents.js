@@ -12,6 +12,8 @@ const BlogList = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             const response = await fetch(`${process.env.PUBLIC_URL}/blogManifest.json`);
+            console.log('FETCH BLOG');
+            console.log(response.json);
             const data = await response.json();
             setBlogs(data);
         };
