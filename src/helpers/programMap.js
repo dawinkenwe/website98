@@ -81,8 +81,6 @@ const programDefaults = {
                 width: '90vw',
                 height: '70vh',
             },
-            width: '40rem',
-            height: '25rem',
         },
         openPosition: {
             x: 100,

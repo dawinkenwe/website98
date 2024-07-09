@@ -84,6 +84,8 @@ const appReducer = (state, action) => {
             });
         case 'TOGGLE_MINIMIZED':
             return produce(state, draft => {
+                draft.components[action.id].z = draft.nextZ;
+                draft.nextZ = draft.nextZ + 1;
                 draft.components[action.id].minimized = !draft.components[action.id].minimized;
             });
         case 'SET_DEVICE_TYPE':
