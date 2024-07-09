@@ -17,6 +17,7 @@ const programIcons = {
     mediaPlayer: require('../img/media_player.png'),
     windowsUpdate: require('../img/windows_update.png'),
     notepadDocument: require('../img/notepad_file.png'),
+    minesweeper: require('../img/minesweeper.png'),
 };
 
 const programDefaults = {
@@ -25,15 +26,13 @@ const programDefaults = {
         name: 'Help',
         defaultSize: {
             desktop: {
-                width: '40vw',
-                height: '30vh',
+                width: '35vw',
+                height: '35vh',
             },
             mobile: {
                 width: '90vw',
                 height: '70vh',
             },
-            width: '40rem',
-            height: '20rem'
         },
         openPosition: {
             x: 50,
@@ -41,8 +40,8 @@ const programDefaults = {
         },
         contents: <Help />,
         minimumSize: {
-            width: '30vw',
-            height: '20vh',
+            width: '20vw',
+            height: '35vh',
         }
     },
 
@@ -51,15 +50,13 @@ const programDefaults = {
         name: 'Windows Media Player',
         defaultSize: {
             desktop: {
-                width: '40vw',
-                height: '30vh',
+                width: '35rem',
+                height: '21rem',
             },
             mobile: {
                 width: '90vw',
                 height: '70vh',
             },
-            width: '35rem',
-            height: '21rem',
         },
         openPosition: {
             x: 200,
@@ -77,8 +74,8 @@ const programDefaults = {
         name: 'Windows Update',
         defaultSize: {
             desktop: {
-                width: '40vw',
-                height: '30vh',
+                width: '30vw',
+                height: '40vh',
             },
             mobile: {
                 width: '90vw',
@@ -104,14 +101,12 @@ const programDefaults = {
         defaultSize: {
             desktop: {
                 width: '40vw',
-                height: '30vh',
+                height: 'auto',
             },
             mobile: {
                 width: '90vw',
                 height: '70vh',
             },
-            width: '30rem',
-            height: '40rem',
         },
         openPosition: {
             x: 100,
@@ -129,15 +124,13 @@ const programDefaults = {
         name: 'Documents',
         defaultSize: {
             desktop: {
-                width: '40vw',
-                height: '30vh',
+                width: 'auto',
+                height: 'auto',
             },
             mobile: {
                 width: '90vw',
                 height: '70vh',
             },
-            width: '30rem',
-            height: '40rem',
         },
         openPosition: {
             x: 100,

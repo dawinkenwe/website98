@@ -21,8 +21,10 @@ const BlogList = () => {
         fetchBlogs();
     }, []);
 
-    const openDocument = ({ documentId }) => {
-        dispatch({ type: 'START_APP', payload: getProgramInfo('notepad') } );
+    const openDocument = ( documentId ) => {
+        console.log('opening document ' + documentId)
+        console.log(blogs);
+        dispatch({ type: 'OPEN_BLOG', payload: getProgramInfo('notepad'), blogId: documentId } );
     }
 
     return (

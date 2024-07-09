@@ -29,7 +29,7 @@ const Help = () => {
                     <ul class="help-questions">
                         {Object.keys(helpData).map((question) => (
                             <li key={question} onClick={() => handleQuestionClick(question)} className={`${question === selectedQuestion ? 'selected-question' : ''}` }>
-                                <img src={img} alt="help" />
+                                <img src={img} alt="help" className="help-image"/>
                                 {question}
                             </li>
                         ))}

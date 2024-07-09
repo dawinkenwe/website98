@@ -3,6 +3,7 @@ import { produce } from 'immer';
 import { v4 as uuidv4 } from 'uuid';
 import getInitialState from './helpers/initialState';
 import { useMediaQuery } from 'react-responsive';
+import Blog from './components/apps/Notepad';
 
 /* TODO: Add help as a default program / landing page. */
 const initialState = getInitialState();
@@ -13,7 +14,6 @@ const appReducer = (state, action) => {
     switch (action.type) {
         case 'START_APP':
             const appId = uuidv4();
-            console.log(state);
             return produce(state, draft => {
                 draft.components[appId] = {
                     id: appId,
@@ -31,6 +31,29 @@ const appReducer = (state, action) => {
                 }
                 draft.componentIds.push(appId)
                 draft.activeComponent = appId;
+                draft.nextZ += 1;
+            });
+        case 'OPEN_BLOG':
+            const blogId = uuidv4();
+            console.log(action);
+            console.log('open blog ' + action.blogId)
+            return produce(state, draft => {
+                draft.components[blogId] = {
+                    id: blogId,
+                    x: action.payload.openPosition.x,
+                    y: action.payload.openPosition.y,
+                    z: draft.nextZ,
+                    width: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.width : action.payload.defaultSize.desktop.width,
+                    height: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.height : action.payload.defaultSize.desktop.height,
+                    minWidth: action.payload.minimumSize.width,
+                    minHeight: action.payload.minimumSize.height,
+                    name: action.payload.name,
+                    contents: <Blog blogKey={action.blogId} />,
+                    icon: action.payload.icon,
+                    minimized: false,
+                }
+                draft.componentIds.push(blogId)
+                draft.activeComponent = blogId;
                 draft.nextZ += 1;
             });
         case 'CLOSE_APP':

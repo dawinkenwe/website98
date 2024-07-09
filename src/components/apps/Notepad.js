@@ -12,12 +12,10 @@ const Blog = ({ blogKey='latest' }) => {
             if (blogKey === 'latest') {
                 const latestBlogKey = await fetchLatestBlogFilename();
                 const content = await fetchBlogContent(latestBlogKey);
-                console.log('DAVID CONTENT LATEST' + content);
                 setBlogContent(content)
             } else {
                 const content = await fetchBlogContent(blogKey);
                 setBlogContent(content);
-                console.log('DAVID CONTENT ' + content);
             }
         }
 
