@@ -131,3 +131,8 @@ li {
 .content > h2 {
         margin-block-start: 0em;
 }
+
+.content > img {
+    width: 100%;
+    height: auto;
+}

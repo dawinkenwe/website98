@@ -17,8 +17,8 @@ const appReducer = (state, action) => {
             return produce(state, draft => {
                 draft.components[appId] = {
                     id: appId,
-                    x: action.payload.openPosition.x,
-                    y: action.payload.openPosition.y,
+                    x: 6,
+                    y: 6,
                     z: draft.nextZ,
                     width: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.width: action.payload.defaultSize.desktop.width,
                     height: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.height : action.payload.defaultSize.desktop.height,
@@ -40,8 +40,8 @@ const appReducer = (state, action) => {
             return produce(state, draft => {
                 draft.components[blogId] = {
                     id: blogId,
-                    x: action.payload.openPosition.x,
-                    y: action.payload.openPosition.y,
+                    x: 6,
+                    y: 6,
                     z: draft.nextZ,
                     width: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.width : action.payload.defaultSize.desktop.width,
                     height: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.height : action.payload.defaultSize.desktop.height,

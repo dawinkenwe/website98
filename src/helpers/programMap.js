@@ -26,17 +26,13 @@ const programDefaults = {
         name: 'Help',
         defaultSize: {
             desktop: {
-                width: '35vw',
-                height: '35vh',
+                width: '50vw',
+                height: '60vh',
             },
             mobile: {
                 width: '90vw',
                 height: '70vh',
             },
-        },
-        openPosition: {
-            x: 50,
-            y: 50
         },
         contents: <Help />,
         minimumSize: {
@@ -58,10 +54,6 @@ const programDefaults = {
                 height: '70vh',
             },
         },
-        openPosition: {
-            x: 200,
-            y: 200,
-        },
         minimumSize: {
             width: '35rem',
             height: '21rem',
@@ -81,10 +73,6 @@ const programDefaults = {
                 width: '90vw',
                 height: '70vh',
             },
-        },
-        openPosition: {
-            x: 100,
-            y: 100,
         },
         minimumSize: {
             width: '30rem',
@@ -106,10 +94,6 @@ const programDefaults = {
                 height: '70vh',
             },
         },
-        openPosition: {
-            x: 100,
-            y: 100,
-        },
         minimumSize: {
             width: '20rem',
             height: '17rem',
@@ -129,10 +113,6 @@ const programDefaults = {
                 width: '90vw',
                 height: '70vh',
             },
-        },
-        openPosition: {
-            x: 100,
-            y: 100,
         },
         minimumSize: {
             width: '20rem',
