@@ -57,7 +57,7 @@ try {
 
 	// Commit the changes
 	execSync('git add .');
-	execSync(`git commite -m commit for release ${version}`);
+	execSync(`git commit -m 'commit for release ${version}'`);
 	execSync('git push');
 	committed = true;
 
