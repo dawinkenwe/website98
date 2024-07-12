@@ -50,19 +50,21 @@ try {
 
 	fs.writeFileSync(releaseNotesMdFile, contents, "utf8");
 
-	console.log(contents);
-
 	// Build project
+	console.log('Building project');
 	execSync('npm run build');
 
 	// Commit the changes
+	console.log('Committing version change');
 	execSync('git add .');
 	execSync(`git commit -m "commit for release ${version}"`);
 	execSync('git push');
 	committed = true;
 
 	// Deploy to github Pages
+	console.log('Running Deployment');
 	execSync('npm run deploy');
+	console.log('Deployment Succeeded.');
 
 } catch (error) {
 	console.log(error);
