@@ -25,5 +25,7 @@ yarn-error.log*
 /public/images
 .vs/
 
-#Manifest
+#Manifests
 /public/blogs/blogManifest.json
+/public/releaseManifest.json
+/public/blogManifest.json

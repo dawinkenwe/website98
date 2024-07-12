@@ -16,18 +16,19 @@ console.log(`notes: ${program.opts().notes}`);
 console.log(`bugs: ${program.opts().bugs}`);
 console.log(`features: ${program.opts().features}`);
 let committed = false;
-let releaseNotesCreated = false;
+let releaseNotesFile = '';
 
 try {
 	// Adjust Version
 	execSync(`npm version ${program.opts().type}`);
 
 	// Create Release Notes
-	const version = process.env.npm_package_version;
+	const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+	const version = packageJson.version;
 	console.log('version is now: ' + version);
 	const releaseNotesMdFile = path.join(__dirname, 'public', 'releaseNotes', version + '.md')
 	console.log('creating release notes file: ' + releaseNotesMdFile);
-	let contents = "Version: " + version + '\r\n\r\n';
+	let contents = "# Version: " + version + '\r\n\r\n';
 	contents += '## Notes\r\n';
 	contents += program.opts().notes;
 	contents += '\r\n\r\n';
@@ -47,22 +48,29 @@ try {
 		}
 	}
 
+	fs.writeFileSync(releaseNotesMdFile, contents, "utf8");
+
 	console.log(contents);
 
 	// Build project
-	// execSync('npm run build');
+	execSync('npm run build');
 
 	// Commit the changes
+	execSync('git add .');
+	execSync(`git commite -m commit for release ${version}`);
+	execSync('git push');
+	committed = true;
 
-	// committed = true;
-
-	// Do the deploy
-
+	// Deploy to github Pages
+	execSync('npm run deploy');
 
 } catch (error) {
 	console.log(error);
+	console.error('Encountered Error in release process.');
+	if (committed) {
+		console.error('Build or deploy failed, reverting version change.');
+		execSync('git reset --hard HEAD~1');
+	}
 
-	console.error('Build or deploy failed, reverting version change.');
-	// execSync('git reset --hard HEAD~1');
 	process.exit(1);
 }

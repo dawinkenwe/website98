@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { fetchBlogContent } from '../../helpers/fetchBlogContent';
+import { fetchBlogContent, fetchLatestBlogFilename } from '../../helpers/manifestHelpers';
 import './Notepad.css';
-import { fetchLatestBlogFilename } from '../../helpers/fetchBlogContent';
 
 const Blog = ({ blogKey='latest' }) => {
     const [blogContent, setBlogContent] = useState('');
