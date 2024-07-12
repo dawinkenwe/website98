@@ -7,9 +7,8 @@
 }
 
 .releases-window {
-    display: block;
+    display: inline-block;
     background: white;
-    width: 15rem;
     overflow-y: auto;
     margin: 1rem 1rem 1rem 1rem;
     border: 2px inset;
@@ -31,5 +30,4 @@
     flex-direction: column;
     border: 2px inset;
     padding: 0 1rem 1rem 1rem;
-    max-width: 70%;
 }
