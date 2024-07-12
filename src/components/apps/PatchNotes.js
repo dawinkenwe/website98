@@ -12,11 +12,9 @@ const PatchNotes = () => {
     useEffect(() => {
         const fetchReleases = async () => {
             const response = await fetch(`${process.env.PUBLIC_URL}/releaseManifest.json`);
-            console.log('FETCH RELEASES');
-            console.log(response.json);
             const data = await response.json();
             setReleases(data);
-            setSelectedRelease(data[0]);
+            setSelectedRelease(data[0].version);
         };
 
         fetchReleases();
@@ -32,28 +30,20 @@ const PatchNotes = () => {
         loadReleaseNotes();
     }, [selectedRelease]);
 
-    // TODO: fix this map to use dict.
     return (
         <div className="patch-notes">
             <div className="releases-window">
                 <h2>Releases</h2>
                 <ul title="Releases" className="releases-list">
-                    {Object.keys(releases).map((key) => (
-                        <li key={key} className="release-name" onClick={() => setSelectedRelease(key)}>
-                            {key}
+                    {releases.map((release) => (
+                        <li key={release.version} className="release-name" onClick={() => setSelectedRelease(release.version)}>
+                            {release.version}
                         </li>
                     ))}
                 </ul>
             </div>
             <div className="release-info-window">
                 <ReactMarkdown>{releaseContent}</ReactMarkdown>
-                <h2>{patchNotesData[selectedRelease].header}</h2>
-                <p>{patchNotesData[selectedRelease].description}</p>
-                <ul>
-                    {patchNotesData[selectedRelease].featureList.map((element, index) => (
-                        <li>{element}</li>
-                    ))}
-                </ul>
             </div>
         </div>
     )
