@@ -30,4 +30,17 @@
     flex-direction: column;
     border: 2px inset;
     padding: 0 1rem 1rem 1rem;
+    flex: 1;
+}
+
+.release-info-window > h2 {
+    margin-top: 0;
+}
+
+.release-info-window > p {
+    margin-top: 0;
+}
+
+.release-info-window > ul {
+    margin-top: 0;
 }
