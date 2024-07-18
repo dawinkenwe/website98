@@ -1,0 +1,19 @@
+.minesweeper-row {
+    display: table-row;
+}
+
+.minesweeper-square {
+    display: table-cell;
+    background: #c0c0c0;
+    width: 1rem;
+    height: 1rem;
+    font-family: "Arial Black", sans-serif;
+    box-sizing: border-box;
+    font-size: 0.75rem;
+    position: relative;
+    color: black;
+    line-height: 1rem;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+}

@@ -5,6 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AppProvider } from './AppContext';
 
+if (process.env.NODE_ENV === 'development') {
+    const whyDidYouRender = require('@welldone-software/why-did-you-render');
+    whyDidYouRender(React, {
+        trackAllPureComponents: true,
+    });
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

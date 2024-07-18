@@ -3,6 +3,7 @@ import MediaPlayer from '../components/apps/MediaPlayer';
 import PatchNotes from '../components/apps/PatchNotes';
 import Blog from '../components/apps/Notepad';
 import BlogList from '../components/apps/Documents';
+import MineSweeper from '../components/apps/MineSweeper'
 
 
 
@@ -120,6 +121,26 @@ const programDefaults = {
         },
         contents: <BlogList />
     },
+
+    minesweeper: {
+        icon: programIcons['minesweeper.png'],
+        name: 'MineSweeper',
+        defaultSize: {
+            desktop: {
+                width: 'auto',
+                height: 'auto',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
+        },
+        minimumSize: {
+            width: '20rem',
+            height: '17rem',
+        },
+        contents: <MineSweeper />
+    }
 }
 
 export const getProgramInfo = (programName) => {
