@@ -6,7 +6,6 @@ import classNames  from 'classnames';
 const adjacentIndexOffsets = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
 const createNewGrid = (numRows, numCols, numMines) => {
-	console.log('CREATING NEW GRID');
 	const grid = Array.from({ length: numRows }, () => {
 		return (Array.from({ length: numCols }, () => ({ hasMine: false, adjacencyCount: 0, display: '' })))
 	});
@@ -30,10 +29,9 @@ const createNewGrid = (numRows, numCols, numMines) => {
 			}
 		}
 	}
+
 	return grid;
 };
-
-// TODO: Add css, make it so end actually shows all squares, etc.
 
 const MineSweeper = () => {
 	const [grid, setGrid] = useState(() => createNewGrid(9, 9, 9));
@@ -42,48 +40,63 @@ const MineSweeper = () => {
 	const columns = 9;
 
 	const endGame = () => {
-		console.log('GAME OVER');
 		setGameOver(true);
 		setGrid(produce(grid, draft => {
-			console.log('updating state for end game');
 			draft.forEach(row => {
 				row.forEach(cell => {
 					if (cell.hasMine) {
-						console.log('updating m');
 						cell.display = 'm';
 					} else if (cell.adjacencyCount) {
-						console.log('updating num');
 						cell.display = cell.adjacencyCount;
 					} else {
-						console.log('updating _');
 						cell.display = '_';
 					}
 				});
 			});
 		}));
-		console.log(grid);
 	};
 
-	console.log("Component re-rendering with grid:", grid);
+
+	const getAdjacentEmptySquares = (xStart, yStart) => {
+		const emptySquares = new Set();
+		emptySquares.add(`${xStart},${yStart}`)
+		const exploreQueue = [`${xStart},${yStart}`];
+
+		while (exploreQueue.length > 0) {
+			let [x, y] = exploreQueue.pop().split(',').map(Number);
+			for (const offset of adjacentIndexOffsets) {
+				let [dx, dy] = offset;
+				if (-1 < x + dx && x + dx < rows && -1 < y + dy && y + dy < columns && grid[x + dx][y + dy].display	 === '' && !emptySquares.has(`${x + dx},${y + dy}`) && !grid[x+dx][y+dy].hasMine && !grid[x+dx][y+dy].adjacencyCount) {
+					emptySquares.add(`${x + dx},${y + dy}`);
+					exploreQueue.push(`${x + dx},${y + dy}`);
+				}
+			}
+		}
+		return emptySquares;
+	}
 
 	const handleLeftClick = (x, y) => {
-		// Note - react state checks for re-renders as a NEW OBJECT.
-		// We need to return a NEW OBJECT if we want to update the state.
 		if (gameOver) {
 			return;
 		}
-		console.log('clicked on x: ' + x + ' y: ' + y);
 		if (grid[x][y].display && grid[x][y].display !== 'f') {
 			return;
 		}
 		if (grid[x][y].hasMine) {
 			endGame();
-		} else {
+		} else if (grid[x][y].adjacencyCount > 0) {
 			setGrid(produce(grid, draft => {
-				const cell = draft[x][y];
-				cell.display = cell.adjacencyCount ? cell.adjacencyCount : '_';
+				draft[x][y].display = draft[x][y].adjacencyCount;
 			}));
-			console.log(grid);
+		} else if (grid[x][y].display === ''){ 
+			let emptySquares = getAdjacentEmptySquares(x, y);
+			const newGrid = grid.map((row, x) => (
+				row.map((value, y) => ({
+					...value,
+					display: emptySquares.has(`${x},${y}`) ? '_' : value.display
+				}))
+			));
+			setGrid(newGrid);
 		}
 	}
 
