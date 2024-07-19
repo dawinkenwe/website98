@@ -89,22 +89,14 @@ const MineSweeper = () => {
 
 	return (
 		<div className="minesweeper">
-			<div className="minesweeper-grid">
-				{grid.slice(0, rows).map((gridRow, x) => {
-					return (
-						<div className="minesweeper-row">
-							{gridRow.slice(0, columns).map((value, y) => {
-								return (
-									<div className={classNames('minesweeper-square', {
-
-									})} onClick={() => handleLeftClick(x, y)}>
-										{value.display}
-									</div>
-								);
-							})}
-						</div>
-					);
-				})}
+			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }}>
+				{grid.map((row, x) => (
+					<>
+						{row.map((value, y) => (
+							<div className='minesweeper-square' onClick={() => handleLeftClick(x, y)}>{value.display}</div>
+						))}
+					</>
+				))}
 			</div>
 		</div>
 	)
