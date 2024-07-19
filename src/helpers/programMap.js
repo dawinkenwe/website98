@@ -123,7 +123,7 @@ const programDefaults = {
     },
 
     minesweeper: {
-        icon: programIcons['minesweeper.png'],
+        icon: programIcons['minesweeper'],
         name: 'MineSweeper',
         defaultSize: {
             desktop: {
