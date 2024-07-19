@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Minesweeper.css';
-import {produce} from 'immer';
+import { produce } from 'immer';
+import classNames  from 'classnames';
 
 const adjacentIndexOffsets = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
@@ -94,7 +95,9 @@ const MineSweeper = () => {
 						<div className="minesweeper-row">
 							{gridRow.slice(0, columns).map((value, y) => {
 								return (
-									<div className="minesweeper-square" onClick={() => handleLeftClick(x, y)}>
+									<div className={classNames('minesweeper-square', {
+
+									})} onClick={() => handleLeftClick(x, y)}>
 										{value.display}
 									</div>
 								);
