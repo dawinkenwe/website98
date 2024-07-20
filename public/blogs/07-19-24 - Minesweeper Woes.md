@@ -19,7 +19,9 @@ Anyways, once I had that sorted, I ran the program again and BAM
 ![grid only had one column](/imgs/minesweeper_woes_photos/minesweeper_grid_no_work.png)
 
 My grid only had one column... I was sure I had set it to have multiple columns. let's check the code.
-``style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem);` }}``
+```
+style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem);` }}
+```
 
 Did you see it?
 >! It's that sneaky ';' No one told me to put it there; and yet i did. just as grammatically incorrect as the semicolon last sentence.
