@@ -75,6 +75,19 @@ const MineSweeper = () => {
 		return emptySquares;
 	}
 
+	const handleRightClick = (e, x, y) => {
+		e.preventDefault();
+		if (grid[x][y].display === '') {
+			setGrid(produce(grid, draft => {
+				draft[x][y].display = 'f';
+			}));
+		} else if (grid[x][y].display === 'f') {
+			setGrid(produce(grid, draft => {
+				draft[x][y].display = '';
+			}));
+		}
+	}
+
 	const handleLeftClick = (x, y) => {
 		if (gameOver) {
 			return;
@@ -102,11 +115,11 @@ const MineSweeper = () => {
 
 	return (
 		<div className="minesweeper">
-			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }}>
+			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
 				{grid.map((row, x) => (
 					<>
 						{row.map((value, y) => (
-							<div className='minesweeper-square' onClick={() => handleLeftClick(x, y)}>{value.display}</div>
+							<div className='minesweeper-square' onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display}</div>
 						))}
 					</>
 				))}
