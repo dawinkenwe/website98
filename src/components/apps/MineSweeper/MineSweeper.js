@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Minesweeper.css';
 import { produce } from 'immer';
-import classNames  from 'classnames';
+import classNames from 'classnames';
+import SevenSegmentDisplay from './SevenSegmentDisplay';
 
 const adjacentIndexOffsets = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
@@ -115,6 +116,7 @@ const MineSweeper = () => {
 
 	return (
 		<div className="minesweeper">
+			<SevenSegmentDisplay />
 			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
 				{grid.map((row, x) => (
 					<>

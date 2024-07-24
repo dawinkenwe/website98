@@ -26,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-manifests": "node generateManifests.js",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && cp CNAME build/",
     "deploy": "gh-pages -d build",
     "release": "node release.js"
   },

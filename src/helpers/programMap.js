@@ -3,9 +3,7 @@ import MediaPlayer from '../components/apps/MediaPlayer';
 import PatchNotes from '../components/apps/PatchNotes';
 import Blog from '../components/apps/Notepad';
 import BlogList from '../components/apps/Documents';
-import MineSweeper from '../components/apps/MineSweeper'
-
-
+import MineSweeper from '../components/apps/MineSweeper/MineSweeper'
 
 
 const programIcons = {

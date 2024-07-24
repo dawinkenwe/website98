@@ -104,7 +104,7 @@ const Window = ({ id }) => {
                 top: `${state.components[id].y}px`,
                 width: `${state.components[id].width}`,
                 height: `${state.components[id].height}`,
-                position: 'fixed',
+                position: 'absolute',
                 zIndex: `${state.components[id].minimized ? 0: state.components[id].z}`,
                 minWidth: `${state.components[id].minWidth}`,
                 minHeight: `${state.components[id].minHeight}`,

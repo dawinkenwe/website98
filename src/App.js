@@ -39,12 +39,16 @@ const App = () => {
 
     return (
         <div className="app">
-            <Desktop />
-            <div className="programs-view">
-                {state.componentIds.map(id => (<Window key={id} id={id} />)) }
+            <div className='windows-div'>
+                <Desktop />
+                <div className="programs-view">
+                    {state.componentIds.map(id => (<Window key={id} id={id} />)) }
+                </div>
             </div>
-            <StartMenu />
-            <Taskbar />
+            <div className="taskbar-div">
+                <StartMenu />
+                <Taskbar />
+            </div>
         </div>
     );
 };

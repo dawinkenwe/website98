@@ -28,3 +28,19 @@ html, body {
     flex-direction: column;
     height: 100%;
 }
+
+.windows-div {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 3.75rem);
+}
+
+.taskbar-div {
+    display: flex;
+}
+
+.programs-view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

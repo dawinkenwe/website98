@@ -5,6 +5,7 @@
     border: 2px inset;
     margin: 1rem 1rem 1rem 1rem;
     padding: 0 1rem 1rem 1rem;
+    max-height: 100%;
 }
 
 .blog-body img {

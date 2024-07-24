@@ -31,4 +31,5 @@ let's just remove that aaaannnd
 ![borders still not right](/imgs/minesweeper_woes_photos/minesweeper_closer_but_not_there.png)
 
 Dammit. So close. After a trip back to the docs on how display grid works, I added a 5px rowGap and columnGap and VIOLA!
+
 ![it's beautiful](/imgs/minesweeper_woes_photos/minesweeper_fixed_spacing.png)
