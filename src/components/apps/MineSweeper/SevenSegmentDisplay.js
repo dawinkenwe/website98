@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 const litSegments = {
     0: [0, 1, 2, 4, 5, 6],
-    1: [2, 4],
+    1: [2, 5],
     2: [0, 2, 3, 4, 6],
     3: [0, 2, 3, 5, 6],
     4: [1, 2, 3, 5],
@@ -30,7 +30,7 @@ const generateSegmentPaths = (scale) => {
 
 
 
-const SevenSegmentDisplay = ({ scale = 2, value = 0 }) => {
+const SevenSegmentDisplay = ({ scale = 2, value }) => {
     const segmentPaths = useMemo(() => generateSegmentPaths(scale), [scale])
     return (
         <svg height="48 width=30" xmlns="segmentdisplay">

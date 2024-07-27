@@ -3,6 +3,7 @@ import './Minesweeper.css';
 import { produce } from 'immer';
 import classNames from 'classnames';
 import SevenSegmentDisplay from './SevenSegmentDisplay';
+import MinesweeperClock from './MinesweeperClock';
 
 const adjacentIndexOffsets = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
@@ -116,7 +117,7 @@ const MineSweeper = () => {
 
 	return (
 		<div className="minesweeper">
-			<SevenSegmentDisplay />
+			<MinesweeperClock isTicking={true} />
 			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
 				{grid.map((row, x) => (
 					<>
