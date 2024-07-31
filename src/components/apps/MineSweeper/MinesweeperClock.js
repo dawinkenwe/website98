@@ -18,8 +18,8 @@ const MinesweeperClock = (isTicking) => {
     return (
         <>
             {timerVals.map((value, index) => (
-                <SevenSegmentDisplay value={ Math.floor(secondCount/value)%10} />
-            ))};
+                <SevenSegmentDisplay value={Math.floor(secondCount / value) % 10} key={ `sevensegment${index}`} />
+            ))}
         </>
     )
 }

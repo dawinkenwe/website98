@@ -33,12 +33,14 @@ const generateSegmentPaths = (scale) => {
 const SevenSegmentDisplay = ({ scale = 2, value }) => {
     const segmentPaths = useMemo(() => generateSegmentPaths(scale), [scale])
     return (
-        <svg height="48 width=30" xmlns="segmentdisplay">
+        <svg height={16 * scale} width={ 10 * scale } xmlns="segmentdisplay">
             {segmentPaths.map((path, index) => (
                 <path
                     id={`segment${index}`}
                     d={path}
-                    fill={litSegments[value].includes(index) ? 'red' : 'lightgray'} />
+                    fill={litSegments[value].includes(index) ? 'red' : 'lightgray'}
+                    key={ `segment${index}`}
+                />
             )) }
         </svg>
     )
