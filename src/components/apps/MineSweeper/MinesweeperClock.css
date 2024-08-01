@@ -1,0 +1,6 @@
+.minesweeper-clock-segments {
+    background-color: black;
+    inset: 2px;
+    display: inline-block;
+    border: 3px inset;
+}

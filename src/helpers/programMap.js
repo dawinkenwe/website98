@@ -134,8 +134,8 @@ const programDefaults = {
             },
         },
         minimumSize: {
-            width: '20rem',
-            height: '17rem',
+            width: '0',
+            height: '0',
         },
         contents: <MineSweeper />
     }

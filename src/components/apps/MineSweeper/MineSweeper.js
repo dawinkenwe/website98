@@ -39,7 +39,7 @@ const getSmileyImage = (state) => {
 	if (state === 'won') {
 		return require("../../../img/minesweeper_victory.png")
 	} else if (state === 'lost') {
-		return require("../../../img/minesweeper_dead_smile.png")
+		return require("../../../img/minesweeper_dead.png")
 	} else {
 		return require("../../../img/minesweeper_smile.png")
 	}
@@ -71,19 +71,23 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 
 	const getAdjacentEmptySquares = (xStart, yStart) => {
 		const emptySquares = new Set();
-		emptySquares.add(`${xStart},${yStart}`)
 		const exploreQueue = [`${xStart},${yStart}`];
 
 		while (exploreQueue.length > 0) {
 			let [x, y] = exploreQueue.pop().split(',').map(Number);
-			for (const offset of adjacentIndexOffsets) {
-				let [dx, dy] = offset;
-				if (-1 < x + dx && x + dx < rows && -1 < y + dy && y + dy < columns && grid[x + dx][y + dy].display === '' && !emptySquares.has(`${x + dx},${y + dy}`) && !grid[x + dx][y + dy].hasMine && !grid[x + dx][y + dy].adjacencyCount) {
-					emptySquares.add(`${x + dx},${y + dy}`);
-					exploreQueue.push(`${x + dx},${y + dy}`);
+			emptySquares.add(`${x},${y}`);
+			if (!grid[x][y].adjacencyCount) {
+				for (const offset of adjacentIndexOffsets) {
+					let [dx, dy] = offset;
+					if (-1 < x + dx && x + dx < rows && -1 < y + dy && y + dy < columns && grid[x + dx][y + dy].display === '' && !emptySquares.has(`${x + dx},${y + dy}`) && !grid[x + dx][y + dy].hasMine) {
+						emptySquares.add(`${x + dx},${y + dy}`);
+						exploreQueue.push(`${x + dx},${y + dy}`);
+					}
 				}
 			}
+
 		}
+		console.log('empty squares len: ' + emptySquares.size);
 		return emptySquares;
 	}
 
@@ -103,6 +107,7 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 	}
 
 	const handleLeftClick = (x, y) => {
+		console.log(grid[x][y])
 		if (gameStatus) {
 			return;
 		}
@@ -118,14 +123,20 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 			setRevealedCount(revealedCount + 1);
 		} else if (grid[x][y].display === '') {
 			let emptySquares = getAdjacentEmptySquares(x, y);
-			const newGrid = grid.map((row, x) => (
-				row.map((value, y) => ({
-					...value,
-					display: emptySquares.has(`${x},${y}`) ? '_' : value.display
-				}))
-			));
-			setGrid(newGrid);
+			setGrid(produce(grid, draft => {
+				for (const square of emptySquares) {
+					let [x, y] = square.split(',').map(Number);
+
+					if (draft[x][y].adjacencyCount) {
+						draft[x][y].display = draft[x][y].adjacencyCount;
+					} else {
+						draft[x][y].display = '_';
+					}
+				}
+			}));
+			console.log('revealed count before: ' + revealedCount);
 			setRevealedCount(revealedCount + emptySquares.size);
+			console.log('revealed count after: ' + revealedCount)
 		}
 		if (revealedCount === rows * columns - mines) {
 			endGame('won');
@@ -135,15 +146,16 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 	return (
 		<div className="minesweeper">
 			<div className="minesweeper-header-content">
-				<div className="minesweeper-clock">
-					<MinesweeperClock isTicking={gameStatus === ''} />
-				</div>
-				<div className="minesweeper-smiley-container">
-					<img src={getSmileyImage(gameStatus)} alt="minesweeper_smiley" width="36" height="36"></img>
-				</div>
 				<div className="minesweeper-flag-count">
+					<SevenSegmentDisplay value={Math.floor(numFlags / 100)} />
 					<SevenSegmentDisplay value={Math.floor(numFlags / 10)} />
 					<SevenSegmentDisplay value={Math.floor(numFlags % 10)} />
+				</div>
+				<div className="minesweeper-smiley-container">
+					<img className="minesweeper-smile-img" src={getSmileyImage(gameStatus)} alt="minesweeper_smiley" width="36" height="36"></img>
+				</div>
+				<div className="minesweeper-clock">
+					<MinesweeperClock isTicking={gameStatus === ''} />
 				</div>
 			</div>
 				<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
@@ -161,7 +173,7 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 									'colorGray': value.display === 8,
 									'windows-box-shadow': value.display === '' || value.display === 'f',
 									'borderDotted': value.display !== ''
-								})} onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display}</div>
+								})} onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display === 'f' ? <img src={require('../../../img/minesweeper_flag.png')} height="16px" width="16px" alt="f"/> : value.display}</div>
 							))}
 						</>
 					))}

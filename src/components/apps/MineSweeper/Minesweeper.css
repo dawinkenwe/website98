@@ -6,11 +6,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0.5rem;
 }
 
 .minesweeper-clock {
     flex: 1;
-    text-align: left;
+    text-align: right;
+    flex: 1;
+    box-sizing: border-box;
+    max-width: fit-content;
 }
 
 .minesweeper-smiley-container {
@@ -18,9 +22,25 @@
     text-align: center;
 }
 
-.minesweeper-flag-count {
+.minesweeper-smile-img {
     flex: 1;
-    text-align: right;
+    vertical-align: middle; 
+}
+
+.minesweeper-smiley-container > img {
+    vertical-align: middle;
+    position: relative;
+}
+
+.minesweeper-flag-count {
+    text-align: left;
+    background-color: black;
+    inset: 2px;
+    display: inline-block;
+    border: 3px inset;
+    flex: 1;
+    box-sizing: border-box;
+    max-width: fit-content;
 }
 
 .minesweeper-row {
@@ -68,6 +88,7 @@
     border: 3px inset;
     box-sizing: border-box;
     padding: 4px;
+    width: max-content;
 }
 
 .colorBlue {

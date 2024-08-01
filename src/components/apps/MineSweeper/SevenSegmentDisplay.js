@@ -17,7 +17,7 @@ const generateSegmentPaths = (scale) => {
     const basePaths = [
         'M 2 2 L 3 1 L 7 1 L 8 2 L 7 3 L 3 3 Z',
         'M 2 2 L 3 3 L 3 7 L 2 8 L 1 7 L 1 3 Z',
-        'M 7 3 L 8 2 L 9 3 L 9 10 L 8 11 L 7 10 Z',
+        'M 7 3 L 8 2 L 9 3 L 9 7 L 8 8 L 7 7 Z',
         'M 2 8 L 3 7 L 7 7 L 8 8 L 7 9 L 3 9 Z',
         'M 1 9 L 2 8 L 3 9 L 3 13 L 2 14 L 1 13 Z',
         'M 7 9 L 8 8 L 9 9 L 9 13 L 8 14 L 7 13 Z',
@@ -38,7 +38,7 @@ const SevenSegmentDisplay = ({ scale = 2, value }) => {
                 <path
                     id={`segment${index}`}
                     d={path}
-                    fill={litSegments[value].includes(index) ? 'red' : 'lightgray'}
+                    fill={litSegments[value].includes(index) ? 'red' : 'black'}
                     key={ `segment${index}`}
                 />
             )) }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SevenSegmentDisplay from './SevenSegmentDisplay';
+import './MinesweeperClock.css';
 
 
 const MinesweeperClock = ({ isTicking }) => {
@@ -15,11 +16,11 @@ const MinesweeperClock = ({ isTicking }) => {
     }, [isTicking])
 
     return (
-        <>
+        <div className="minesweeper-clock-segments">
             {timerVals.map((value, index) => (
                 <SevenSegmentDisplay value={Math.floor(secondCount / value) % 10} key={ `sevensegment${index}`} />
             ))}
-        </>
+        </div>
     )
 }
 
