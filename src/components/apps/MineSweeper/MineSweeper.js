@@ -35,6 +35,16 @@ const createNewGrid = (numRows, numCols, numMines) => {
 	return grid;
 };
 
+const getSmileyImage = (state) => {
+	if (state === 'won') {
+		return require("../../../img/minesweeper_victory.png")
+	} else if (state === 'lost') {
+		return require("../../../img/minesweeper_dead_smile.png")
+	} else {
+		return require("../../../img/minesweeper_smile.png")
+	}
+}
+
 const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 	const [grid, setGrid] = useState(() => createNewGrid(rows, columns, mines));
 	const [gameStatus, setGameStatus] = useState('');
@@ -124,29 +134,39 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 
 	return (
 		<div className="minesweeper">
-			<MinesweeperClock isTicking={gameStatus === ''} />
-			<SevenSegmentDisplay value={Math.floor(numFlags / 10)} />
-			<SevenSegmentDisplay value={Math.floor(numFlags % 10)} />
-			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
-				{grid.map((row, x) => (
-					<>
-						{row.map((value, y) => (
-							<div className={classNames('minesweeper-square', {
-								'colorBlue': value.display === 1,
-								'colorGreen': value.display === 2,
-								'colorRed': value.display === 3,
-								'colorDarkBlue': value.display === 4,
-								'colorDarkRed': value.display === 5,
-								'colorTurquoise': value.display === 6,
-								'colorBlack': value.display === 7,
-								'colorGray': value.display === 8,
-								'windows-box-shadow': value.display === '' || value.display === 'f',
-								'borderDotted': value.display !== ''
-							})} onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display}</div>
-						))}
-					</>
-				))}
+			<div className="minesweeper-header-content">
+				<div className="minesweeper-clock">
+					<MinesweeperClock isTicking={gameStatus === ''} />
+				</div>
+				<div className="minesweeper-smiley-container">
+					<img src={getSmileyImage(gameStatus)} alt="minesweeper_smiley" width="36" height="36"></img>
+				</div>
+				<div className="minesweeper-flag-count">
+					<SevenSegmentDisplay value={Math.floor(numFlags / 10)} />
+					<SevenSegmentDisplay value={Math.floor(numFlags % 10)} />
+				</div>
 			</div>
+				<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
+					{grid.map((row, x) => (
+						<>
+							{row.map((value, y) => (
+								<div className={classNames('minesweeper-square', {
+									'colorBlue': value.display === 1,
+									'colorGreen': value.display === 2,
+									'colorRed': value.display === 3,
+									'colorDarkBlue': value.display === 4,
+									'colorDarkRed': value.display === 5,
+									'colorTurquoise': value.display === 6,
+									'colorBlack': value.display === 7,
+									'colorGray': value.display === 8,
+									'windows-box-shadow': value.display === '' || value.display === 'f',
+									'borderDotted': value.display !== ''
+								})} onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display}</div>
+							))}
+						</>
+					))}
+				</div>
+
 		</div>
 	)
 }
