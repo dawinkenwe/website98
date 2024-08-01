@@ -19,6 +19,16 @@
     margin: 0 6px 0 0;
 }
 
+.indented-minesweeper-square {
+    border: 2px dotted black;
+    display: inline-flex;
+    background: #c0c0c0;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.75rem;
+    position: relative;
+}
+
 .first-minesweeper-square {
 
 }
@@ -28,4 +38,16 @@
     border: 3px inset;
     box-sizing: border-box;
     padding: 4px;
+}
+
+.colorBlue {
+    color: blue;
+}
+
+.colorGreen {
+    color: green;
+}
+
+.colorRed {
+    color: red;
 }
