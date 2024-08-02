@@ -90,7 +90,6 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 			}
 
 		}
-		console.log('empty squares len: ' + emptySquares.size);
 		return emptySquares;
 	}
 
@@ -110,14 +109,8 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 	}
 
 	const handleLeftClick = (x, y) => {
-		console.log(grid[x][y])
-		if (gameStatus) {
-			return;
-		}
-		if (grid[x][y].display && grid[x][y].display !== 'f') {
-			console.log(revealedCount);
-			return;
-		}
+		if (gameStatus) return;
+		if (grid[x][y].display && grid[x][y].display !== 'f') return;
 		setStarted(true);
 		if (grid[x][y].hasMine) {
 			endGame('lost');
