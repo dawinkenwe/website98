@@ -26,8 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-manifests": "node generateManifests.js",
-    "predeploy": "npm run build && cp CNAME build/",
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --cname dwinkenwerder.com",
     "release": "node release.js"
   },
   "eslintConfig": {
