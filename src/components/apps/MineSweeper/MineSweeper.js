@@ -59,9 +59,12 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 				row.forEach(cell => {
 					if (cell.hasMine) {
 						cell.display = <img src={require('../../../img/minesweeper.png')} alt="m" height="20" width="20" style={{ background: 'red' }} />;
-					} else if (!cell.adjacencyCount) {
-
-						cell.display = '_';
+					} else if (status === 'won') {
+						if (!cell.adjacencyCount) {
+							cell.display = '_';
+						} else {
+							cell.display = cell.adjacencyCount;
+						}
 					}
 				});
 			});
@@ -112,6 +115,7 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 			return;
 		}
 		if (grid[x][y].display && grid[x][y].display !== 'f') {
+			console.log(revealedCount);
 			return;
 		}
 		setStarted(true);
@@ -121,6 +125,9 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 			setGrid(produce(grid, draft => {
 				draft[x][y].display = draft[x][y].adjacencyCount;
 			}));
+			if (revealedCount + 1 === rows * columns - mines) {
+				endGame('won');
+			}
 			setRevealedCount(revealedCount + 1);
 		} else if (grid[x][y].display === '') {
 			let emptySquares = getAdjacentEmptySquares(x, y);
@@ -135,13 +142,12 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 					}
 				}
 			}));
-			console.log('revealed count before: ' + revealedCount);
+			if (emptySquares.size + revealedCount === rows * columns - mines) {
+				endGame('won');
+			}
 			setRevealedCount(revealedCount + emptySquares.size);
-			console.log('revealed count after: ' + revealedCount)
 		}
-		if (revealedCount === rows * columns - mines) {
-			endGame('won');
-		}
+
 	}
 
 	return (
