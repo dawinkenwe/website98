@@ -122,9 +122,9 @@ const Window = ({ id }) => {
                     {state.components[id].name}
                 </div>
                 <div className="controls">
-                    <div className="windows-box-shadow" onClick={toggleMinimized}>_</div>
-                    <div className="windows-box-shadow"> a</div>
-                    <div className="windows-box-shadow" onClick={onClose}>X</div>
+                    <div className="windows-box-shadow" onClick={toggleMinimized}><img src={ require('../img/minimize.png')} alt="minimize" /></div>
+                    <div className="windows-box-shadow"><img src={require('../img/maximize.png')} alt="maximize" /></div>
+                    <div className="windows-box-shadow" onClick={onClose}><img src={require('../img/chunky_close.png')} alt="close" /></div>
                 </div>
             </div>
             <div className="window-body">
