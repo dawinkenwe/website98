@@ -28,6 +28,7 @@ const appReducer = (state, action) => {
                     contents: action.payload.contents,
                     icon: action.payload.icon,
                     minimized: false,
+                    maximized: false,
                 }
                 draft.componentIds.push(appId)
                 draft.activeComponent = appId;
@@ -77,17 +78,27 @@ const appReducer = (state, action) => {
                 draft.nextZ += 1;
                 draft.activeComponent = action.component;
             });
-        case 'SET_WIDTH_HEIGHT':
-            return produce(state, draft => {
-                draft.components[action.id].width = action.width;
-                draft.components[action.id].height = action.height;
-            });
         case 'TOGGLE_MINIMIZED':
             return produce(state, draft => {
                 draft.components[action.id].z = draft.nextZ;
                 draft.nextZ = draft.nextZ + 1;
                 draft.components[action.id].minimized = !draft.components[action.id].minimized;
             });
+        case 'TOGGLE_MAXIMIZED':
+            console.log('maximized is: ' + state.components[action.id].maximized);
+            console.log('width: ' + state.components[action.id].width + ' height ' + state.components[action.id].height);
+            return produce(state, draft => {
+                draft.components[action.id].z = draft.nextZ;
+                draft.nextZ = draft.nextZ + 1;
+                draft.components[action.id].maximized = !draft.components[action.id].maximized;
+            })
+        case 'DRAG_MAXIMIZED':
+            return produce(state, draft => {
+                draft.components[action.id].z = draft.nextZ;
+                draft.nextZ = draft.nextZ + 1;
+                draft.components[action.id].maximized = false;
+                draft.components[action.id].y = '6';
+            })
         case 'SET_DEVICE_TYPE':
             return produce(state, draft => {
                 draft.deviceType = action.payload;

@@ -6,6 +6,7 @@ const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [resizedByDrag, setResizedByDrag] = useState(false);
     const windowRef = useRef(null);
 
     const handleMouseDown = (e) => {
@@ -27,6 +28,9 @@ const Window = ({ id }) => {
             if (dragging && state.activeComponent === id) {
                 e.preventDefault();
                 e.stopPropagation();
+                if (state.components[id].maximized) {
+                    dispatch({ 'type': 'TOGGLE_MAXIMIZED', id: id });
+                }
                 dispatch({
                     type: 'SET_POSITION',
                     component: id,
@@ -34,17 +38,11 @@ const Window = ({ id }) => {
                     y: e.clientY - offset.y,
                 });
             }
-        }, [dragging, state.activeComponent, id, offset, dispatch]
+        }, [dragging, state.activeComponent, id, offset, dispatch, state.components]
     );
 
     const handleMouseUp = useCallback(() => {
         setDragging(false);
-        dispatch({
-            type: 'SET_WIDTH_HEIGHT',
-            id: id,
-            width: windowRef.current.offsetWidth + 'px',
-            height: windowRef.current.offsetHeight + 'px',
-        })
     }, []);
 
     const handleTouchStart = (e) => {
@@ -65,6 +63,9 @@ const Window = ({ id }) => {
         (e) => {
             if (dragging && state.activeComponent === id) {
                 e.stopPropagation();
+                if (state.components[id].maximized) {
+                    dispatch({ 'type': 'TOGGLE_MAXIMIZED', id: id });
+                }
                 const touch = e.targetTouches[0];
                 dispatch({
                     type: 'SET_POSITION',
@@ -79,12 +80,6 @@ const Window = ({ id }) => {
 
     const handleTouchEnd = useCallback(() => {
         setDragging(false);
-        dispatch({
-            type: 'SET_WIDTH_HEIGHT',
-            id: id,
-            width: windowRef.current.offsetWidth + 'px',
-            height: windowRef.current.offsetHeight + 'px',
-        })
     }, []);
 
 
@@ -96,14 +91,18 @@ const Window = ({ id }) => {
         dispatch({ type: 'TOGGLE_MINIMIZED', id: id, minimized: true})
     }
 
+    const toggleMaximized = () => {
+        dispatch({type: 'TOGGLE_MAXIMIZED', id: id})
+    }
+
 
     return (
         <div className="window"
             style={{
-                left: `${state.components[id]['x']}px`,
-                top: `${state.components[id].y}px`,
-                width: `${state.components[id].width}`,
-                height: `${state.components[id].height}`,
+                left: state.components[id].maximized ? '6px' : `${state.components[id]['x']}px`,
+                top: state.components[id].maximized ? '6px' : `${state.components[id].y}px`,
+                width: state.components[id].maximized ? '100%' : `${state.components[id].width}`,
+                height: state.components[id].maximized ? '100%' : `${state.components[id].height}`,
                 position: 'absolute',
                 zIndex: `${state.components[id].minimized ? 0: state.components[id].z}`,
                 minWidth: `${state.components[id].minWidth}`,
@@ -123,7 +122,7 @@ const Window = ({ id }) => {
                 </div>
                 <div className="controls">
                     <div className="windows-box-shadow" onClick={toggleMinimized}><img src={ require('../img/minimize.png')} alt="minimize" /></div>
-                    <div className="windows-box-shadow"><img src={require('../img/maximize.png')} alt="maximize" /></div>
+                    <div className="windows-box-shadow" onClick={toggleMaximized}><img src={require('../img/maximize.png')} alt="maximize" /></div>
                     <div className="windows-box-shadow" onClick={onClose}><img src={require('../img/chunky_close.png')} alt="close" /></div>
                 </div>
             </div>
