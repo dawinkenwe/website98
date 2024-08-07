@@ -6,8 +6,9 @@ const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
-    const [resizedByDrag, setResizedByDrag] = useState(false);
     const windowRef = useRef(null);
+
+    /* We need to set the width and height of the element on load so that when we maximize and unmaximize there is a width to calculate with.*/
 
     const handleMouseDown = (e) => {
         if (e.target.className === 'window-title') {
@@ -29,7 +30,7 @@ const Window = ({ id }) => {
                 e.preventDefault();
                 e.stopPropagation();
                 if (state.components[id].maximized) {
-                    dispatch({ 'type': 'TOGGLE_MAXIMIZED', id: id });
+                    dispatch({ 'type': 'DRAG_MAXIMIZED', payload: { x: e.clientX, id: id }});
                 }
                 dispatch({
                     type: 'SET_POSITION',

@@ -94,10 +94,16 @@ const appReducer = (state, action) => {
             })
         case 'DRAG_MAXIMIZED':
             return produce(state, draft => {
-                draft.components[action.id].z = draft.nextZ;
+                console.log('width: ' + draft.components[action.payload.id].width)
+                console.log('payload x: ' + action.payload.x);
+
+
+                draft.components[action.payload.id].z = draft.nextZ;
                 draft.nextZ = draft.nextZ + 1;
-                draft.components[action.id].maximized = false;
-                draft.components[action.id].y = '6';
+                draft.components[action.payload.id].maximized = false;
+                draft.components[action.payload.id].y = '6';
+                draft.components[action.payload.id].x = action.payload.x - (draft.components[action.payload.id].width / 2);
+                console.log('set to ' + draft.components[action.payload.id].x);
             })
         case 'SET_DEVICE_TYPE':
             return produce(state, draft => {
