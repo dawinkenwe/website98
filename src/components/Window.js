@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 
@@ -8,7 +8,17 @@ const Window = ({ id }) => {
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const windowRef = useRef(null);
 
-    /* We need to set the width and height of the element on load so that when we maximize and unmaximize there is a width to calculate with.*/
+    const updateDimensions = () => {
+        if (windowRef.current) {
+            dispatch({ 'type': 'SET_WIDTH_HEIGHT', payload: { id: id, width: windowRef.current.offsetWidth, height: windowRef.current.offsetHeight } });
+        }
+    };
+
+
+    useEffect(() => {
+        updateDimensions();
+    }, []);
+
 
     const handleMouseDown = (e) => {
         if (e.target.className === 'window-title') {
@@ -30,7 +40,7 @@ const Window = ({ id }) => {
                 e.preventDefault();
                 e.stopPropagation();
                 if (state.components[id].maximized) {
-                    dispatch({ 'type': 'DRAG_MAXIMIZED', payload: { x: e.clientX, id: id }});
+                    dispatch({ 'type': 'DRAG_MAXIMIZED', payload: { x: e.clientX, id: id } });
                 }
                 dispatch({
                     type: 'SET_POSITION',
@@ -86,29 +96,33 @@ const Window = ({ id }) => {
 
     const onClose = () => {
         dispatch({ type: 'CLOSE_APP', id: id });
-    }
+    };
 
     const toggleMinimized = () => {
-        dispatch({ type: 'TOGGLE_MINIMIZED', id: id, minimized: true})
-    }
+        dispatch({ type: 'TOGGLE_MINIMIZED', id: id, minimized: true })
+    };
 
     const toggleMaximized = () => {
-        dispatch({type: 'TOGGLE_MAXIMIZED', id: id})
-    }
+        if (!state.components[id].maximized) {
+            updateDimensions();
+        }
+        dispatch({ type: 'TOGGLE_MAXIMIZED', id: id })
+    };
 
+    const windowStyle = {
+        left: state.components[id].maximized ? '6px' : `${state.components[id]['x']}px`,
+        top: state.components[id].maximized ? '6px' : `${state.components[id].y}px`,
+        width: state.components[id].maximized ? '100%' : `${state.components[id].width}px`,
+        height: state.components[id].maximized ? '100%' : `${state.components[id].height}px`,
+        position: 'absolute',
+        zIndex: `${state.components[id].minimized ? 0 : state.components[id].z}`,
+        minWidth: `${state.components[id].minWidth}`,
+        minHeight: `${state.components[id].minHeight}`
+    };
 
     return (
         <div className="window"
-            style={{
-                left: state.components[id].maximized ? '6px' : `${state.components[id]['x']}px`,
-                top: state.components[id].maximized ? '6px' : `${state.components[id].y}px`,
-                width: state.components[id].maximized ? '100%' : `${state.components[id].width}`,
-                height: state.components[id].maximized ? '100%' : `${state.components[id].height}`,
-                position: 'absolute',
-                zIndex: `${state.components[id].minimized ? 0: state.components[id].z}`,
-                minWidth: `${state.components[id].minWidth}`,
-                minHeight: `${state.components[id].minHeight}`,
-            }}
+            style={windowStyle}
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
