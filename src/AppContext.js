@@ -36,8 +36,6 @@ const appReducer = (state, action) => {
             });
         case 'OPEN_BLOG':
             const blogId = uuidv4();
-            console.log(action);
-            console.log('open blog ' + action.blogId)
             return produce(state, draft => {
                 draft.components[blogId] = {
                     id: blogId,
@@ -85,33 +83,17 @@ const appReducer = (state, action) => {
                 draft.components[action.id].minimized = !draft.components[action.id].minimized;
             });
         case 'TOGGLE_MAXIMIZED':
-            console.log('maximized is: ' + state.components[action.id].maximized);
-            console.log('width: ' + state.components[action.id].width + ' height ' + state.components[action.id].height);
             return produce(state, draft => {
-                draft.components[action.id].z = draft.nextZ;
-                draft.nextZ = draft.nextZ + 1;
-                draft.components[action.id].maximized = !draft.components[action.id].maximized;
-            });
-        case 'DRAG_MAXIMIZED':
-            console.log('dragging maximized');
-            return produce(state, draft => {
-                console.log('width: ' + draft.components[action.payload.id].width)
-                console.log('payload x: ' + action.payload.x);
-
-
                 draft.components[action.payload.id].z = draft.nextZ;
                 draft.nextZ = draft.nextZ + 1;
-                draft.components[action.payload.id].maximized = false;
-                draft.components[action.payload.id].y = '6';
-                draft.components[action.payload.id].x = action.payload.x - (draft.components[action.payload.id].width / 2);
-                console.log('set to ' + draft.components[action.payload.id].x);
+                draft.components[action.payload.id].maximized = !draft.components[action.payload.id].maximized;
+                draft.components[action.payload.id].y = action.payload.y ? action.payload.y : draft.components[action.payload.id].y;
             });
         case 'SET_DEVICE_TYPE':
             return produce(state, draft => {
                 draft.deviceType = action.payload;
             });
         case 'SET_WIDTH_HEIGHT':
-            console.log('setting width ' + action.payload.width + ' height ' + action.payload.height + ' for ' + action.payload.id);
             return produce(state, draft => {
                 draft.components[action.payload.id].width = action.payload.width;
                 draft.components[action.payload.id].height = action.payload.height;

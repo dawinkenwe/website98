@@ -27,8 +27,8 @@ const Window = ({ id }) => {
 
             setDragging(true);
             setOffset({
-                x: e.clientX - state.components[id].x,
-                y: e.clientY - state.components[id].y,
+                x: !state.components[id].maximized ? e.clientX - state.components[id].x : state.components[id].width / 2,
+                y: !state.components[id].maximized ? e.clientY - state.components[id].y : 6,
             });
         }
         dispatch({ type: 'SET_ACTIVE_COMPONENT', component: id });
@@ -40,7 +40,7 @@ const Window = ({ id }) => {
                 e.preventDefault();
                 e.stopPropagation();
                 if (state.components[id].maximized) {
-                    dispatch({ 'type': 'DRAG_MAXIMIZED', payload: { x: e.clientX, id: id } });
+                    dispatch({ 'type': 'TOGGLE_MAXIMIZED', payload: { id: id} });
                 }
                 dispatch({
                     type: 'SET_POSITION',
@@ -63,8 +63,8 @@ const Window = ({ id }) => {
 
             setDragging(true);
             setOffset({
-                x: touch.pageX - state.components[id].x,
-                y: touch.pageY - state.components[id].y,
+                x: !state.components[id].maximized ? touch.pageX - state.components[id].x: touch.pageX - state.components[id].width / 2,
+                y: !state.components[id].maximized ? touch.pageY - state.components[id].y: 6,
             });
         }
         dispatch({ type: 'SET_ACTIVE_COMPONENT', component: id });
@@ -75,7 +75,7 @@ const Window = ({ id }) => {
             if (dragging && state.activeComponent === id) {
                 e.stopPropagation();
                 if (state.components[id].maximized) {
-                    dispatch({ 'type': 'TOGGLE_MAXIMIZED', id: id });
+                    dispatch({ 'type': 'TOGGLE_MAXIMIZED', payload: { id: id } });
                 }
                 const touch = e.targetTouches[0];
                 dispatch({
@@ -86,7 +86,7 @@ const Window = ({ id }) => {
                 })
 
             }
-        }, [dragging, state.activeComponent, id, offset, dispatch]
+        }, [dragging, state.activeComponent, id, offset, dispatch, state.components]
     )
 
     const handleTouchEnd = useCallback(() => {
@@ -106,7 +106,7 @@ const Window = ({ id }) => {
         if (!state.components[id].maximized) {
             updateDimensions();
         }
-        dispatch({ type: 'TOGGLE_MAXIMIZED', id: id })
+        dispatch({ type: 'TOGGLE_MAXIMIZED', payload: { id: id } });
     };
 
     const windowStyle = {
