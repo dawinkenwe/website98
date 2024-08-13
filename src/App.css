@@ -36,8 +36,17 @@ html, body {
     overflow: hidden;
 }
 
-.taskbar-div {
+.task-bar {
+    background: #c0c0c0;
+    height: 2.5rem;
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 1rem);
     display: flex;
+    padding: 0.5rem;
+    z-index: 999999998;
+    justify-content: space-between;
+    box-shadow: 0 -2px #fffdfc, 0 -4px #cce9eb
 }
 
 .programs-view {

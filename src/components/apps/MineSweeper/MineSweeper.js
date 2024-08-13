@@ -158,27 +158,26 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 					<MinesweeperClock isTicking={started && gameStatus === ''} />
 				</div>
 			</div>
-				<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
-					{grid.map((row, x) => (
-						<>
-							{row.map((value, y) => (
-								<div className={classNames('minesweeper-square', {
-									'colorBlue': value.display === 1,
-									'colorGreen': value.display === 2,
-									'colorRed': value.display === 3,
-									'colorDarkBlue': value.display === 4,
-									'colorDarkRed': value.display === 5,
-									'colorTurquoise': value.display === 6,
-									'colorBlack': value.display === 7,
-									'colorGray': value.display === 8,
-									'windows-box-shadow': value.display === '' || value.display === 'f',
-									'dotted-border': value.display !== '' && value.display !== 'f'
-								})} onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display === 'f' ? <img src={require('../../../img/minesweeper_flag.png')} height="16px" width="16px" alt="f"/> : value.display}</div>
-							))}
-						</>
-					))}
-				</div>
-
+			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>
+				{grid.map((row, x) => (
+					<>
+						{row.map((value, y) => (
+							<div className={classNames('minesweeper-square', {
+								'colorBlue': value.display === 1,
+								'colorGreen': value.display === 2,
+								'colorRed': value.display === 3,
+								'colorDarkBlue': value.display === 4,
+								'colorDarkRed': value.display === 5,
+								'colorTurquoise': value.display === 6,
+								'colorBlack': value.display === 7,
+								'colorGray': value.display === 8,
+								'windows-box-shadow': value.display === '' || value.display === 'f',
+								'dotted-border': value.display !== '' && value.display !== 'f'
+							})} onClick={() => handleLeftClick(x, y)} onContextMenu={(e) => handleRightClick(e, x, y)}>{value.display === 'f' ? <img src={require('../../../img/minesweeper_flag.png')} height="16px" width="16px" alt="f"/> : value.display}</div>
+						))}
+					</>
+				))}
+			</div>
 		</div>
 	)
 }

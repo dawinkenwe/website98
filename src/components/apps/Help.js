@@ -24,9 +24,9 @@ const Help = () => {
                 <input type="text" id="long" className="inverse-windows-box-shadow" value="General Help" readOnly=''></input>
             </div>
             <div className="help-contents">
-                <div class="tab-box">
-                    <div class="tab-header">Help</div>
-                    <ul class="help-questions">
+                <div className="tab-box">
+                    <div className="tab-header">Help</div>
+                    <ul className="help-questions">
                         {Object.keys(helpData).map((question) => (
                             <li key={question} onClick={() => handleQuestionClick(question)} className={`${question === selectedQuestion ? 'selected-question' : ''}` }>
                                 <img src={img} alt="help" className="help-img"/>
@@ -35,9 +35,9 @@ const Help = () => {
                         ))}
                     </ul>
                 </div>
-                <div class="answers">
+                <div className="answers">
                     {selectedQuestion &&
-                        (<div class="content" dangerouslySetInnerHTML={createMarkup(helpData[selectedQuestion])} />
+                        (<div className="content" dangerouslySetInnerHTML={createMarkup(helpData[selectedQuestion])} />
                     )}
                 </div>
             </div>

@@ -64,6 +64,10 @@ const appReducer = (state, action) => {
             return produce(state, draft => {
                 draft.isStartMenuOpen = !draft.isStartMenuOpen;
             });
+        case 'CLOSE_START_MENU':
+            return produce(state, draft => {
+                draft.isStartMenuOpen = false;
+            })
         case 'SET_POSITION':
             return produce(state, draft => {
                 draft.components[action.component].x = action.x;
@@ -87,7 +91,6 @@ const appReducer = (state, action) => {
                 draft.components[action.payload.id].z = draft.nextZ;
                 draft.nextZ = draft.nextZ + 1;
                 draft.components[action.payload.id].maximized = !draft.components[action.payload.id].maximized;
-                draft.components[action.payload.id].y = action.payload.y ? action.payload.y : draft.components[action.payload.id].y;
             });
         case 'SET_DEVICE_TYPE':
             return produce(state, draft => {

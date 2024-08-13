@@ -31,12 +31,12 @@ const BlogList = () => {
         <div className="documents">
             {blogs.map(blog => (
                 <DoubleTap onDoubleTap={() => openDocument(blog.filename)}>
-                    <div className="file">
-                        <div className="icon" onDoubleClick={() => openDocument(blog.filename)}>
+                    <div className="document-file">
+                        <div className="document-icon" onDoubleClick={() => openDocument(blog.filename)}>
                             <img src={getProgramIcon('notepadDocument')} alt={blog.filename} />
                         </div>
-                        <div className="text">{blog.filename}</div>
-                        </div>
+                        {blog.filename}
+                    </div>
                 </DoubleTap>
             ))}
         </div>

@@ -1,21 +1,38 @@
 .documents {
     background: white;
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
     padding: 1rem;
     box-sizing: border-box;
     margin-top: 2px;
 }
 
-.file{
+.documents > div {
+    display: flex;
+}
+
+.document-file{
+    box-sizing: border-box;
     text-align: center;
     margin: 0 1rem 0 0;
     width: 7rem;
-
+    height: 7rem;
 }
 
-.icon {
+.document-file > text {
+    text-overflow: ellipsis;
+    padding: 0.5rem;
+}
+
+.document-icon {
     display: block;
     text-align: center;
     margin: 0 0 1rem 0;
+}
+
+.document-text {
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
