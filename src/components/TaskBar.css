@@ -28,7 +28,7 @@
     display: flex;
     overflow-x: hidden;
     overflow-y: hidden;
-    padding: 4px, 0, 0, 2rem;
+    padding: 4px 0 0 2rem;
     position: relative;
     top: -1px;
     width: calc(100% - 5rem);
