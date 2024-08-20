@@ -2,6 +2,15 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 
+const convertViewportToPx = (value) => {
+    const [, percent, unit] = value.match(/^(\d+)(\D+)$/);
+
+    const percentage = parseFloat(value);
+    if (!(percentage)) return value;
+
+    const dimensionValue = dimension === 'width' ? window.innerWidth : window.innerHeight
+}
+
 const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
     const [dragging, setDragging] = useState(false);
@@ -10,13 +19,15 @@ const Window = ({ id }) => {
 
     const updateDimensions = () => {
         if (windowRef.current) {
-            dispatch({ 'type': 'SET_WIDTH_HEIGHT', payload: { id: id, width: windowRef.current.offsetWidth, height: windowRef.current.offsetHeight } });
+            dispatch({ 'type': 'SET_WIDTH_HEIGHT', payload: { id: id, width: windowRef.current.offsetWidth, height: windowRef.current.offsetHeight} });
         }
     };
 
 
     useEffect(() => {
-        updateDimensions();
+        if (!state.components[id].x === 'number') {
+            updateDimensions();
+        }
     }, []);
 
 
@@ -110,10 +121,10 @@ const Window = ({ id }) => {
     };
 
     const windowStyle = {
-        left: state.components[id].maximized ? '6px' : `${state.components[id]['x']}px`,
-        top: state.components[id].maximized ? '6px' : `${state.components[id].y}px`,
-        width: state.components[id].maximized ? '100%' : `${state.components[id].width}px`,
-        height: state.components[id].maximized ? '100%' : `${state.components[id].height}px`,
+        left: state.components[id].maximized ? '6px' : state.components[id].x === 'number' ? `${state.components[id].x}px` : `${state.components[id].x}px`,
+        top: state.components[id].maximized ? '6px' : state.components[id].y === 'number' ? `${state.components[id].y}px` : `${state.components[id].y}`,
+        width: state.components[id].maximized ? '100%' : `${state.components[id].width}`,
+        height: state.components[id].maximized ? '100%' : `${state.components[id].height}`,
         position: 'absolute',
         zIndex: `${state.components[id].minimized ? 0 : state.components[id].z}`,
         minWidth: `${state.components[id].minWidth}`,
