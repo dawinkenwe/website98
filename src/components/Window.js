@@ -2,15 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 
-const convertViewportToPx = (value) => {
-    const [, percent, unit] = value.match(/^(\d+)(\D+)$/);
-
-    const percentage = parseFloat(value);
-    if (!(percentage)) return value;
-
-    const dimensionValue = dimension === 'width' ? window.innerWidth : window.innerHeight
-}
-
 const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
     const [dragging, setDragging] = useState(false);
@@ -122,7 +113,7 @@ const Window = ({ id }) => {
 
     const windowStyle = {
         left: state.components[id].maximized ? '6px' : state.components[id].x === 'number' ? `${state.components[id].x}px` : `${state.components[id].x}px`,
-        top: state.components[id].maximized ? '6px' : state.components[id].y === 'number' ? `${state.components[id].y}px` : `${state.components[id].y}`,
+        top: state.components[id].maximized ? '6px' : state.components[id].y === 'number' ? `${state.components[id].y}px` : `${state.components[id].y}px`,
         width: state.components[id].maximized ? '100%' : `${state.components[id].width}`,
         height: state.components[id].maximized ? '100%' : `${state.components[id].height}`,
         position: 'absolute',

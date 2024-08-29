@@ -105,8 +105,8 @@ const programDefaults = {
         name: 'Documents',
         defaultSize: {
             desktop: {
-                width: 'auto',
-                height: 'auto',
+                width: '25vw',
+                height: '40vh',
             },
             mobile: {
                 width: '90vw',
