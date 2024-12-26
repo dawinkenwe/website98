@@ -12,6 +12,8 @@ const StartMenu = () => {
     };
 
     /* TODO: Import menu items from file? use mapping and {} */
+    /* TODO: replace span. Can't remove outright, css uses it. */
+
     return (
         <div id="start-menu" className="windows-box-shadow" style={{ display: state.isStartMenuOpen ? 'block' : 'none' }}>
                     <div id="windows-start-menu-blue">Winkenwerder<span>98</span></div>

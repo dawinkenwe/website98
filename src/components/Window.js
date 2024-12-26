@@ -16,7 +16,7 @@ const Window = ({ id }) => {
 
 
     useEffect(() => {
-        if (!state.components[id].x === 'number') {
+        if (state.components[id].width !== 'number') {
             updateDimensions();
         }
     }, []);
@@ -108,14 +108,14 @@ const Window = ({ id }) => {
         if (!state.components[id].maximized) {
             updateDimensions();
         }
-        dispatch({ type: 'TOGGLE_MAXIMIZED', payload: { id: id } });
+        dispatch({ type: 'TOGGLE_MAXIMIZED', payload: { id: id} });
     };
 
     const windowStyle = {
         left: state.components[id].maximized ? '6px' : state.components[id].x === 'number' ? `${state.components[id].x}px` : `${state.components[id].x}px`,
         top: state.components[id].maximized ? '6px' : state.components[id].y === 'number' ? `${state.components[id].y}px` : `${state.components[id].y}px`,
-        width: state.components[id].maximized ? '100%' : `${state.components[id].width}`,
-        height: state.components[id].maximized ? '100%' : `${state.components[id].height}`,
+        width: state.components[id].maximized ? '100%' : `${state.components[id].width}px`,
+        height: state.components[id].maximized ? '100%' : `${state.components[id].height}px`,
         position: 'absolute',
         zIndex: `${state.components[id].minimized ? 0 : state.components[id].z}`,
         minWidth: `${state.components[id].minWidth}`,
