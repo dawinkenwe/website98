@@ -18,7 +18,7 @@ const DoubleTap = ({ onDoubleTap, children }) => {
     };
 
     return (
-        <div onTouchEnd={handleTouchEnd}>
+        <div onTouchEnd={handleTouchEnd} onDoubleClick={onDoubleTap}>
             {children}
         </div>
     );

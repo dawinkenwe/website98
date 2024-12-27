@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
+import DoubleTap from './DoubleTap';
 
 const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
@@ -133,16 +134,18 @@ const Window = ({ id }) => {
             onTouchEnd={handleTouchEnd}
             ref={windowRef}
         >
-            <div className="title-bar">
-                <div className='window-title'>
-                    {state.components[id].name}
+            <DoubleTap onDoubleTap={toggleMaximized}>
+                <div className="title-bar">
+                    <div className='window-title'>
+                        {state.components[id].name}
+                    </div>
+                    <div className="controls">
+                        <div className="windows-box-shadow" onClick={toggleMinimized}><img src={ require('../img/minimize.png')} alt="minimize" /></div>
+                        <div className="windows-box-shadow" onClick={toggleMaximized}><img src={require('../img/maximize.png')} alt="maximize" /></div>
+                        <div className="windows-box-shadow" onClick={onClose}><img src={require('../img/chunky_close.png')} alt="close" /></div>
+                    </div>
                 </div>
-                <div className="controls">
-                    <div className="windows-box-shadow" onClick={toggleMinimized}><img src={ require('../img/minimize.png')} alt="minimize" /></div>
-                    <div className="windows-box-shadow" onClick={toggleMaximized}><img src={require('../img/maximize.png')} alt="maximize" /></div>
-                    <div className="windows-box-shadow" onClick={onClose}><img src={require('../img/chunky_close.png')} alt="close" /></div>
-                </div>
-            </div>
+            </DoubleTap>
             <div className="window-body">
                 {state.components[id].contents}
             </div>
