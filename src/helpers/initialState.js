@@ -2,7 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const getInitialState = () => {
-    const shortcutIds = [uuidv4(), uuidv4()];
+    // This is dumb, but I am tired. And it will work.
+    const shortcutIds = [uuidv4(), uuidv4(), uuidv4(), uuidv4()];
 
     const initialState = {
         components: {},
@@ -25,6 +26,11 @@ const getInitialState = () => {
                 img: require('../img/minesweeper.png'),
                 name: 'minesweeper',
                 text: 'Minesweeper',
+            },
+            [shortcutIds[3]]: {
+                img: require('../img/gourdchat.jpeg'),
+                name: 'gourdchat',
+                text: 'GourdChat',
             }
         },
         deviceType: 'desktop',

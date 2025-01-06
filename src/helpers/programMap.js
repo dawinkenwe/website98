@@ -4,6 +4,7 @@ import PatchNotes from '../components/apps/PatchNotes';
 import Blog from '../components/apps/Notepad';
 import BlogList from '../components/apps/Documents';
 import MineSweeper from '../components/apps/MineSweeper/MineSweeper'
+import GourdChat from '../components/apps/GourdChat'
 
 
 const programIcons = {
@@ -17,6 +18,7 @@ const programIcons = {
     windowsUpdate: require('../img/windows_update.png'),
     notepadDocument: require('../img/notepad_file.png'),
     minesweeper: require('../img/minesweeper.png'),
+    gourdchat: require('../img/gourdchat.jpeg')
 };
 
 const programDefaults = {
@@ -138,7 +140,27 @@ const programDefaults = {
             height: '0',
         },
         contents: <MineSweeper />
-    }
+    },
+
+    gourdchat: {
+        icon: programIcons['gourdchat'],
+        name: 'Gourd Chat',
+        defaultSize: {
+            desktop: {
+                width: 'auto',
+                height: 'auto',
+            },
+            mobile: {
+                width: 'auto',
+                height: 'auto',
+            },
+        },
+        contents: <GourdChat />,
+        minimumSize: {
+            width: '1vw',
+            height: '1vh',
+        }
+    },
 }
 
 export const getProgramInfo = (programName) => {

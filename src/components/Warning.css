@@ -1,0 +1,17 @@
+.warningContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.warningImageAndText {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.warningButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

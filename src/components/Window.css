@@ -19,10 +19,14 @@
     background: linear-gradient(90deg, #000b7c, #377cc6);
     color: white;
     padding: 0.25rem;
+    max-height: 19px;
 }
 
 .window-title {
     flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 19px
 }
 
 .controls {

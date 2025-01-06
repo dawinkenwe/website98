@@ -12,6 +12,10 @@ const createNewGrid = (numRows, numCols, numMines) => {
 		return (Array.from({ length: numCols }, () => ({ hasMine: false, adjacencyCount: 0, display: '' })))
 	});
 
+	// TODO: Use the array to calculate the total display size of the graph and
+	// style it so that it can't be shrunk past that size, and it is always
+	// centered in the page.
+
 	const minePositions = new Set();
 
 	while (minePositions.size < numMines) {
