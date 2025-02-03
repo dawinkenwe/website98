@@ -5,6 +5,7 @@ import Blog from '../components/apps/Notepad';
 import BlogList from '../components/apps/Documents';
 import MineSweeper from '../components/apps/MineSweeper/MineSweeper'
 import GourdChat from '../components/apps/GourdChat'
+import Poker from '../components/poker';
 
 
 const programIcons = {
@@ -155,7 +156,7 @@ const programDefaults = {
                 height: 'auto',
             },
         },
-        contents: <GourdChat />,
+        contents: <Poker />,
         minimumSize: {
             width: '1vw',
             height: '1vh',
