@@ -11,7 +11,7 @@ cardSheet.src = "../img/solitaire-bitmap.png";
 // Add 
 // resize cards as needed
 // Detect click of cards
-// 
+// Add an interaction / commands section
 const drawCard = (canvas, index, x, y) => {
     const context = canvas.current.getContext('2d');
     const img = new Image();
@@ -32,12 +32,16 @@ const Poker = () => {
     }, []);
 
     return (
-        <>
-        <canvas 
-            ref={myCanvas}
-            height={200}
-            width={200}/>
-        </>
+        <div className="poker" style={{display: "flex", flexDirection: "row", backgroundColor: "#006300"}}>
+            <div className="controlsDiv" style={{display: "flex", flex: 1}}>
+            </div>
+            <div className="canvasDiv" style={{display: "flex", flex: 1}}>
+                <canvas 
+                ref={myCanvas}
+                height={200}
+                width={200}/>
+            </div>
+        </div>
     )
 }
 
