@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import image2 from "../img/solitaire-bitmap.png"
 
 const cardSheet = new Image();
@@ -8,11 +8,9 @@ cardSheet.src = "../img/solitaire-bitmap.png";
 // Add the concept of a deck and dealing a hand
 // Add a dealer
 // Add buttons for actions
-// Add Add a background and 
 // resize cards as needed
 // Detect click of cards
-// Add an interaction / commands section
-const drawCard = (canvas, index, x, y) => {
+const drawCardToCanvas = (canvas, index, x, y) => {
     const context = canvas.current.getContext('2d');
     const img = new Image();
     img.src = image2;
@@ -23,13 +21,33 @@ const drawCard = (canvas, index, x, y) => {
 }
 
 const Poker = () => {
+    // const deck = Array.from(Array(10).keys())
+
+    const [deck, setDeck] = useState([])
+
+    const reshuffleDeck = () => {
+        setDeck([...Array(52).keys()])
+    }
+
+    const drawCardFromDeck = () => {
+        if (deck.length === 0) {
+            reshuffleDeck()
+        }
+        let index = Math.floor(Math.random() * deck.length)
+        let cardNumber = deck.splice(index, 1)
+        return cardNumber;
+    }
     const myCanvas = useRef(null);
     console.log("poker");
 
     useEffect(()=> {
-        drawCard(myCanvas, 0, 10, 10);
-        drawCard(myCanvas, 0, 24, 10);
-    }, []);
+        let card1 = drawCardFromDeck();
+        let card2 = drawCardFromDeck();
+        console.log(card1);
+        console.log(card2);
+        drawCardToCanvas(myCanvas, card1, 10, 10);
+        drawCardToCanvas(myCanvas, card2, 24, 10);
+    }, [drawCardFromDeck]);
 
     return (
         <div className="poker" style={{display: "flex", flexDirection: "row", backgroundColor: "#006300", width: "100%"}}>
