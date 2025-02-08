@@ -4,11 +4,11 @@ import image2 from "../img/solitaire-bitmap.png"
 const cardSheet = new Image();
 cardSheet.src = "../img/solitaire-bitmap.png";
 
-// TODO: Add a background and size
+// TODO: size
 // Add the concept of a deck and dealing a hand
 // Add a dealer
 // Add buttons for actions
-// Add 
+// Add Add a background and 
 // resize cards as needed
 // Detect click of cards
 // Add an interaction / commands section
@@ -32,10 +32,11 @@ const Poker = () => {
     }, []);
 
     return (
-        <div className="poker" style={{display: "flex", flexDirection: "row", backgroundColor: "#006300"}}>
-            <div className="controlsDiv" style={{display: "flex", flex: 1}}>
+        <div className="poker" style={{display: "flex", flexDirection: "row", backgroundColor: "#006300", width: "100%"}}>
+            <div className="controlsDiv" style={{flex: 1, backgroundColor: "#b9b9b9", marginLeft: "20px"}}>
+                asdf
             </div>
-            <div className="canvasDiv" style={{display: "flex", flex: 1}}>
+            <div className="canvasDiv" style={{flex: "2", backgroundColor: "#006300"}}>
                 <canvas 
                 ref={myCanvas}
                 height={200}
