@@ -34,7 +34,12 @@ const Poker = () => {
     return (
         <div className="poker" style={{display: "flex", flexDirection: "row", backgroundColor: "#006300", width: "100%"}}>
             <div className="controlsDiv" style={{flex: 1, backgroundColor: "#b9b9b9", marginLeft: "20px"}}>
-                asdf
+                <div className="controlsColumn" style={{display: "flex", flexDirection: "column", height: "100%"}}>
+                    <div className="roundGoal windows-box-shadow" style={{display: "flex", flex: 1, boxSizing: "border-box", margin: "4px", alignItems: "center", justifyContent: "center"}}> Big Blind </div>
+                    <div className="roundScore windows-box-shadow" style={{display: "flex", flex: 1, margin: "4px", alignItems: "center", justifyContent: "center"}}>Round Score</div>
+                    <div className="moneyDiv windows-box-shadow" style={{display: "flex", flex: 1, margin: "4px", alignItems: "center", justifyContent: "center"}}>Money</div>
+                    <div className="buttonsDiv windows-box-shadow" style={{display: "flex", flex: 1, margin: "4px", alignItems: "center", justifyContent: "center"}}><span style={{alignItems: "center", justifyContent: "center"}}>buttons</span></div>
+                </div>
             </div>
             <div className="canvasDiv" style={{flex: "2", backgroundColor: "#006300"}}>
                 <canvas 
