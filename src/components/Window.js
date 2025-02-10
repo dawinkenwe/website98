@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 import DoubleTap from './DoubleTap';
+import ProgramMenu from './ProgramMenu'
 
 const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
@@ -146,6 +147,7 @@ const Window = ({ id }) => {
                     </div>
                 </div>
             </DoubleTap>
+            <ProgramMenu props={[{text: 'option1'}, {text: 'option2'}]}/>
             <div className="window-body">
                 {state.components[id].contents}
             </div>

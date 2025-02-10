@@ -148,12 +148,12 @@ const programDefaults = {
         name: 'Gourd Chat',
         defaultSize: {
             desktop: {
-                width: 'auto',
-                height: 'auto',
+                width: '90vw',
+                height: '70vh',
             },
             mobile: {
-                width: 'auto',
-                height: 'auto',
+                width: '90vw',
+                height: '70vh',
             },
         },
         contents: <Poker />,

@@ -1,0 +1,23 @@
+.menu-bar {
+    display: flex;
+    background: #b9b9b9;
+    color: black;
+    padding-top: 0.125rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    padding-bottom: 0.375rem;
+    max-height: 19px;
+}
+
+.menuItem:before {
+    width: 10px;
+    background: black;
+    content: '';
+    height: 1px;
+    position: absolute;
+    margin-top: 20px;
+}
+
+.menu-bar div:not(:first-child) {
+    margin-left: 10px;
+}

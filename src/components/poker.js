@@ -10,6 +10,9 @@ cardSheet.src = "../img/solitaire-bitmap.png";
 // Add buttons for actions
 // resize cards as needed
 // Detect click of cards
+// Add a discard pile for reshuffling
+// Test multiple decks
+// Add a menu bar that is the same size as 
 const drawCardToCanvas = (canvas, index, x, y) => {
     const context = canvas.current.getContext('2d');
     const img = new Image();
