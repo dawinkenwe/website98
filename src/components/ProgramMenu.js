@@ -15,7 +15,7 @@ const testMenu = [
 
 
 const ProgramMenu = () => {
-    const [selectedOption, setSelectedOption] = useState("Game");
+    const [selectedOption, setSelectedOption] = useState(undefined);
     const props = testMenu;
 
     // TODO: add styling to make the suboptions display underneath the option
@@ -23,19 +23,22 @@ const ProgramMenu = () => {
     // then make it so that they don't push the bar they're on down.
     // I think we could do this by making the parent container not a flex???
     return (
-    <ul className="menu-bar">
-        {props.map((option) => {
-            console.log(option)
-            return (
-                <>
-                    <li className="menuItem">{option.text}</li>
-                    <ul>
-                        {option.text === selectedOption && option.subOptions.map((subOption) => {
-                            return <li className="subOption" onClick={subOption.function}>{subOption.text}</li>
-                        })}
-                    </ul>
-                </>
-            )
+        <ul className="menu-bar" style={{ margin: 0 }} >
+            {props.map((option) => {
+                return (
+                    <>
+                        <li className="menuItem" onClick={() => { setSelectedOption(option.text)} }><span>{option.text}</span>
+                            {option.text === selectedOption &&
+                                <ul> {
+                                    option.subOptions.map((subOption) => {
+                                        return <li className="subOption" onClick={subOption.function}>{subOption.text}</li>
+                                    })
+                                }
+                                </ul >
+                            }
+                        </li>                        
+                    </>
+                )
         })}
     </ul>)
 }
