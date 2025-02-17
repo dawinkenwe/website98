@@ -11,7 +11,7 @@
     list-style: none;
 }
 
-.menuItem:before {
+.textUnderline:before {
     width: 10px;
     background: black;
     content: '';
@@ -22,8 +22,23 @@
 
 .menuItem {
     padding-right: 0.5rem;
+    display: block;
+    position: relative;
+    float: left;
 }
 
 .menu-bar div:not(:first-child) {
     margin-left: 10px;
+}
+
+.optionsDropDown {
+    display: flex;
+}
+
+ul {
+    list-style: none;
+}
+
+.dropDownItem {
+
 }

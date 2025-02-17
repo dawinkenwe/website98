@@ -17,30 +17,35 @@ const testMenu = [
 const ProgramMenu = () => {
     const [selectedOption, setSelectedOption] = useState(undefined);
     const props = testMenu;
+    const handleClick = (option) => {
+        selectedOption === option.text ? setSelectedOption(undefined) : setSelectedOption(option)
+    }
 
     // TODO: add styling to make the suboptions display underneath the option
     // then make it so that it only happens WHEN the option is hovered over
     // then make it so that they don't push the bar they're on down.
     // I think we could do this by making the parent container not a flex???
     return (
+        <>
         <ul className="menu-bar" style={{ margin: 0 }} >
             {props.map((option) => {
                 return (
                     <>
-                        <li className="menuItem" onClick={() => { setSelectedOption(option.text)} }><span>{option.text}</span>
-                            {option.text === selectedOption &&
-                                <ul> {
-                                    option.subOptions.map((subOption) => {
-                                        return <li className="subOption" onClick={subOption.function}>{subOption.text}</li>
-                                    })
-                                }
-                                </ul >
-                            }
+                        <li className="menuItem textUnderline" onClick={() => { handleClick(option)} }><span>{option.text}</span>
                         </li>                        
                     </>
                 )
         })}
-    </ul>)
+        </ul>
+        {selectedOption !== undefined &&
+            <ul className="optionsDropDown">
+                {selectedOption.subOptions.map((subOption) => {
+                    return (<li className="dropDownItem"><span>{subOption.text}</span></li>)
+                })}
+            </ul>
+        }
+        </>
+    )
 }
 
 export default ProgramMenu
