@@ -18,7 +18,10 @@ const ProgramMenu = () => {
     const [selectedOption, setSelectedOption] = useState(undefined);
     const props = testMenu;
     const handleClick = (option) => {
-        selectedOption === option.text ? setSelectedOption(undefined) : setSelectedOption(option)
+        selectedOption === option ? setSelectedOption(undefined) : setSelectedOption(option)
+    }
+    const handleHover = (option) => {
+        if (selectedOption) setSelectedOption(option);
     }
 
     // TODO: add styling to make the suboptions display underneath the option
@@ -27,23 +30,25 @@ const ProgramMenu = () => {
     // I think we could do this by making the parent container not a flex???
     return (
         <>
-        <ul className="menu-bar" style={{ margin: 0 }} >
+            <ul className="menu-bar" style={{ margin: 0 }} >
+                <div className="menuBarLine"/>
             {props.map((option) => {
                 return (
                     <>
-                        <li className="menuItem textUnderline" onClick={() => { handleClick(option)} }><span>{option.text}</span>
+                        <li className="menuItem textUnderline" onClick={() => { handleClick(option) }} onMouseEnter={() => {handleHover(option) } }><span>{option.text}</span>
+                            {selectedOption === option &&
+                                <ul className="optionsDropDown">
+                                    {selectedOption.subOptions.map((subOption) => {
+                                        return (<li className="dropDownItem"><span>{subOption.text}</span></li>)
+                                    })}
+                                </ul>
+                            }
                         </li>                        
                     </>
                 )
         })}
         </ul>
-        {selectedOption !== undefined &&
-            <ul className="optionsDropDown">
-                {selectedOption.subOptions.map((subOption) => {
-                    return (<li className="dropDownItem"><span>{subOption.text}</span></li>)
-                })}
-            </ul>
-        }
+
         </>
     )
 }
