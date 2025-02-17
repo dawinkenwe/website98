@@ -24,10 +24,6 @@ const ProgramMenu = () => {
         if (selectedOption) setSelectedOption(option);
     }
 
-    // TODO: add styling to make the suboptions display underneath the option
-    // then make it so that it only happens WHEN the option is hovered over
-    // then make it so that they don't push the bar they're on down.
-    // I think we could do this by making the parent container not a flex???
     return (
         <>
             <ul className="menu-bar" style={{ margin: 0 }} >
@@ -39,7 +35,7 @@ const ProgramMenu = () => {
                             {selectedOption === option &&
                                 <ul className="optionsDropDown">
                                     {selectedOption.subOptions.map((subOption) => {
-                                        return (<li className="dropDownItem"><span>{subOption.text}</span></li>)
+                                        return (<li className="dropDownItem" onClick={() => subOption.function() }><span>{subOption.text}</span></li>)
                                     })}
                                 </ul>
                             }
