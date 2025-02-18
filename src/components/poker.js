@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import image2 from "../img/solitaire-bitmap.png";
 import "./poker.css";
-import { InfoTable } from './pokerMenuComponents';
+import { InfoGrid, RunInfoOptions, RoundScoreGrid, BlindInfoGrid } from './pokerMenuComponents';
 
 const cardSheet = new Image();
 cardSheet.src = "../img/solitaire-bitmap.png";
@@ -56,8 +56,11 @@ const Poker = () => {
 
     return (
         <div className="poker" style={{ display: "flex", flexDirection: "row", backgroundColor: "#006300", width: "100%" }}>
-            <div className="controlsDiv" style={{flex: 1, backgroundColor: "#b9b9b9", marginLeft: "20px"}}>
-                <InfoTable hands={3} discards={5} money={100} ante={1} rounds={1} />
+            <div className="controlsDiv" style={{ flex: 1, backgroundColor: "#b9b9b9", marginLeft: "20px" }}>
+                <BlindInfoGrid blindType={'big'} targetScore={"20,000"} />
+                <RoundScoreGrid totalScore={"7,520"} computedScore={"80"} chips={40} multiplyer={2} />
+                <InfoGrid hands={3} discards={5} money={100} ante={1} rounds={1} />
+                <RunInfoOptions />
             </div>
             <div className="canvasDiv" style={{flex: 2, backgroundColor: "#006300"}}>
                 <canvas 
