@@ -7,6 +7,11 @@ const cardSheet = new Image();
 cardSheet.src = "../img/solitaire-bitmap.png";
 
 // TODO: size
+// styling of content
+// inset areas in sidebar
+// space areas in sidebar correctly
+// style buttons with depress animations
+// 
 // Add the concept of a deck and dealing a hand
 // Add a dealer
 // Add buttons for actions
