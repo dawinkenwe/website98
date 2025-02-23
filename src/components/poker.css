@@ -16,9 +16,6 @@
 		'image image text text text'
 		'image image chip count count'
 		'image image chip count count';
-	padding: 1px;
-	box-sizing: border-box;
-	margin: 4px;
 }
 
 .scoreGrid {
@@ -26,14 +23,13 @@
 	grid-template-areas: 'total total total'
 		'score score score'
 		'chips x mult';
-
 }
 
 .insetBox {
 	box-shadow: -2px -2px #818181, -2px 0 #818181, 0 -2px #818181, 2px 2px #e0dede, 0 2px #e0dede, 2px 0 #e0dede, 2px -2px #818181, -2px 2px #e0dede;
 	padding: 1px;
 	box-sizing: border-box;
-	margin: 4px;
+	margin: 4px 10px 10px 10px;
 }
 
 .infoDiv {
