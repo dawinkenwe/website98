@@ -2,19 +2,9 @@ import React from 'react';
 import './pokerMenuComponents.css'
 
 export const BlindInfoGrid = ({ blindType, targetScore }) => {
-	const blindInfoStyle = {
-		display: "grid",
-		gridTemplateAreas: `
-			'banner banner banner banner banner'
-			'banner banner banner banner banner'
-			'image image text text text'
-			'image image chip count count'
-			'image image chip count count'
-			`
-	}
 
 	return (
-		<div className="blindInfoDiv" style={blindInfoStyle}>
+		<div className="blindInfoDiv insetBox">
 			<div className="blindText" style={{ gridArea: "banner" }}><b>{blindType === 'big' ? "Big Blind" : "Small Blind"}</b></div>
 			<div className="blindChipImage" style={{ gridArea: "image" }}>chip</div>
 			<div className="blindText" style={{ gridArea: "text" }}>Score at least:</div>
@@ -35,7 +25,7 @@ export const RoundScoreGrid = ({ totalScore, computedScore, chips, multiplyer })
 	}
 
 	return (
-		<div className="scoreGrid" style={scoreStyle}>
+		<div className="scoreGrid insetBox" style={scoreStyle}>
 			<div className="currentScore" style={{ gridArea: "total" }}>Round Score: <b>{totalScore}</b></div>
 			<b className="computedScore" style={{ gridArea: "score" }}>{computedScore}</b>
 			<div className="chips" style={{ gridArea: "chips" }}>{chips}</div>
@@ -57,7 +47,7 @@ export const InfoGrid = ({ hands, discards, money, ante, rounds }) => {
 
 	}
 	return (
-		<div className="infoGrid" style={ infoStyle }>
+		<div className="infoGrid insetBox" style={ infoStyle }>
 			<div className="hands" style={{gridArea: "hands"}}>Hands: {hands}</div>
 			<div className="discards" style={{gridArea: "discards"}}>Discards: {discards}</div>
 			<div className="money" style={{gridArea: "money"}}>Money: {money}</div>
