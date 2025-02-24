@@ -48,9 +48,9 @@ export const InfoGrid = ({ hands, discards, money, ante, rounds }) => {
 	}
 	return (
 		<div className="infoGrid insetBox" style={ infoStyle }>
-			<div className="hands" style={{gridArea: "hands"}}>Hands: {hands}</div>
-			<div className="discards" style={{gridArea: "discards"}}>Discards: {discards}</div>
-			<div className="money" style={{gridArea: "money"}}>Money: {money}</div>
+			<div className="hands" style={{gridArea: "hands"}}>Hands: <span style={{color: "blue"}}>{hands}</span></div>
+			<div className="discards" style={{gridArea: "discards"}}>Discards: <span style={{color: "red"}}>{discards}</span></div>
+			<div className="money" style={{gridArea: "money", fontSize: "20px"}}>Money: <span style={{color: "yellow"}}>${money}</span></div>
 			<div className="ante" style={{gridArea: "ante"}}>Ante: {ante}</div>
 			<div className="rounds" style={{gridArea: "round"}}>Rounds: {rounds}</div>
 		</div>
