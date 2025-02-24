@@ -55,6 +55,7 @@
     background: #b9b9b9;
     flex: 1;
     max-height: calc(100% - 1.5rem);
+    position: relative;
     /*width: 100%;*/
 }
 

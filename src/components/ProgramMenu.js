@@ -13,6 +13,7 @@ const testMenu = [
     }
 ]
 
+// TODO: Make the chosen top level one look depressed
 
 const ProgramMenu = () => {
     const [selectedOption, setSelectedOption] = useState(undefined);
@@ -33,7 +34,7 @@ const ProgramMenu = () => {
                     <>
                         <li className="menuItem textUnderline" onClick={() => { handleClick(option) }} onMouseEnter={() => {handleHover(option) } }><span>{option.text}</span>
                             {selectedOption === option &&
-                                <ul className="optionsDropDown">
+                                <ul className="optionsDropDown windows-box-shadow">
                                     {selectedOption.subOptions.map((subOption) => {
                                         return (<li className="dropDownItem" onClick={() => subOption.function() }><span>{subOption.text}</span></li>)
                                     })}

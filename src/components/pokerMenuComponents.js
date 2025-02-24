@@ -59,9 +59,9 @@ export const InfoGrid = ({ hands, discards, money, ante, rounds }) => {
 
 export const RunInfoOptions = () => {
 	return (
-		<>
-			<button className="runInfo">Run Info</button>
-			<button className="options">Options</button>
-		</>
+		<div className="infoButtons">
+			<button className="runInfo regularButton">Run Info</button>
+			<button className="options regularButton">Options</button>
+		</div>
 	)
 }
