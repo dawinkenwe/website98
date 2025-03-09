@@ -1,6 +1,8 @@
 import React from 'react';
 import './pokerMenuComponents.css'
 
+const FONT_SIZE = "20px";
+
 export const BlindInfoGrid = ({ blindType, targetScore }) => {
 
 	return (
@@ -50,7 +52,7 @@ export const InfoGrid = ({ hands, discards, money, ante, rounds }) => {
 		<div className="infoGrid insetBox" style={ infoStyle }>
 			<div className="hands" style={{gridArea: "hands"}}>Hands: <span style={{color: "blue"}}>{hands}</span></div>
 			<div className="discards" style={{gridArea: "discards"}}>Discards: <span style={{color: "red"}}>{discards}</span></div>
-			<div className="money" style={{gridArea: "money", fontSize: "20px"}}>Money: <span style={{color: "yellow"}}>${money}</span></div>
+			<div className="money" style={{gridArea: "money", fontSize: FONT_SIZE}}>Money: <span style={{color: "yellow"}}>${money}</span></div>
 			<div className="ante" style={{gridArea: "ante"}}>Ante: {ante}</div>
 			<div className="rounds" style={{gridArea: "round"}}>Rounds: {rounds}</div>
 		</div>

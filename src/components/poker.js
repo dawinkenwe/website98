@@ -8,9 +8,6 @@ cardSheet.src = "../img/solitaire-bitmap.png";
 
 // TODO: size
 // styling of content
-// inset areas in sidebar
-// space areas in sidebar correctly
-// style buttons with depress animations
 // Add the concept of a deck and dealing a hand
 // Add a dealer
 // Add buttons for actions
@@ -19,6 +16,29 @@ cardSheet.src = "../img/solitaire-bitmap.png";
 // Add a discard pile for reshuffling
 // Test multiple decks
 // Add a menu bar that is the same size as 
+// Switch column to flex, flex column, set individual sections to be size based?
+// We're moving away from using the canvas approach. that feels silly.
+// instead we're going to use pure react components. we'll pring from the sheet
+// This might actually make it easier.
+// 1. Switch to cards from React
+// 2. Fix the styling on the sidebar - iinclude inverse box shadow.
+// 3. background green, rather than canvas
+// 4. flex
+
+const Card = (index) => {
+    const cardName="Ace of Spades"
+    let x = (index % 13) * 71
+    let y = Math.floor(index / 13) * 96
+
+    const style = {width: 71, height: 96, objectPosition: `-${x}px -${y}px`, objectFit: "None"}
+
+    return (
+        <div>
+            <img src={image2} alt={cardName} style={style}></img>
+        </div>
+    )
+}
+
 const drawCardToCanvas = (canvas, index, x, y) => {
     const context = canvas.current.getContext('2d');
     const img = new Image();
@@ -72,6 +92,7 @@ const Poker = () => {
                 height={200}
                 width={200}/>
             </div>
+            <Card index={0}/>
         </div>
     )
 }
