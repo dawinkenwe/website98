@@ -4,6 +4,9 @@ import { produce } from 'immer';
 import classNames from 'classnames';
 import SevenSegmentDisplay from './SevenSegmentDisplay';
 import MinesweeperClock from './MinesweeperClock';
+import victoryImg from "./../../../img/minesweeper_victory.png"; // Note: CRA usually adds .png if not specified, but explicit is safer
+import lostImg from "./../../../img/minesweeper_dead.png";
+import smileyImg from "./../../../img/minesweeper_smile.png";
 
 const adjacentIndexOffsets = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
@@ -55,6 +58,25 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 	const [revealedCount, setRevealedCount] = useState(0);
 	const [numFlags, setNumFlags] = useState(mines);
 	const [started, setStarted] = useState(false);
+	const [secondCount, setSecondCount] = useState(0);
+
+	useEffect(() => {
+        if (!started) return;
+        const intervalId = setInterval(() => {
+            setSecondCount(secondCount => secondCount + 1);
+        }, 1000);
+
+        return () => clearInterval(intervalId)
+    }, [started])
+
+	const resetGame = () => {
+		setGrid(() => createNewGrid(rows, columns, mines))
+		setGameStatus('')
+		setRevealedCount(0)
+		setNumFlags(mines)
+		setSecondCount(0)
+		setStarted(true)
+	}
 
 	const endGame = (status) => {
 		setGameStatus(status);
@@ -73,6 +95,7 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 				});
 			});
 		}));
+		setStarted(false);
 	};
 
 
@@ -156,10 +179,19 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 					<SevenSegmentDisplay value={Math.floor(numFlags % 10)} />
 				</div>
 				<div className="minesweeper-smiley-container">
-					<img className="minesweeper-smile-img" src={getSmileyImage(gameStatus)} alt="minesweeper_smiley" width="36" height="36"></img>
+					<img 
+						className="minesweeper-smile-img" 
+						src={gameStatus === 'won' ? victoryImg : gameStatus === 'lost' ? lostImg : smileyImg} 
+						onClick={
+							()=> {
+								if (gameStatus === 'won' || gameStatus === 'lost') {
+									resetGame()
+								}
+							}} alt="minesweeper_smiley" width="36" height="36" 
+					/>
 				</div>
 				<div className="minesweeper-clock">
-					<MinesweeperClock isTicking={started && gameStatus === ''} />
+					<MinesweeperClock secondCount={secondCount} />
 				</div>
 			</div>
 			<div className="minesweeper-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1.25rem)`, columnGap: '5px', rowGap: '5px' }} onContextMenu={(e) => e.preventDefault()}>

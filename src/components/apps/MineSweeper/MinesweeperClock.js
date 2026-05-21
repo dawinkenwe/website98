@@ -3,17 +3,8 @@ import SevenSegmentDisplay from './SevenSegmentDisplay';
 import './MinesweeperClock.css';
 
 
-const MinesweeperClock = ({ isTicking }) => {
-    const [secondCount, setSecondCount] = useState(0);
+const MinesweeperClock = ({ secondCount }) => {
     const timerVals = [100, 10, 1]
-    useEffect(() => {
-        if (!isTicking) return;
-        const intervalId = setInterval(() => {
-            setSecondCount(secondCount => secondCount + 1);
-        }, 1000);
-
-        return () => clearInterval(intervalId)
-    }, [isTicking])
 
     return (
         <div className="minesweeper-clock-segments">
