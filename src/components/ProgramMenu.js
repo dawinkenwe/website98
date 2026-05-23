@@ -15,9 +15,8 @@ const testMenu = [
 
 // TODO: Make the chosen top level one look depressed
 
-const ProgramMenu = () => {
+const ProgramMenu = ({props}) => {
     const [selectedOption, setSelectedOption] = useState(undefined);
-    const props = testMenu;
     const handleClick = (option) => {
         selectedOption === option ? setSelectedOption(undefined) : setSelectedOption(option)
     }
@@ -25,6 +24,41 @@ const ProgramMenu = () => {
         if (selectedOption) setSelectedOption(option);
     }
 
+    return(
+        <ul className="menu-bar">
+            <div className="menuBarLine" />
+
+            {props.map((option) => {
+                return (
+                <>
+                    <li 
+                    className={`menuItem textUnderline ${selectedOption === option && 'active'}`} 
+                    onClick={() => handleClick(option)}
+                    onMouseEnter={() => handleHover(option)}
+                    >
+                    <span>{option.text}</span>
+
+                    {/* Only show dropdown if selected */}
+                    {selectedOption === option && (
+                        <ul className="optionsDropDown">
+                        {selectedOption.subOptions.map((subOption) => (
+                            <li 
+                            key={subOption.id || subOption.text}
+                            className="dropDownItem" 
+                            onClick={() => subOption.function()}
+                            >
+                            <span>{subOption.text}</span>
+                            </li>
+                        ))}
+                        </ul>
+                    )}
+                    </li>
+                </>
+                );
+            })}
+        </ul>
+    )
+/*
     return (
         <>
             <ul className="menu-bar" style={{ margin: 0 }} >
@@ -48,6 +82,7 @@ const ProgramMenu = () => {
 
         </>
     )
+        */
 }
 
 export default ProgramMenu

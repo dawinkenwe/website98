@@ -7,6 +7,7 @@ import MinesweeperClock from './MinesweeperClock';
 import victoryImg from "./../../../img/minesweeper_victory.png"; // Note: CRA usually adds .png if not specified, but explicit is safer
 import lostImg from "./../../../img/minesweeper_dead.png";
 import smileyImg from "./../../../img/minesweeper_smile.png";
+import ProgramMenu from '../../ProgramMenu'
 
 const adjacentIndexOffsets = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
@@ -75,7 +76,6 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 		setRevealedCount(0)
 		setNumFlags(mines)
 		setSecondCount(0)
-		setStarted(true)
 	}
 
 	const endGame = (status) => {
@@ -172,6 +172,12 @@ const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 
 	return (
 		<div className="minesweeper">
+			<ProgramMenu props={[
+				{
+					text: 'Game', subOptions: [{
+						text: 'Reset', function: resetGame
+				}]
+				}]}/>
 			<div className="minesweeper-header-content">
 				<div className="minesweeper-flag-count">
 					<SevenSegmentDisplay value={Math.floor(numFlags / 100)} />

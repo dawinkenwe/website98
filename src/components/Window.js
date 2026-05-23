@@ -147,7 +147,6 @@ const Window = ({ id }) => {
                     </div>
                 </div>
             </DoubleTap>
-            <ProgramMenu props={[{text: 'option1'}, {text: 'option2'}]}/>
             <div className="window-body">
                 {state.components[id].contents}
             </div>

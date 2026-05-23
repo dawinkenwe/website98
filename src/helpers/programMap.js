@@ -6,6 +6,7 @@ import BlogList from '../components/apps/Documents';
 import MineSweeper from '../components/apps/MineSweeper/MineSweeper'
 import GourdChat from '../components/apps/GourdChat'
 import Poker from '../components/poker';
+import Warning from '../components/Warning';
 
 
 const programIcons = {
@@ -156,7 +157,7 @@ const programDefaults = {
                 height: '70vh',
             },
         },
-        contents: <Poker />,
+        contents: <Warning warningMessage={"The Boys are back."}/>,
         minimumSize: {
             width: '1vw',
             height: '1vh',

@@ -1,15 +1,21 @@
+
+
 .menu-bar {
-    display: block;
+    /* 1. Remove max-height: 19px */
+    /* Allow height to be determined by content automatically */
+    height: auto; 
+    display: flex;           /* Modernizes layout, handles floats automatically */
+    align-items: center;     /* Vertically centers items */
     background: #b9b9b9;
     color: black;
-    padding-top: 0.125rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-top: 0.375rem;
     padding-bottom: 0.375rem;
-    max-height: 19px;
-    margin: 0;
-    list-style: none;
+    /* Remove box-shadow entirely and use border or pseudo-element if you need the style, 
+       or keep it but ensure height is large enough to contain it */
     box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 0 4px black, 2px -4px white, 4px -4px black;
+    padding-inline-start: 0;
+    list-style: none;
+    margin: 0;
 }
 
 .menuBarLine {
@@ -51,7 +57,9 @@
     display: block;
     background: #b9b9b9;
     padding-left: 0;
-    margin-top: 5px;
+    margin-top: 12px; /* Increased spacing so it's not overlapping */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); /* Use a simple shadow for the drop */
+    z-index: 10;     /* Ensure it sits on top */
 }
 
 ul {
