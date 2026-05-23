@@ -23,6 +23,10 @@ const programIcons = {
     gourdchat: require('../img/gourdchat.jpeg')
 };
 
+const programSounds = {
+    warning: require('../sounds/error.mp3')
+}
+
 const programDefaults = {
     help: {
         icon: programIcons['help'],
@@ -157,7 +161,7 @@ const programDefaults = {
                 height: '70vh',
             },
         },
-        contents: <Warning warningMessage={"The Boys are back."}/>,
+        contents: <Warning warningMessage={"The Boys are back."} openingSound={programSounds["warning"]}/>,
         minimumSize: {
             width: '1vw',
             height: '1vh',

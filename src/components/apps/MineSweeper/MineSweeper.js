@@ -43,16 +43,6 @@ const createNewGrid = (numRows, numCols, numMines) => {
 	return grid;
 };
 
-const getSmileyImage = (state) => {
-	if (state === 'won') {
-		return require("../../../img/minesweeper_victory.png")
-	} else if (state === 'lost') {
-		return require("../../../img/minesweeper_dead.png")
-	} else {
-		return require("../../../img/minesweeper_smile.png")
-	}
-}
-
 const MineSweeper = ({rows = 9, columns = 9, mines = 10}) => {
 	const [grid, setGrid] = useState(() => createNewGrid(rows, columns, mines));
 	const [gameStatus, setGameStatus] = useState('');
