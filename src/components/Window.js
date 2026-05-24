@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 import DoubleTap from './DoubleTap';
-import ProgramMenu from './ProgramMenu'
 
 const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
@@ -121,7 +120,8 @@ const Window = ({ id }) => {
         position: 'absolute',
         zIndex: `${state.components[id].minimized ? 0 : state.components[id].z}`,
         minWidth: `${state.components[id].minWidth}`,
-        minHeight: `${state.components[id].minHeight}`
+        minHeight: `${state.components[id].minHeight}`,
+        resize: state.components[id].resizable ? 'both' : 'none'
     };
 
     return (

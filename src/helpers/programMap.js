@@ -41,6 +41,7 @@ const programDefaults = {
                 height: '70vh',
             },
         },
+        resizable: true,
         contents: <Help />,
         minimumSize: {
             width: '20vw',
@@ -65,6 +66,7 @@ const programDefaults = {
             width: '35rem',
             height: '21rem',
         },
+        resizable: true,
         contents: <MediaPlayer />,
     },
 
@@ -85,6 +87,7 @@ const programDefaults = {
             width: '30rem',
             height: '17rem',
         },
+        resizable: true,
         contents: <PatchNotes />,
     },
 
@@ -105,6 +108,7 @@ const programDefaults = {
             width: '20rem',
             height: '17rem',
         },
+        resizable: true,
         contents: <Blog />,
     },
 
@@ -125,6 +129,7 @@ const programDefaults = {
             width: '20rem',
             height: '17rem',
         },
+        resizable: true,
         contents: <BlogList />
     },
 
@@ -145,6 +150,7 @@ const programDefaults = {
             width: '0',
             height: '0',
         },
+        resizable: true,
         contents: <MineSweeper />
     },
 
@@ -165,7 +171,8 @@ const programDefaults = {
         minimumSize: {
             width: '1vw',
             height: '1vh',
-        }
+        },
+        resizable: false
     },
 }
 

@@ -29,6 +29,7 @@ const appReducer = (state, action) => {
                     icon: action.payload.icon,
                     minimized: false,
                     maximized: false,
+                    resizable: action.payload.resizable ? true : false
                 }
                 draft.componentIds.push(appId)
                 draft.activeComponent = appId;
