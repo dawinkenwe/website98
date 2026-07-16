@@ -6,6 +6,7 @@ const getInitialState = () => {
     const shortcutIds = [uuidv4(), uuidv4(), uuidv4(), uuidv4()];
 
     const initialState = {
+        /* TODO: Add Help to the default state here. */
         components: {},
         componentIds: [],
         activeComponent: '',
