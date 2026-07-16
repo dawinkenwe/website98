@@ -22,8 +22,6 @@ const BlogList = () => {
     }, []);
 
     const openDocument = ( documentId ) => {
-        console.log('opening document ' + documentId)
-        console.log(blogs);
         dispatch({ type: 'OPEN_BLOG', payload: getProgramInfo('notepad'), blogId: documentId } );
     }
 

@@ -50,6 +50,7 @@ const appReducer = (state, action) => {
                     name: action.payload.name,
                     contents: <Blog blogKey={action.blogId} />,
                     icon: action.payload.icon,
+                    resizable: action.payload.resizable ? true : false,
                     minimized: false,
                 }
                 draft.componentIds.push(blogId)
