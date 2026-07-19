@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import getInitialState from './helpers/initialState';
 import { useMediaQuery } from 'react-responsive';
 import Blog from './components/apps/Notepad';
+import { getProgramInfo } from './helpers/programMap';
 
 /* TODO: Add help as a default program / landing page. */
 const initialState = getInitialState();
@@ -123,6 +124,10 @@ const AppProvider = ({ children }) => {
             dispatch({ type: 'SET_DEVICE_TYPE', payload: 'desktop' });
         }
     }, [isMobile, isTablet]);
+
+    useEffect(() => {
+        dispatch({type: 'START_APP', payload: getProgramInfo('help')})
+    }, [])
 
     return (
         <AppContext.Provider value={{ state, dispatch }}>
