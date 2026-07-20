@@ -6,6 +6,7 @@ import BlogList from '../components/apps/Documents';
 import MineSweeper from '../components/apps/MineSweeper/MineSweeper'
 import GourdChat from '../components/apps/GourdChat'
 import Poker from '../components/poker';
+import TaskManager from '../components/apps/TaskManager';
 import Warning from '../components/Warning';
 
 
@@ -20,7 +21,8 @@ const programIcons = {
     windowsUpdate: require('../img/windows_update.png'),
     notepadDocument: require('../img/notepad_file.png'),
     minesweeper: require('../img/minesweeper.png'),
-    gourdchat: require('../img/gourdchat.jpeg')
+    gourdchat: require('../img/gourdchat.jpeg'),
+    taskManager: require('../img/computer_gear.png')
 };
 
 const programSounds = {
@@ -173,6 +175,27 @@ const programDefaults = {
             height: '1vh',
         },
         resizable: false
+    },
+
+    taskManager: {
+        icon: programIcons['taskManager'],
+        name: 'Task Manager',
+        defaultSize: {
+            desktop: {
+                width: '90vw',
+                height: '70vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
+        },
+        contents: <TaskManager/>,
+        minimumSize: {
+            width: '10vw',
+            height: '10vh',
+        },
+        resizable: true
     },
 }
 

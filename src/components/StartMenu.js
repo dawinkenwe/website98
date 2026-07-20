@@ -24,6 +24,7 @@ const StartMenu = () => {
                         <li className="start-menu-media-player" onClick={() => openProgram("mediaPlayer")}><label for="windows-help-input"><img src={getProgramIcon('mediaPlayer')} alt="windowsMediaPlayer" />Windows Media Player</label></li>
                         <li className="start-menu-minesweeper" onClick={() => openProgram("minesweeper")}><label for="windows-minesweeper-input"><img src={getProgramIcon('minesweeper')} alt="minesweeper" />Minesweeper</label></li>
                         <li className="start-menu-notepad" onClick={() => openProgram("notepad")}><label for="windows-notepad-input"><img src={getProgramIcon('notepad')} alt="notepad" />Notepad</label></li>
+                        <li className="start-menu-task-manager" onClick={() => openProgram("taskManager")}><label for="windows-task-manager-input"><img src={getProgramIcon('taskManager')} alt="taskManager" />Task Manager</label></li>
                     </ul>
                 </div>
     );
