@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@welldone-software/why-did-you-render": "^8.0.3",
+    "98.css": "^0.1.21",
     "classnames": "^2.5.1",
     "dompurify": "^3.1.5",
     "gh-pages": "^6.1.1",
