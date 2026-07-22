@@ -1,0 +1,11 @@
+# Experimenting with LM Studio
+
+I've been experimenting with LM studio. I have a lot of conflicting thoughts about large language models. But when I slow down and look at my grievances I realized that most of what bothers me is not the technology itself. I don't like the hype, I don't like the environmental impact, and I don't like the ownership. So I've been experimenting with LM studio and various locally hosted models.
+
+Today I've been using QWEN 3.5 9B. It's been fairly useful for debugging a couple CSS related issues. It definitely missed a few times, but was close enough that it helped me to figure out the answer. And to be fair, I didn't feed it the entire css and js files. I just provided it with the relevant sections because I am working within the constraints of my own computer, so I don't have a large context window to play with.
+
+I do like feeling like I'm not feeding into the next round of training data. And it is nice to be able to see the entirity of the "thinking" process before a result is returned. It does feel like it bumbles its way into a correct answer. It reminds me of when the hot new craze was the "Ralph Wiggum" loop. It seems like the model just folded that type of logic into itself and called it "thinking mode". In one question, I think it took over 7 runs at it. Several "But wait! The user said X. So we should - blah blah blah". It second guesses itself more than I do. Which is quite a feat.
+
+Overall, it has been helpful. It is much slower than running a query to one of the LLM providers APIs, but I think that might be good for me honestly. It really encourages me to actually think about things before sending off a prompt. The slowness FORCES me to be intentional. It reminds me of working in a C codebase where a service took 30+ minutes to compile. I was MUCH more vigilant in making sure I understood exactly what my code should be doing before I tested it in those days. Interpreted languages really allowed me to be less attentive and encouraged speed over precision.
+
+Anyways. I'm not nearly old enough or seasoned enough to be waxing unpoetic about things I don't know enough about. So let's call it here for today. I need to go arrange the pantry anyways. It's been a few months and entropy has completely destroyed any organizational systems we had set up.
