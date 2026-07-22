@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../AppContext';
 import './Window.css'
 import DoubleTap from './DoubleTap';
+import "98.css"
 
 const Window = ({ id }) => {
     const { state, dispatch } = useAppContext();
@@ -24,7 +25,7 @@ const Window = ({ id }) => {
 
 
     const handleMouseDown = (e) => {
-        if (e.target.className === 'window-title') {
+        if (e.target.className === 'title-bar') {
             e.preventDefault();
             e.stopPropagation();
 
@@ -60,7 +61,7 @@ const Window = ({ id }) => {
     }, []);
 
     const handleTouchStart = (e) => {
-        if (e.target.className === 'window-title') {
+        if (e.target.className === 'title-bar') {
             const touch = e.targetTouches[0];
             e.stopPropagation();
 
@@ -137,13 +138,13 @@ const Window = ({ id }) => {
         >
             <DoubleTap onDoubleTap={toggleMaximized}>
                 <div className="title-bar">
-                    <div className='window-title'>
+                    <div className='title-bar-text'>
                         {state.components[id].name}
                     </div>
-                    <div className="controls">
-                        <div className="windows-box-shadow" onClick={toggleMinimized}><img src={ require('../img/minimize.png')} alt="minimize" /></div>
-                        <div className="windows-box-shadow" onClick={toggleMaximized}><img src={require('../img/maximize.png')} alt="maximize" /></div>
-                        <div className="windows-box-shadow" onClick={onClose}><img src={require('../img/chunky_close.png')} alt="close" /></div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize" onClick={toggleMinimized} />
+                        <button aria-label="Maximize" onClick={toggleMaximized} />
+                        <button aria-label="Close" onClick={onClose} />
                     </div>
                 </div>
             </DoubleTap>

@@ -5,54 +5,12 @@
     overflow: hidden;
     user-select: none;
     resize: both;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    max-height: calc(100% - 10px);
-    max-width: calc(100% - 10px);
 }
 
-.title-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(90deg, #000b7c, #377cc6);
-    color: white;
-    padding: 0.25rem;
-    max-height: 19px;
-}
-
-.window-title {
-    flex: 1;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-height: 19px
-}
-
-.controls {
-    display: flex;
-}
-
-.controls > div {
-    background: #c0c0c0;
-    width: 1rem;
-    height: 1rem;
-    font-family: "Arial Black", sans-serif;
-    box-sizing: border-box;
-    font-size: 0.75rem;
-    position: relative;
-    color: black;
-    line-height: 1rem;
-    margin: 0 0 0 0.55rem;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: center;
-}
 
 .window-body {
     display: flex;
-    background: #b9b9b9;
+    /*background: #b9b9b9; */
     flex: 1;
     max-height: calc(100% - 1.5rem);
     position: relative;
