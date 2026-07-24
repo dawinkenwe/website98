@@ -1,0 +1,134 @@
+#help {
+    max-height: 100%;
+    flex: 1;
+
+}
+
+.top-bar:before {
+    content: '';
+    width: 2px;
+    height: calc(100% - 1rem);
+    position: absolute;
+    background: #f2f2f2;
+    box-shadow: 1px 1px 0 #818181;
+    left: 0.5rem;
+    top: 0.7rem;
+}
+
+.top-bar {
+    padding: 0.75rem 0.5rem 0 1.25rem;
+    display: flex;
+    position: relative;
+}
+
+#long {
+    width: 100%
+}
+
+.top-bar > div {
+    padding: 0 1rem 0 0;
+    opacity: 0.5;
+}
+
+top-bar > input {
+    width: 100%;
+    padding: 0.25rem;
+    padding: 0.25rem 1rem 0.25rem 0.25rem;
+    box-sizing: border-box;
+}
+
+.tab-box {
+    min-width: 30%;
+    max-width: 30%
+}
+
+.selected-question {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    background: #000a7c;
+    color: white;
+}
+
+.unselected-question {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+}
+
+.help-contents {
+    display: flex;
+    margin: 1rem;
+    flex: 1;
+    max-height: calc(100% - 3rem);
+}
+
+.help-questions {
+    background: white;
+    width: 100%;
+    float: left;
+    border: 2px inset;
+    padding: 0;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.help-questions > li {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+li {
+    display: list-item;
+    text-align: match-parent;
+}
+
+.tab-header {
+    float: left;
+    font-size: 1rem;
+}
+
+.help-img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    width: 1rem;
+    float: left;
+    padding: 0 0.25rem 1rem 0
+}
+
+.answers {
+    background: white;
+    position: relative;
+    width: calc(100% - 2rem);
+    border: 2px inset;
+    margin: 0 0 2.5rem 1rem;
+    max-height: calc(100% - 1.5rem);
+    top: 1.65rem;
+    font-size: 14px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.content {
+    padding: 1rem;
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.content > h2 {
+        margin-block-start: 0em;
+}
+
+.content > img {
+    width: 100%;
+    height: auto;
+}

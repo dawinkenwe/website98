@@ -30,21 +30,27 @@ const Help = () => {
 
     return (
         <>
-        <div>
-            <menu role="tablist">
-                <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
-                <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
-                <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
-            </menu>
-            <div class="window" role="tabpanel" style={{resize: 'none'}}>
-                <div class="window-body">
-                    <p>the tab content</p>
+        <div className="help-contents">
+            <div className="tab-box">
+                <menu role="tablist" className="tab-header">
+                    <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
+                    <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
+                    <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
+                </menu>
+                <div className="help-questions">
+                    <div role="tabpanel" style={{resize: 'none'}}>
+                        <div class="window-body">
+                            <p>the tab content</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div>
-            <p>hello</p>
-            <p>world</p>
+        <div className="answers">
+            <div className="content">
+                <p>hello</p>
+                <p>world</p>
+            </div>
         </div>
     </>
     );
