@@ -18,8 +18,8 @@ const appReducer = (state, action) => {
             return produce(state, draft => {
                 draft.components[appId] = {
                     id: appId,
-                    x: 6,
-                    y: 6,
+                    x: action.payload.x ? window.innerWidth * (action.payload.x / 100): 6,
+                    y: action.payload.y ? window.innerHeight * (action.payload.y / 100): 6,
                     z: draft.nextZ,
                     width: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.width: action.payload.defaultSize.desktop.width,
                     height: state.deviceType === 'mobile' ? action.payload.defaultSize.mobile.height : action.payload.defaultSize.desktop.height,

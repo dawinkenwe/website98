@@ -6,7 +6,7 @@ import DOMPurify from 'dompurify';
 
 const Help = () => {
     const [selectedTab, setSelectedTab] = useState("Contents");
-    const [selectedHelp, setSelectedHelp] = useState("Welcome")
+    const [selectedHelp, setSelectedHelp] = useState("About")
     const img = getProgramIcon('help');
 
     const handleQuestionClick = (question) => {
@@ -19,7 +19,7 @@ const Help = () => {
     }
 
     const getWindowContents = (title) => {
-        if (title === "Welcome") {
+        if (title === "About") {
             return(
                 <>
                     <h2>About Me</h2>
@@ -34,7 +34,7 @@ const Help = () => {
                     <p></p>
                     <h3>Experience</h3>
                     <p></p>
-                    <h3>Education</h3>
+                    <h4>Education</h4>
                     <p>UC Santa Barbara - BS in Computer Science</p>
                 </>
             )
@@ -59,11 +59,10 @@ const Help = () => {
     }
 
     const getTabContents = (title) => {
-        console.log(title)
         if (title === "Contents") {
             return(
                 <menu className="help-questions">
-                    <li className={`${selectedHelp === "Welcome" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("Welcome")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />Welcome</li>
+                    <li className={`${selectedHelp === "About" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("About")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />About</li>
                     <li className={`${selectedHelp === "Resume" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("Resume")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />Resume</li>
                     <li className={`${selectedHelp === "WhatFor" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("WhatFor")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />What is this for?</li>
                     <li className={`${selectedHelp === "WhatDo" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("WhatDo")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />What can I do here?</li>

@@ -91,16 +91,12 @@ function reducer(state, action) {
 			return state;
 		}
 		case 'update_cell': {
-			console.log('updating cell?');
 			if (state.grid[action.payload.x][action.payload.y].adjacencyCount) {
 				return (produce(state, draft => {
 					draft.grid[action.payload.x][action.payload.y].display = draft.grid[action.payload.x][action.payload.y].adjacencyCount;
 				}))
 			}
 			let emptySquares = getAdjacentEmptySquares(state.grid, action.payload.x, action.payload.y, state.rows);
-			console.log(emptySquares);
-			console.log('updating empty squares')
-			console.log('length is ' + emptySquares.size);
 			return (produce(state, draft => {
 				draft.grid = draft.grid.map((row, x) => (
 					row.map((value, y) => ({

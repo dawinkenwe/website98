@@ -10,7 +10,6 @@ const DesktopShortcut = ({ id }) => {
     const { state, dispatch } = useAppContext();
 
     const handleClicked = () => {
-        console.log('clicked')
         if (state.shortcuts[id].name === 'minesweeper')
         {
             dispatch({ type: 'START_APP', payload: getProgramInfo(state.shortcuts[id].name)});

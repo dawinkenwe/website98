@@ -39,16 +39,19 @@ const programDefaults = {
                 height: '60vh',
             },
             mobile: {
-                width: '90vw',
+                width: '50vw',
                 height: '70vh',
             },
         },
         resizable: true,
         contents: <Help />,
         minimumSize: {
-            width: '20vw',
+            width: '35vw',
             height: '35vh',
-        }
+        },
+        // NOTE: X AND Y ARE IN VW VH
+        x: '35',
+        y: '35'
     },
 
     mediaPlayer: {

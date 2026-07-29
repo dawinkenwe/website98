@@ -25,7 +25,7 @@ const Window = ({ id }) => {
 
 
     const handleMouseDown = (e) => {
-        if (e.target.className === 'title-bar') {
+        if (e.target.className === 'title-bar' || e.target.className === 'title-bar-text') {
             e.preventDefault();
             e.stopPropagation();
 
@@ -61,7 +61,8 @@ const Window = ({ id }) => {
     }, []);
 
     const handleTouchStart = (e) => {
-        if (e.target.className === 'title-bar') {
+        console.error(e.target.ClassName)
+        if (e.target.className === 'title-bar' || e.target.className === 'title-bar-text') {
             const touch = e.targetTouches[0];
             e.stopPropagation();
 
@@ -141,7 +142,7 @@ const Window = ({ id }) => {
                     <div className='title-bar-text'>
                         {state.components[id].name}
                     </div>
-                    <div class="title-bar-controls">
+                    <div className="title-bar-controls">
                         <button aria-label="Minimize" onClick={toggleMinimized} />
                         <button aria-label="Maximize" onClick={toggleMaximized} />
                         <button aria-label="Close" onClick={onClose} />

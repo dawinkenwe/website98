@@ -6,8 +6,8 @@ const TaskManager = () => {
     const { state, dispatch } = useAppContext();
 
     return (
-        <div class="TaskManager">
-            <table class="interactive">
+        <div className="TaskManager">
+            <table className="interactive">
                 <thead>
                     <tr>
                         <th>Name</th>
