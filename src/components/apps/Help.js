@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { getProgramIcon } from '../../helpers/programMap';
-import helpData from '../../data/HelpData';
 import './Help.css';
 import DOMPurify from 'dompurify';
 
