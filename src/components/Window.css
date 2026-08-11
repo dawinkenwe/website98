@@ -7,11 +7,20 @@
     resize: both;
 }
 
+.title-bar-text {
+    font-size: 11px;
+}
+
+.window-body {
+    font-size: 14px;
+}
+
 
 .window-body {
     display: flex;
     /*background: #b9b9b9; */
     flex: 1;
+    flex-wrap: wrap;
     max-height: calc(100% - 1.5rem);
     position: relative;
     /*width: 100%;*/

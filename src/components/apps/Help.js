@@ -120,7 +120,7 @@ const Help = () => {
         <>
         <div className="help-contents">
             <div className="tab-box">
-                <menu role="tablist" className="tab-header">
+                <menu role="tablist" className="tab-header" style={{fontSize: '11px'}}>
                     <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
                     <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
                     <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
