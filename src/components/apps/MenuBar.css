@@ -1,0 +1,19 @@
+.dropdown-menu {
+    position: relative;
+    height: 24px;
+    display: flex;
+    align-items: stretch;
+}
+
+.dropdown-menu-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.menu-button {
+    padding-right: 5px;
+}
+
+.dropdown-submenu {
+    position: absolute;
+}

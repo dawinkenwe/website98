@@ -4,10 +4,19 @@ import Blog from './Notepad';
 import { useAppContext } from '../../AppContext';
 import './Documents.css';
 import DoubleTap from '../DoubleTap';
+import MenuBar from './MenuBar'
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
     const { state, dispatch } = useAppContext();
+
+    const options = {
+        File: ["New", "Open", "Save", "Exit"],
+        Edit: ["Undo", "Cut", "Copy", "Paste"],
+        View: ["Zoom In", "Zoom Out", "Fullscreen"],
+        Tools: ["Settings", "Options"],
+        Help: ["About", "Documentation"],
+    };
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -26,17 +35,20 @@ const BlogList = () => {
     }
 
     return (
-        <div className="documents">
-            {blogs.map(blog => (
-                <DoubleTap onDoubleTap={() => openDocument(blog.filename)}>
-                    <div className="document-file">
-                        <div className="document-icon" onDoubleClick={() => openDocument(blog.filename)}>
-                            <img src={getProgramIcon('notepadDocument')} alt={blog.filename} />
+        <div style={{flexWrap: 'wrap'}}>
+            <MenuBar options={options}></MenuBar>
+            <div className="documents">
+                {blogs.map(blog => (
+                    <DoubleTap onDoubleTap={() => openDocument(blog.filename)}>
+                        <div className="document-file">
+                            <div className="document-icon" onDoubleClick={() => openDocument(blog.filename)}>
+                                <img src={getProgramIcon('notepadDocument')} alt={blog.filename} />
+                            </div>
+                            {blog.filename}
                         </div>
-                        {blog.filename}
-                    </div>
-                </DoubleTap>
-            ))}
+                    </DoubleTap>
+                ))}
+            </div>
         </div>
     )
 };
