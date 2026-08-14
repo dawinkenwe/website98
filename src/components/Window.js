@@ -149,7 +149,7 @@ const Window = ({ id }) => {
                     </div>
                 </div>
             </DoubleTap>
-            <div className="window-body">
+            <div className="program-body">
                 {state.components[id].contents}
             </div>
         </div>

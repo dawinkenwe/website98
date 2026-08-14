@@ -8,6 +8,7 @@ import GourdChat from '../components/apps/GourdChat'
 import Poker from '../components/poker';
 import TaskManager from '../components/apps/TaskManager';
 import Warning from '../components/Warning';
+import Explorer from '../components/apps/Explorer';
 
 
 const programIcons = {
@@ -22,7 +23,8 @@ const programIcons = {
     notepadDocument: require('../img/notepad_file.png'),
     minesweeper: require('../img/minesweeper.png'),
     gourdchat: require('../img/gourdchat.jpeg'),
-    taskManager: require('../img/computer_gear.png')
+    taskManager: require('../img/computer_gear.png'),
+    explorer: require('../img/explorer.png')
 };
 
 const programSounds = {
@@ -194,6 +196,27 @@ const programDefaults = {
             },
         },
         contents: <TaskManager/>,
+        minimumSize: {
+            width: '10vw',
+            height: '10vh',
+        },
+        resizable: true
+    },
+
+    explorer: {
+        icon: programIcons['taskManager'],
+        name: 'Explorer',
+        defaultSize: {
+            desktop: {
+                width: '90vw',
+                height: '70vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
+        },
+        contents: <Explorer/>,
         minimumSize: {
             width: '10vw',
             height: '10vh',

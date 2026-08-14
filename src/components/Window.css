@@ -5,6 +5,8 @@
     overflow: hidden;
     user-select: none;
     resize: both;
+    display: flex;
+    flex-direction: column;
 }
 
 .title-bar-text {
@@ -24,6 +26,11 @@
     max-height: calc(100% - 1.5rem);
     position: relative;
     /*width: 100%;*/
+}
+
+.program-body {
+    flex: 1;
+    min-height: 0;
 }
 
 .selected {

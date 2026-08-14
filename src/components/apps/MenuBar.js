@@ -17,10 +17,10 @@ const MenuBar = ({ options }) => {
     }
 
     return (
-        <div className="dropdown-menu-wrapper">
-            <div className="dropdown-menu">
+        <div className="program-menu-bar">
+            <div className="win98-menu-bar">
                 {Object.entries(options).map(([option, subOptions]) => (
-                    <div key={option}>
+                    <div key={option} className={option === selectedOption ? "win98-menu" : "win98-menu"}>
                         <div
                             className="menu-button"
                             onClick={() => handleMenuClick(option)}
@@ -30,11 +30,11 @@ const MenuBar = ({ options }) => {
                         </div>
 
                         {selectedOption === option && (
-                            <div className="dropdown-submenu">
+                            <div className="win98-dropdown">
                                 {subOptions.map((subOption) => (
                                     <div
                                         key={subOption}
-                                        className="dropdown-submenu-button"
+                                        className="win98-menu-item"
                                         onClick={() => {
                                             console.log("clicked:", subOption);
                                             setSelectedOption(null);

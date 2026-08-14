@@ -1,3 +1,21 @@
+.program-menu-bar{
+      display: flex;
+  align-items: stretch;
+
+  height: 20px;
+  box-sizing: border-box;
+
+  background: #c0c0c0;
+
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 11px;
+  color: #000;
+
+  user-select: none;
+  border-bottom: 1px solid #818181;
+  box-shadow: 0 1px 0 #fff;
+}
+
 .dropdown-menu {
     position: relative;
     height: 24px;
@@ -10,10 +28,103 @@
     width: 100%;
 }
 
-.menu-button {
-    padding-right: 5px;
-}
+
 
 .dropdown-submenu {
     position: absolute;
+}
+
+.win98-menu-separator {
+  height: 1px;
+  margin: 3px 2px;
+
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+}
+
+.win98-menu-item {
+  position: relative;
+
+  height: 18px;
+  min-width: 145px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px 0 20px;
+
+  box-sizing: border-box;
+
+  white-space: nowrap;
+  cursor: default;
+}
+
+.win98-menu-item:hover {
+  color: white;
+  background: #000080;
+}
+
+.win98-dropdown {
+  position: absolute;
+  top: 19px;
+  left: 0;
+
+  min-width: 150px;
+  padding: 2px;
+
+  box-sizing: border-box;
+
+  background: #c0c0c0;
+
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+
+  box-shadow:
+    1px 1px 0 #808080;
+
+  z-index: 1000;
+
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 11px;
+}
+
+.win98-menu-bar {
+  display: flex;
+  align-items: stretch;
+
+  height: 20px;
+  box-sizing: border-box;
+
+  background: #c0c0c0;
+
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 11px;
+  color: #000;
+
+  user-select: none;
+}
+
+.win98-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  padding: 0 7px;
+  height: 20px;
+  box-sizing: border-box;
+
+  cursor: default;
+}
+
+.win98-menu:hover,
+.win98-menu.open {
+  /*
+   * This is the subtle raised/selected effect
+   */
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
 }
