@@ -106,34 +106,32 @@ const Help = () => {
         if (title === "Contents") {
             return(
                 <menu className="help-questions">
-                    <li className={`${selectedHelp === "About" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("About")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />About</li>
-                    <li className={`${selectedHelp === "Resume" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("Resume")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />Resume</li>
-                    <li className={`${selectedHelp === "WhatFor" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("WhatFor")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />What is this for?</li>
-                    <li className={`${selectedHelp === "WhatDo" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("WhatDo")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />What can I do here?</li>
-                    <li className={`${selectedHelp === "Why" ? 'selected-question' : 'unselected-question'}`} onClick={() => {setSelectedHelp("Why")}}><img src={getProgramIcon('help')} alt="help" className="help-img" />Why Windows98?</li>
+                    <li onClick={() => {setSelectedHelp("About")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "About" ? 'selected-help-question' : ''}`}>About</span></li>
+                    <li onClick={() => {setSelectedHelp("Resume")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "Resume" ? 'selected-help-question' : ''}`}>Resume</span></li>
+                    <li onClick={() => {setSelectedHelp("WhatFor")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "WhatFor" ? 'selected-help-question' : ''}`}>What is this for?</span></li>
+                    <li onClick={() => {setSelectedHelp("WhatDo")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "WhatDo" ? 'selected-help-question' : ''}`}>What can I do here?</span></li>
+                    <li onClick={() => {setSelectedHelp("Why")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "Why" ? 'selected-help-question' : ''}`}>Why Windows98?</span></li>
                 </menu>
             )
         }
     }
 
     return (
-        <>
-        <div className="help-contents">
-            <div className="tab-box">
-                <menu role="tablist" className="tab-header" style={{fontSize: '11px'}}>
-                    <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
-                    <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
-                    <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
-                </menu>
-                {getTabContents(selectedTab)}
-            </div>
-        </div>
-        <div className="answers">
-            <div className="content">
+        <div className="help-window">
+            <aside className="help-navigation">
+                <div role="tablist" aria-label="Help Menu">
+                    <menu role="tablist" className="tab-header" style={{fontSize: '11px'}}>
+                        <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
+                        <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
+                        <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
+                    </menu>
+                    {getTabContents(selectedTab)}
+                </div>
+            </aside>
+            <section className="help-content">
                 {getWindowContents(selectedHelp)}
-            </div>
+            </section>
         </div>
-    </>
     );
 };
 
