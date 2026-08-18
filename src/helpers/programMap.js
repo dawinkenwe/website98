@@ -9,6 +9,7 @@ import Poker from '../components/poker';
 import TaskManager from '../components/apps/TaskManager';
 import Warning from '../components/Warning';
 import Explorer from '../components/apps/Explorer';
+import Pong from '../components/apps/Games/gnop/Pong'
 
 
 const programIcons = {
@@ -24,7 +25,8 @@ const programIcons = {
     minesweeper: require('../img/minesweeper.png'),
     gourdchat: require('../img/gourdchat.jpeg'),
     taskManager: require('../img/computer_gear.png'),
-    explorer: require('../img/explorer.png')
+    explorer: require('../img/explorer.png'),
+    pong: require('../img/explorer.png')
 };
 
 const programSounds = {
@@ -222,6 +224,27 @@ const programDefaults = {
             height: '10vh',
         },
         resizable: true
+    },
+
+    pong: {
+        icon: programIcons['taskManager'],
+        name: 'Pong',
+        defaultSize: {
+            desktop: {
+                width: '90vw',
+                height: '70vh',
+            },
+            mobile: {
+                width: '90vw',
+                height: '70vh',
+            },
+        },
+        contents: <Pong/>,
+        minimumSize: {
+            width: '10vw',
+            height: '10vh',
+        },
+        resizable: false
     },
 }
 

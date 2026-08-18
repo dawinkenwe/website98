@@ -28,8 +28,8 @@ const Explorer = () => {
             </div>
             <div className="row-two-right">2B</div>
 
-            <div className="row-three-left">All Folders</div>
-            <div className="row-three-right">Contents of '{selectedFolder}'</div>
+            <div className="status-field-border" style={{padding: "8px"}}>All Folders</div>
+            <div className="status-field-border">Contents of '{selectedFolder}'</div>
 
             <div className="row-four-left">4A</div>
             <div className="row-four-right">4B</div>

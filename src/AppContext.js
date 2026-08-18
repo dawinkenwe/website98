@@ -129,6 +129,7 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         dispatch({type: 'START_APP', payload: getProgramInfo('help')})
         dispatch({type: 'START_APP', payload: getProgramInfo('explorer')})
+        dispatch({type: 'START_APP', payload: getProgramInfo('pong')})
     }, [])
 
     return (
