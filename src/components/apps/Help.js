@@ -2,11 +2,18 @@ import React, { useState } from 'react'
 import { getProgramIcon } from '../../helpers/programMap';
 import './Help.css';
 import DOMPurify from 'dompurify';
+import Back from "../../img/back.png";
+import Hide from "../../img/hide.png";
+import Forward from "../../img/forward.png";
+import Options from "../../img/options.png";
+import WebHelp from "../../img/web help.png";
+
 
 const Help = () => {
     const [selectedTab, setSelectedTab] = useState("Contents");
     const [selectedHelp, setSelectedHelp] = useState("About")
     const img = getProgramIcon('help');
+    const contentsMenu = {"Welcome to Help": ""}
 
     const handleQuestionClick = (question) => {
         setSelectedTab(question);
@@ -118,19 +125,28 @@ const Help = () => {
 
     return (
         <div className="help-window">
-            <aside className="help-navigation">
-                <div role="tablist" aria-label="Help Menu">
-                    <menu role="tablist" className="tab-header" style={{fontSize: '11px'}}>
-                        <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
-                        <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
-                        <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
-                    </menu>
-                    {getTabContents(selectedTab)}
-                </div>
-            </aside>
-            <section className="help-content">
-                {getWindowContents(selectedHelp)}
-            </section>
+            <div className="help-menu-buttons">
+                <img src={Hide} alt="Hide" className="hide-button"/>
+                <img src={Back} alt="Back" />
+                <img src={Forward} alt="Forward" />
+                <img src={Options} alt="Options" />
+                <img src={WebHelp} alt="Web Help" />
+            </div>
+            <div className="help-bottom-half">
+                <aside className="help-navigation">
+                    <div role="tablist" aria-label="Help Menu">
+                        <menu role="tablist" className="tab-header" style={{fontSize: '11px'}}>
+                            <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
+                            <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
+                            <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
+                        </menu>
+                        {getTabContents(selectedTab)}
+                    </div>
+                </aside>
+                <section className="help-content">
+                    {getWindowContents(selectedHelp)}
+                </section>
+            </div>
         </div>
     );
 };
