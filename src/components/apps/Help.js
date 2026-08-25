@@ -11,9 +11,9 @@ import WebHelp from "../../img/web help.png";
 
 const Help = () => {
     const [selectedTab, setSelectedTab] = useState("Contents");
-    const [selectedHelp, setSelectedHelp] = useState("About")
+    const [selectedHelp, setSelectedHelp] = useState("Welcome")
     const img = getProgramIcon('help');
-    const contentsMenu = {"Welcome to Help": ""}
+    const contentsMenu = {"Welcome to Help": "Welcome", "": {}}
 
     const handleQuestionClick = (question) => {
         setSelectedTab(question);
@@ -25,7 +25,7 @@ const Help = () => {
     }
 
     const getWindowContents = (title) => {
-        if (title === "About") {
+        if (title === "Welcome") {
             return(
                 <>
                     <h2>About Me</h2>
@@ -113,7 +113,7 @@ const Help = () => {
         if (title === "Contents") {
             return(
                 <menu className="help-questions">
-                    <li onClick={() => {setSelectedHelp("About")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "About" ? 'selected-help-question' : ''}`}>About</span></li>
+                    <li onClick={() => {setSelectedHelp("Welcome")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "Welcome" ? 'selected-help-question' : ''}`}>Welcome</span></li>
                     <li onClick={() => {setSelectedHelp("Resume")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "Resume" ? 'selected-help-question' : ''}`}>Resume</span></li>
                     <li onClick={() => {setSelectedHelp("WhatFor")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "WhatFor" ? 'selected-help-question' : ''}`}>What is this for?</span></li>
                     <li onClick={() => {setSelectedHelp("WhatDo")}}><img src={getProgramIcon('help')} alt="help" className="help-img" /><span className={`${selectedHelp === "WhatDo" ? 'selected-help-question' : ''}`}>What can I do here?</span></li>
