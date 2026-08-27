@@ -13,14 +13,14 @@ import HelpBookPage from "../../img/help book page.png";
 import {Resume, AboutMe, WhatFor, WhatDo, Why} from '../../content/help/Common'
 
 
-function MenuNode({ node, contentFunction }) {
+function MenuNode({ node, setMainContent, selectedQuestion, setSelectedQuestion }) {
     const [open, setOpen] = useState(node.defaultOpen ?? false);
 
     if (node.type === "file") {
         return (
-            <li onClick={(e) => {contentFunction(node.contents)}}>
+            <li onClick={(e) => {setMainContent(node.contents); setSelectedQuestion(node.id);}}>
                 <img src={HelpBookPage} alt="help" className="help-img" />
-                <span className="">{node.label}</span>
+                <span className={node.id === selectedQuestion ? "selected-file" : "not-selected-file"} aria-selected="true">{node.label}</span>
             </li>
         )
     }
@@ -35,7 +35,7 @@ function MenuNode({ node, contentFunction }) {
             {open && (
                 <ul className="help-questions-list">
                     {node.children.map(child => (
-                        <MenuNode node={child} key={child.id} contentFunction={contentFunction}/>
+                        <MenuNode node={child} key={child.id} setMainContent={setMainContent} selectedQuestion={selectedQuestion} setSelectedQuestion={setSelectedQuestion}/>
                     ))}
                 </ul>
             )}
@@ -47,6 +47,7 @@ const Help = () => {
     const [mainContent, setMainContent] = useState(AboutMe);
     const [openFolders, setOpenFolders] = useState(["Welcome to Help", "Personal Information"])
     const [selectedTab, setSelectedTab] = useState("Contents")
+    const [selectedQuestion, setSelectedQuestion] = useState("about")
 
     const contentMenu = [
         {
@@ -130,7 +131,7 @@ const Help = () => {
                             <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
                         </menu>
                         <div className="help-questions">
-                        {contentMenu.map(node => <MenuNode node={node} key={node.id} contentFunction={setMainContent}/>)}
+                        {contentMenu.map(node => <MenuNode node={node} key={node.id} setMainContent={setMainContent} selectedQuestion={selectedQuestion} setSelectedQuestion={setSelectedQuestion}/>)}
                         </div>
                     </div>
                 </aside>
