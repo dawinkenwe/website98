@@ -57,6 +57,15 @@
     list-style-type: none;
 }
 
+.help-questions-list {
+    padding-left: 0;
+    margin: 0;
+}
+
+.help-questions-list > li {
+    padding-left: 1rem;
+}
+
 .selected-question {
     padding: 0.25rem;
     box-sizing: border-box;
@@ -75,4 +84,14 @@
     top: 1.65rem;
     overflow-y: auto;
     font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.help-content > p {
+    font-family: "Microsoft Sans Serif", Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.help-content > h2 {
+    margin-top: 0;
 }

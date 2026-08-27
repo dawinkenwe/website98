@@ -33,7 +33,7 @@ function MenuNode({ node, contentFunction }) {
                 <span>{node.label}</span>
             </div>
             {open && (
-                <ul>
+                <ul className="help-questions-list">
                     {node.children.map(child => (
                         <MenuNode node={child} key={child.id} contentFunction={contentFunction}/>
                     ))}
