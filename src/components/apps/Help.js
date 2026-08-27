@@ -46,6 +46,7 @@ function MenuNode({ node, contentFunction }) {
 const Help = () => {
     const [mainContent, setMainContent] = useState(AboutMe);
     const [openFolders, setOpenFolders] = useState(["Welcome to Help", "Personal Information"])
+    const [selectedTab, setSelectedTab] = useState("Contents")
 
     const contentMenu = [
         {
@@ -123,7 +124,14 @@ const Help = () => {
             <div className="help-bottom-half">
                 <aside className="help-navigation">
                     <div role="tablist" aria-label="Help Menu">
+                        <menu role="tablist" className="tab-header" style={{fontSize: '11px'}}>
+                            <li role="tab" aria-selected={selectedTab === "Contents"} onClick={() => setSelectedTab("Contents")}><a href="#tabs">Contents</a></li>
+                            <li role="tab" aria-selected={selectedTab === "Index"} onClick={() => setSelectedTab("Index")}><a href="#tabs">Index</a></li>
+                            <li role="tab" aria-selected={selectedTab === "Search"} onClick={() => setSelectedTab("Search")}><a href="#tabs">Search</a></li>
+                        </menu>
+                        <div className="help-questions">
                         {contentMenu.map(node => <MenuNode node={node} key={node.id} contentFunction={setMainContent}/>)}
+                        </div>
                     </div>
                 </aside>
                 <section className="help-content">
