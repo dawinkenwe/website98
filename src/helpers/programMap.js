@@ -39,8 +39,8 @@ const programDefaults = {
         name: 'Help',
         defaultSize: {
             desktop: {
-                width: '40',
-                height: '35',
+                width: '50',
+                height: '50',
             },
             mobile: {
                 width: '50',
@@ -54,8 +54,8 @@ const programDefaults = {
             height: '35vh',
         },
         // NOTE: X AND Y ARE IN VW VH
-        x: '25',
-        y: '25'
+        x: '15',
+        y: '15'
     },
 
     mediaPlayer: {
